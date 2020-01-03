@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29009.5
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocosCreatorBinding.Android", "binding\CocosCreatorBinding.Android\CocosCreatorBinding.Android.csproj", "{67979EAE-FF40-44C6-8C26-F36A26DD066B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocosCreatorBinding.Android", "CocosCreatorBinding.Android\CocosCreatorBinding.Android.csproj", "{67979EAE-FF40-44C6-8C26-F36A26DD066B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocosCreatorBinding.iOS", "binding\CocosCreatorBinding.iOS\CocosCreatorBinding.iOS.csproj", "{4CA804EB-E27F-4055-90C8-E2B4380CDD04}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocosCreatorBinding.iOS", "CocosCreatorBinding.iOS\CocosCreatorBinding.iOS.csproj", "{4CA804EB-E27F-4055-90C8-E2B4380CDD04}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
