@@ -18,7 +18,6 @@
     </dependencies>
   </metadata>
   <files>
-
     <file src="..\binding\CocosCreatorBinding.Android\bin\Release\*.dll" target="lib\MonoAndroid90" />
     <file src="..\binding\CocosCreatorBinding.Android\bin\Release\*.pdb" target="lib\MonoAndroid90" />
   </files>
