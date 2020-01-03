@@ -9,11 +9,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocosCreatorBinding.iOS", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sample", "Sample", "{B805F822-AFB8-4F5F-A348-D6E769C343D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocosCreatorSample.Android", "CocosCreatorSample\CocosCreatorSample.Android\CocosCreatorSample.Android.csproj", "{08B2C57E-65D2-4533-9431-DDDDD8A58F34}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocosCreatorSample.Android", "samples\CocosCreatorSample.Android\CocosCreatorSample.Android.csproj", "{08B2C57E-65D2-4533-9431-DDDDD8A58F34}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocosCreatorSample.iOS", "CocosCreatorSample\CocosCreatorSample.iOS\CocosCreatorSample.iOS.csproj", "{28826857-504E-4E95-8646-C18BE208CF83}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocosCreatorSample.iOS", "samples\CocosCreatorSample.iOS\CocosCreatorSample.iOS.csproj", "{28826857-504E-4E95-8646-C18BE208CF83}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocosCreatorSample", "CocosCreatorSample\CocosCreatorSample\CocosCreatorSample.csproj", "{D124F9CB-5C09-44FE-8F77-77D644625A40}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocosCreatorSample", "samples\CocosCreatorSample\CocosCreatorSample.csproj", "{D124F9CB-5C09-44FE-8F77-77D644625A40}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
