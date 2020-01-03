@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <!-- Required elements-->
+    <id>CocosCreator</id>
+    <version>1.0</version>
+    <description>Cocos Creator for Xamarin</description>
+    <authors>toanlcgift@gmail.com</authors>
+
+    <dependencies>
+      <group targetFramework="MonoAndroid90">
+        <dependency id="Xamarin.Android.Support.v4" version="28.0.0.3"/>
+        <dependency id="Xamarin.Android.Support.Design" version="28.0.0.3"/>
+        <dependency id="Xamarin.Android.Support.v7.AppCompat" version="28.0.0.3"/>
+        <dependency id="Xamarin.Android.Support.v7.CardView" version="28.0.0.3"/>
+        <dependency id="Xamarin.Android.Support.CustomTabs" version="28.0.0.3"/>
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+
+    <file src="..\binding\CocosCreatorBinding.Android\bin\Release\*.dll" target="lib\MonoAndroid90" />
+    <file src="..\binding\CocosCreatorBinding.Android\bin\Release\*.pdb" target="lib\MonoAndroid90" />
+  </files>
+</package>
