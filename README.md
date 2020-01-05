@@ -208,4 +208,6 @@ public override bool DidFinishLaunchingWithOptions(UIApplication app, NSDictiona
             return base.CallNativeWithReturnString(title, content);
         }
    ```
+  2. Cocos Creator HotUpdate
   
+  Of course, it's fully compatible with Xamarin!
