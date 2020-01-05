@@ -211,3 +211,7 @@ public override bool DidFinishLaunchingWithOptions(UIApplication app, NSDictiona
   2. Cocos Creator HotUpdate
   
   Of course, it's fully compatible with Xamarin!
+  
+  3. SDK box integration?
+  
+  No, don't need anymore, we have Xamarin Community instead!
