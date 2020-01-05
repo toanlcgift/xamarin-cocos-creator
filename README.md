@@ -140,6 +140,7 @@ public override bool DidFinishLaunchingWithOptions(UIApplication app, NSDictiona
     <BundleResource Include="Resources\jsb-adapter\**" />
     <BundleResource Include="Resources\res\**" />
     <BundleResource Include="Resources\src\**" />
+    <BundleResource Include="Resources\subpackages\**" />
   ```
   
   ##### Please run sample project to check all configuration #####
