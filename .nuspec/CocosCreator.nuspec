@@ -3,9 +3,17 @@
   <metadata>
     <!-- Required elements-->
     <id>CocosCreator</id>
-    <version>1.0</version>
+    <version>$version$</version>
     <description>Cocos Creator for Xamarin</description>
     <authors>toanlcgift@gmail.com</authors>
+	<owners>Nguyen Duc Toan</owners>
+	<tags>cocos creator cocoscreator xamarin.cocoscreator</tags>
+	<license type="expression">MIT</license>
+	<iconUrl>https://github.com/toanlcgift/xamarin-cocos-creator/raw/master/docs/logo.png</iconUrl>
+    <projectUrl>https://github.com/toanlcgift/xamarin-cocos-creator</projectUrl>
+	<repository type="git" url="https://github.com/toanlcgift/xamarin-cocos-creator"/>
+	<requireLicenseAcceptance>true</requireLicenseAcceptance>
+	<description>Xamarin binding for CocosCreator</description>
 
     <dependencies>
       <group targetFramework="MonoAndroid90">
@@ -18,7 +26,12 @@
     </dependencies>
   </metadata>
   <files>
+    <!-- Android -->
     <file src="..\binding\CocosCreatorBinding.Android\bin\Release\*.dll" target="lib\MonoAndroid90" />
     <file src="..\binding\CocosCreatorBinding.Android\bin\Release\*.pdb" target="lib\MonoAndroid90" />
+	
+	<!-- iOS -->
+	<file src="..\binding\CocosCreatorBinding.iOS\bin\Release\*.dll" target="lib\Xamarin.iOS10" />
+    <file src="..\binding\CocosCreatorBinding.iOS\bin\Release\*.pdb" target="lib\Xamarin.iOS10" />
   </files>
 </package>
