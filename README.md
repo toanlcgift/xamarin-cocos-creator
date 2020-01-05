@@ -141,3 +141,71 @@ public override bool DidFinishLaunchingWithOptions(UIApplication app, NSDictiona
     <BundleResource Include="Resources\res\**" />
     <BundleResource Include="Resources\src\**" />
   ```
+  
+  ##### Please run sample project to check all configuration #####
+  
+  ### Advanced topics ###
+  
+  1. How to Call Xamarin.Android & Xamarin.iOS C# methods using JavaScript
+  
+  please refer articles for [android](https://docs.cocos.com/creator/manual/en/advanced-topics/java-reflection.html) & [ios](https://docs.cocos.com/creator/manual/en/advanced-topics/oc-reflection.html) first
+  
+  In cocos creator javascript:
+  
+  ```js
+  if (cc.sys.os === cc.sys.OS_ANDROID) {
+
+            var result = jsb.reflection.callStaticMethod("org/cocos2dx/lib/Cocos2dxActivity",
+             "paramFromJSStaticString", "(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;",
+              "title",
+               "Native Call Test");
+               
+            cc.log(result);
+        }
+        else if (cc.sys.os === cc.sys.OS_IOS) {
+            var ret = jsb.reflection.callStaticMethod("NativeOcClass",
+                "callNativeUIWithTitle:andContent:",
+                "cocos2d-js",
+                "Yes! you call a Native UI from Reflection");
+                
+            cc.log(ret);
+        }
+  ```
+  
+  To get the value from js:
+  
+  - In android, override following methods in MainActivity:
+   
+   ```C#
+    public override void ParamFromJSVoid(string title, string message)
+        {
+            System.Diagnostics.Debug.WriteLine($"title: {title}, message: {message}");
+        }
+
+        public override int ParamFromJSInt(string title, string message)
+        {
+            return base.ParamFromJSInt(title, message);
+        }
+
+        public override string ParamFromJSString(string title, string message)
+        {
+            return base.ParamFromJSString(title, message);
+        }
+   ```
+   
+   - In ios, override following methods in AppDelegate:
+   
+   ```C#
+    public override bool CallNativeWithReturnBool(string title, string content)
+        {
+            System.Diagnostics.Debug.WriteLine($"CallNativeWithReturnBool: title: { title} & content: {content}");
+            return base.CallNativeWithReturnBool(title, content);
+        }
+
+        public override string CallNativeWithReturnString(string title, string content)
+        {
+            System.Diagnostics.Debug.WriteLine($"CallNativeWithReturnString: title: { title} & content: {content}");
+            return base.CallNativeWithReturnString(title, content);
+        }
+   ```
+  
