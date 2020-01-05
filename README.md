@@ -24,6 +24,10 @@ CocosCreator             | `CocosCreator` | [![NuGet](https://img.shields.io/nug
 - platform: android/iOS
 - buildPath: ./build
 
+<p align="center">
+<img src="docs/buildsetting.png" alt="Xamarin.CocosCreator banner" height="800" >
+</p>
+
 ### Xamarin Android ###
 ##### Install nuget CocosCreator #####
 
