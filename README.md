@@ -78,7 +78,7 @@ protected override void OnCreate(Bundle savedInstanceState)
   - project.json
   - ...
   
-  5. Add to your android project .csproj file
+  5. Add to your android project *.csproj file
   
   ```xml
   <ItemGroup>
@@ -124,7 +124,7 @@ public override bool DidFinishLaunchingWithOptions(UIApplication app, NSDictiona
   - project.json
   - ...
   
-  4. Add to your iOS project .csproj file
+  4. Add to your iOS project *.csproj file
   
   ```xml
   <BundleResource Include="Resources\**\*.plist">
