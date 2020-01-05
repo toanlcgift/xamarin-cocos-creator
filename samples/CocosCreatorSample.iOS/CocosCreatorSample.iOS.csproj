@@ -68,15 +68,15 @@
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <BundleResource Include="Resources\**\*.plist">
-      <Optimize>False</Optimize>
-    </BundleResource>
     <BundleResource Include="Resources\main.js" />
     <BundleResource Include="Resources\project.json" />
     <BundleResource Include="Resources\jsb-adapter\**" />
     <BundleResource Include="Resources\res\**" />
     <BundleResource Include="Resources\src\**" />
     <BundleResource Include="Resources\subpackages\**" />
+	<BundleResource Include="Resources\**\*.plist">
+      <Optimize>False</Optimize>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />

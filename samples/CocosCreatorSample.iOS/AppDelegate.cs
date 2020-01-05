@@ -15,7 +15,6 @@ namespace CocosCreatorSample.iOS
         {
             options = new NSDictionary(new NSString("xxtea_key"), new NSString("123456789"));
             return base.DidFinishLaunchingWithOptions(app, options);
-            
         }
 
         public override bool CallNativeWithReturnBool(string title, string content)
