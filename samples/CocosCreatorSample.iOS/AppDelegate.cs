@@ -3,29 +3,32 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
+using NativeLibrary;
 using UIKit;
 
 namespace CocosCreatorSample.iOS
 {
-    // The UIApplicationDelegate for the application. This class is responsible for launching the 
-    // User Interface of the application, as well as listening (and optionally responding) to 
-    // application events from iOS.
     [Register("AppDelegate")]
-    public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate
+    public partial class AppDelegate : AppController
     {
-        //
-        // This method is invoked when the application has loaded and is ready to run. In this 
-        // method you should instantiate the window, load the UI into it and then make the window
-        // visible.
-        //
-        // You have 17 seconds to return from this method, or iOS will terminate your application.
-        //
-        public override bool FinishedLaunching(UIApplication app, NSDictionary options)
+        public override bool DidFinishLaunchingWithOptions(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
-            LoadApplication(new App());
+            options = new NSDictionary(new NSString("xxtea_key"), new NSString("30031993"));
+            return base.DidFinishLaunchingWithOptions(app, options);
+            
+        }
 
-            return base.FinishedLaunching(app, options);
+        public override bool CallNativeWithReturnBool(string title, string content)
+        {
+            System.Diagnostics.Debug.WriteLine($"CallNativeWithReturnBool: title: { title} & content: {content}");
+            return base.CallNativeWithReturnBool(title, content);
+        }
+
+        public override string CallNativeWithReturnString(string title, string content)
+        {
+            System.Diagnostics.Debug.WriteLine($"CallNativeWithReturnString: title: { title} & content: {content}");
+            return base.CallNativeWithReturnString(title, content);
         }
     }
 }
