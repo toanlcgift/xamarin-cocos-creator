@@ -12,7 +12,7 @@ using Android.Content.Res;
 
 namespace CocosCreatorSample.Droid
 {
-    [Activity(Label = "CocosCreatorSample", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "CocosCreatorSample", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Landscape)]
     public class MainActivity : Cocos2dxActivity
     {
         public static MainActivity app = null;
