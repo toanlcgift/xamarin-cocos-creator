@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -48,7 +48,7 @@
     <CodesignKey>iPhone Developer</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <MtouchLink>None</MtouchLink>
+    <MtouchLink>SdkOnly</MtouchLink>
     <MtouchInterpreter>-all</MtouchInterpreter>
     <OptimizePNGs>false</OptimizePNGs>
   </PropertyGroup>
@@ -68,13 +68,7 @@
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <BundleResource Include="Resources\main.js" />
-    <BundleResource Include="Resources\project.json" />
-    <BundleResource Include="Resources\jsb-adapter\**" />
-    <BundleResource Include="Resources\res\**" />
-    <BundleResource Include="Resources\src\**" />
-    <BundleResource Include="Resources\subpackages\**" />
-	<BundleResource Include="Resources\**\*.plist">
+    <BundleResource Include="Resources\**">
       <Optimize>False</Optimize>
     </BundleResource>
   </ItemGroup>
