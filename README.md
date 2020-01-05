@@ -20,7 +20,9 @@ CocosCreator             | `CocosCreator` | [![NuGet](https://img.shields.io/nug
 
 ### Build your Cocos Creator Project ###
 
-
+- template: default
+- platform: android/iOS
+- buildPath: ./build
 
 ### Xamarin Android ###
 ##### Install nuget CocosCreator #####
@@ -100,7 +102,6 @@ protected override void OnCreate(Bundle savedInstanceState)
 ```C#
 public override bool DidFinishLaunchingWithOptions(UIApplication app, NSDictionary options)
         {
-            global::Xamarin.Forms.Forms.Init();
             options = new NSDictionary(new NSString("xxtea_key"), new NSString("123456789"));
             return base.DidFinishLaunchingWithOptions(app, options);
             
