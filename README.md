@@ -31,13 +31,13 @@ CocosCreator             | `CocosCreator` | [![NuGet](https://img.shields.io/nug
 ### Xamarin Android ###
 ##### Install nuget CocosCreator #####
 
-1. Create Android Activity
+##### 1. Create Android Activity #####
 
 ```C#
   public class MainActivity : Cocos2dxActivity
   ```
   
-2. Override OnCreate
+##### 2. Override OnCreate #####
 
 ```C#
 protected override void OnCreate(Bundle savedInstanceState)
@@ -61,7 +61,7 @@ protected override void OnCreate(Bundle savedInstanceState)
 <img src="docs/xxkeytea.png" alt="Xamarin.CocosCreator banner" height="300" >
 </p>
 
-3. override Cocos2dxGLSurfaceView OnCreateView()
+##### 3. override Cocos2dxGLSurfaceView OnCreateView() #####
 
 ```C#
   public override Cocos2dxGLSurfaceView OnCreateView()
@@ -72,7 +72,7 @@ protected override void OnCreate(Bundle savedInstanceState)
         }
   ```
   
-  4. Copy Resources
+  ##### 4. Copy Resources #####
   
   Copy resources in Cocos Creator's build folder to Xamarin.Android Assets folder (except frameworks & js backups folder)
   
@@ -84,7 +84,7 @@ protected override void OnCreate(Bundle savedInstanceState)
   - project.json
   - ...
   
-  5. Add to your android project *.csproj file
+  ##### 5. Add to your android project *.csproj file #####
   
   ```xml
   <ItemGroup>
@@ -95,13 +95,13 @@ protected override void OnCreate(Bundle savedInstanceState)
 ### Xamarin iOS ###
 ##### Install nuget CocosCreator #####
 
-1. Create iOS AppDelegate
+##### 1. Create iOS AppDelegate #####
 
 ```C#
   public partial class AppDelegate : AppController
   ```
   
-2. Override DidFinishLaunchingWithOptions
+##### 2. Override DidFinishLaunchingWithOptions #####
 
 ```C#
 public override bool DidFinishLaunchingWithOptions(UIApplication app, NSDictionary options)
@@ -117,7 +117,7 @@ public override bool DidFinishLaunchingWithOptions(UIApplication app, NSDictiona
 <img src="docs/xxkeytea.png" alt="Xamarin.CocosCreator banner" height="300" >
 </p>
 
-  3. Copy Resources
+  ##### 3. Copy Resources #####
   
   Copy resources in Cocos Creator's build folder to Xamarin.iOS Resources folder (except frameworks & js backups folder)
   
@@ -129,7 +129,7 @@ public override bool DidFinishLaunchingWithOptions(UIApplication app, NSDictiona
   - project.json
   - ...
   
-  4. Add to your iOS project *.csproj file
+  ##### 4. Add to your iOS project *.csproj file #####
   
   ```xml
   <BundleResource Include="Resources\**\*.plist">
@@ -146,7 +146,7 @@ public override bool DidFinishLaunchingWithOptions(UIApplication app, NSDictiona
   
   ### Advanced topics ###
   
-  1. How to Call Xamarin.Android & Xamarin.iOS C# methods using JavaScript
+  ##### 1. How to Call Xamarin.Android & Xamarin.iOS C# methods using JavaScript #####
   
   please refer articles for [android](https://docs.cocos.com/creator/manual/en/advanced-topics/java-reflection.html) & [ios](https://docs.cocos.com/creator/manual/en/advanced-topics/oc-reflection.html) first
   
@@ -208,10 +208,10 @@ public override bool DidFinishLaunchingWithOptions(UIApplication app, NSDictiona
             return base.CallNativeWithReturnString(title, content);
         }
    ```
-  2. Cocos Creator HotUpdate
+  ##### 2. Cocos Creator HotUpdate #####
   
   Of course, it's fully compatible with Xamarin!
   
-  3. SDK box integration?
+  ##### 3. SDK box integration? #####
   
   No, don't need anymore, we have Xamarin Community instead!
