@@ -4,7 +4,6 @@
     <!-- Required elements-->
     <id>CocosCreator</id>
     <version>$version$</version>
-    <description>Cocos Creator for Xamarin</description>
     <authors>toanlcgift@gmail.com</authors>
 	<owners>Nguyen Duc Toan</owners>
 	<tags>cocos creator cocoscreator xamarin.cocoscreator</tags>
@@ -13,7 +12,7 @@
     <projectUrl>https://github.com/toanlcgift/xamarin-cocos-creator</projectUrl>
 	<repository type="git" url="https://github.com/toanlcgift/xamarin-cocos-creator"/>
 	<requireLicenseAcceptance>true</requireLicenseAcceptance>
-	<description>Xamarin binding for CocosCreator</description>
+	<description>CocosCreator Xamarin Binding</description>
 
     <dependencies>
       <group targetFramework="MonoAndroid90">
