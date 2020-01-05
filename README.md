@@ -154,17 +154,15 @@ public override bool DidFinishLaunchingWithOptions(UIApplication app, NSDictiona
 
             var result = jsb.reflection.callStaticMethod("org/cocos2dx/lib/Cocos2dxActivity",
              "paramFromJSStaticString", "(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;",
-              "title",
+              "cocos2d-js",
                "Native Call Test");
-               
             cc.log(result);
         }
         else if (cc.sys.os === cc.sys.OS_IOS) {
             var ret = jsb.reflection.callStaticMethod("NativeOcClass",
-                "callNativeUIWithTitle:andContent:",
+                "callNativeWithReturnString:andContent:",
                 "cocos2d-js",
-                "Yes! you call a Native UI from Reflection");
-                
+                "Native Call Test");
             cc.log(ret);
         }
   ```
