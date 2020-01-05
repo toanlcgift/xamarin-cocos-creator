@@ -49,7 +49,7 @@ protected override void OnCreate(Bundle savedInstanceState)
             
         }
   ```
-  Make sure the xxteakey is matched with your cocos creator's build setting
+  *NOTE: Make sure the xxteakey is matched with your cocos creator's build setting*
   
   <p align="center">
 <img src="docs/xxkeytea.png" alt="Xamarin.CocosCreator banner" height="300" >
@@ -106,7 +106,7 @@ public override bool DidFinishLaunchingWithOptions(UIApplication app, NSDictiona
             
         }
   ```
-  Make sure the xxteakey is matched with your cocos creator's build setting
+  *NOTE: Make sure the xxteakey is matched with your cocos creator's build setting*
   
   <p align="center">
 <img src="docs/xxkeytea.png" alt="Xamarin.CocosCreator banner" height="300" >
