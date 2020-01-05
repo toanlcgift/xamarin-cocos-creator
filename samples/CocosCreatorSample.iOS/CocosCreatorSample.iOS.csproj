@@ -67,6 +67,16 @@
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+	<BundleResource Include="..\Game\**\*.plist">
+      <Optimize>False</Optimize>
+    </BundleResource>
+    <BundleResource Include="..\Game\main.js" />
+    <BundleResource Include="..\Game\project.json" />
+    <BundleResource Include="..\Game\project.manifest" />
+    <BundleResource Include="..\Game\version.manifest" />
+    <BundleResource Include="..\Game\jsb-adapter\**" />
+    <BundleResource Include="..\Game\res\**" />
+    <BundleResource Include="..\Game\src\**" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
