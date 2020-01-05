@@ -132,13 +132,7 @@ public override bool DidFinishLaunchingWithOptions(UIApplication app, NSDictiona
   ##### 4. Add to your iOS project *.csproj file #####
   
   ```xml
-    <BundleResource Include="Resources\main.js" />
-    <BundleResource Include="Resources\project.json" />
-    <BundleResource Include="Resources\jsb-adapter\**" />
-    <BundleResource Include="Resources\res\**" />
-    <BundleResource Include="Resources\src\**" />
-    <BundleResource Include="Resources\subpackages\**" />
-    <BundleResource Include="Resources\**\*.plist">
+    <BundleResource Include="Resources\**">
       <Optimize>False</Optimize>
     </BundleResource>
   ```
