@@ -13,7 +13,6 @@ namespace CocosCreatorSample.iOS
     {
         public override bool DidFinishLaunchingWithOptions(UIApplication app, NSDictionary options)
         {
-            global::Xamarin.Forms.Forms.Init();
             options = new NSDictionary(new NSString("xxtea_key"), new NSString("123456789"));
             return base.DidFinishLaunchingWithOptions(app, options);
             
