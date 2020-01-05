@@ -144,6 +144,8 @@ public override bool DidFinishLaunchingWithOptions(UIApplication app, NSDictiona
   
   ##### Please run sample project to check all configuration #####
   
+  *NOTE: This package does not support iOS emulator*
+  
   ### Advanced topics ###
   
   ##### 1. How to Call Xamarin.Android & Xamarin.iOS C# methods using JavaScript #####
