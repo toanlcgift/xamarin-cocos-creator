@@ -51,12 +51,41 @@ protected override void OnCreate(Bundle savedInstanceState)
   ```
   Make sure the xxteakey is matched with your cocos creator's build setting
   
-  
-  
-  3. Copy Resources
-  
-  
+  <p align="center">
+<img src="docs/xxkeytea.png" alt="Xamarin.CocosCreator banner" height="300" >
+</p>
 
+3. override Cocos2dxGLSurfaceView OnCreateView()
+
+```C#
+  public override Cocos2dxGLSurfaceView OnCreateView()
+        {
+            Cocos2dxGLSurfaceView glSurfaceView = new Cocos2dxGLSurfaceView(this);
+            glSurfaceView.SetEGLConfigChooser(8, 8, 8, 8, 16, 0);
+            return glSurfaceView;
+        }
+  ```
+  
+  4. Copy Resources
+  
+  Copy resources in Cocos Creator's build folder to Xamarin.Android Assets folder (except frameworks & js backups folder)
+  
+  - jsb-adapter
+  - res
+  - src
+  - subpackages
+  - main.js
+  - project.json
+  - ...
+  
+  5. Add to your android project .csproj file
+  
+  ```xml
+  <ItemGroup>
+    <AndroidAsset Include="Assets\**" />
+  </ItemGroup>
+  ```
+  
 ### Xamarin iOS ###
 ##### Install nuget CocosCreator #####
 
