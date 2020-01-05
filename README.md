@@ -89,3 +89,50 @@ protected override void OnCreate(Bundle savedInstanceState)
 ### Xamarin iOS ###
 ##### Install nuget CocosCreator #####
 
+1. Create iOS AppDelegate
+
+```C#
+  public partial class AppDelegate : AppController
+  ```
+  
+2. Override DidFinishLaunchingWithOptions
+
+```C#
+public override bool DidFinishLaunchingWithOptions(UIApplication app, NSDictionary options)
+        {
+            global::Xamarin.Forms.Forms.Init();
+            options = new NSDictionary(new NSString("xxtea_key"), new NSString("123456789"));
+            return base.DidFinishLaunchingWithOptions(app, options);
+            
+        }
+  ```
+  Make sure the xxteakey is matched with your cocos creator's build setting
+  
+  <p align="center">
+<img src="docs/xxkeytea.png" alt="Xamarin.CocosCreator banner" height="300" >
+</p>
+
+  3. Copy Resources
+  
+  Copy resources in Cocos Creator's build folder to Xamarin.iOS Resources folder (except frameworks & js backups folder)
+  
+  - jsb-adapter
+  - res
+  - src
+  - subpackages
+  - main.js
+  - project.json
+  - ...
+  
+  4. Add to your iOS project .csproj file
+  
+  ```xml
+  <BundleResource Include="Resources\**\*.plist">
+      <Optimize>False</Optimize>
+    </BundleResource>
+    <BundleResource Include="Resources\main.js" />
+    <BundleResource Include="Resources\project.json" />
+    <BundleResource Include="Resources\jsb-adapter\**" />
+    <BundleResource Include="Resources\res\**" />
+    <BundleResource Include="Resources\src\**" />
+  ```
