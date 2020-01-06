@@ -8,7 +8,7 @@
 
 Platform/Feature               | Package name                              | Stable      | Prerelease | Cocos Creator Version
 -----------------------|-------------------------------------------|-----------------------------|------------------------- |-------------------------|
-CocosCreator             | `CocosCreator` | [![NuGet](https://badge.fury.io/nu/CocosCreator.svg)](https://www.nuget.org/packages/CocosCreator/) | [![NuGet](https://badge.fury.io/nu/CocosCreator.svg)](https://www.nuget.org/packages/CocosCreator/) | 2.2.1 |
+CocosCreator             | `CocosCreator` | [![NuGet](https://badge.fury.io/nu/CocosCreator.svg)](https://www.nuget.org/packages/CocosCreator/) | [![NuGet](https://badge.fury.io/nu/CocosCreator.svg)](https://www.nuget.org/packages/CocosCreator/) | 2.2.0 - 2.2.2 |
 
 
 ## Getting Started ##
