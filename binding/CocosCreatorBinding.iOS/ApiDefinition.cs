@@ -51,6 +51,10 @@ namespace NativeLibrary
 
         [Export("application:openURL:sourceApplication:annotation:")]
         bool OpenUrl(UIApplication application, NSUrl url, [NullAllowed] string sourceApplication, NSObject annotation);
+
+        [Static]
+        [Export("evalScript:")]
+        bool EvalScript(string script);
     }
 
     [BaseType(typeof(NSObject))]

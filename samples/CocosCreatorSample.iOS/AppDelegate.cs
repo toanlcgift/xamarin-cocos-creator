@@ -26,6 +26,7 @@ namespace CocosCreatorSample.iOS
         public override string CallNativeWithReturnString(string title, string content)
         {
             System.Diagnostics.Debug.WriteLine($"CallNativeWithReturnString: title: { title} & content: {content}");
+            AppController.EvalScript("cc.TestNativeCallJS()");
             return base.CallNativeWithReturnString(title, content);
         }
     }

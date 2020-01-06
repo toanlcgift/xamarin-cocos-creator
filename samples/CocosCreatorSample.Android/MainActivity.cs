@@ -9,6 +9,7 @@ using Android.OS;
 using Org.Cocos2dx.Lib;
 using Android.Content;
 using Android.Content.Res;
+using Java.Lang;
 
 namespace CocosCreatorSample.Droid
 {
@@ -49,6 +50,10 @@ namespace CocosCreatorSample.Droid
 
         public override string ParamFromJSString(string title, string message)
         {
+            app.RunOnGLThread(new Runnable(() =>
+            {
+                Cocos2dxJavascriptJavaBridge.EvalString("cc.TestNativeCallJS()");
+            }));
             return base.ParamFromJSString(title, message);
         }
 
