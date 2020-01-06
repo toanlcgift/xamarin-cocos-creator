@@ -1,0 +1,3 @@
+[submodule "cocoscreator-build-template"]
+	path = cocoscreator-build-template
+	url = https://github.com/toanlcgift/cocoscreator-build-template
