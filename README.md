@@ -203,10 +203,26 @@ public override bool DidFinishLaunchingWithOptions(UIApplication app, NSDictiona
             return base.CallNativeWithReturnString(title, content);
         }
    ```
-  ##### 2. Cocos Creator HotUpdate #####
+  ##### 2. C# Call Javascript #####
+  - Xamarin.Android:
+  
+  ```C#
+    app.RunOnGLThread(new Runnable(() =>
+            {
+                Cocos2dxJavascriptJavaBridge.EvalString("cc.TestNativeCallJS()");
+            }));
+   ```
+   
+   - Xamarin.iOS :
+   
+   ```C#
+    AppController.EvalScript("cc.TestNativeCallJS()");
+   ```
+   
+  ##### 3. Cocos Creator HotUpdate #####
   
   Of course, it's fully compatible with Xamarin!
   
-  ##### 3. SDK box integration? #####
+  ##### 4. SDK box integration? #####
   
   No, don't need anymore, we have Xamarin Community instead!
