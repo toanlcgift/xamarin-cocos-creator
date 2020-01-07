@@ -1,0 +1,1 @@
+{"__type__":"cc.AnimationClip","_name":"fruitESplit","_duration":0.4,"curveData":{"paths":{"sptLeft":{"props":{"x":[{"frame":0,"value":-4.5},{"frame":0.4,"value":-30}],"angle":[{"frame":0,"value":0},{"frame":0.4,"value":80}]}},"sptRight":{"props":{"x":[{"frame":0,"value":1},{"frame":0.4,"value":20}],"angle":[{"frame":0,"value":0},{"frame":0.4,"value":20}]}}}}}
