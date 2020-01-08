@@ -13,7 +13,7 @@ using Java.Lang;
 
 namespace CocosCreatorSample.Droid
 {
-    [Activity(Label = "CocosCreatorSample", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Landscape)]
+    [Activity(Label = "CocosCreatorSample", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainActivity : Cocos2dxActivity
     {
         public static MainActivity app = null;
