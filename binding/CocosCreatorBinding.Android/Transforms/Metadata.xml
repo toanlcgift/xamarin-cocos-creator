@@ -12,6 +12,6 @@
   </add-node>
 
   <remove-node path="/api/package[starts-with(@name, 'cz.msebera.android')]" />
-  <remove-node path="/api/package[starts-with(@name, 'okio')]" />
-  <remove-node path="/api/package[starts-with(@name, 'okhttp3')]" />
+  <remove-node path="/api/package[starts-with(@name, 'org.cocos2dx.okio')]" />
+  <remove-node path="/api/package[starts-with(@name, 'org.cocos2dx.okhttp3')]" />
 </metadata>
