@@ -1,216 +1,418 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
-"use strict";
-
-cc.Assembler2D.prototype.updateWorldVerts = function (comp) {
-    var local = this._local;
-    var verts = this._renderData.vDatas[0];
-
-    var vl = local[0],
-        vr = local[2],
-        vb = local[1],
-        vt = local[3];
-
-    // left bottom
-    verts[0] = vl;
-    verts[1] = vb;
-    // right bottom
-    verts[5] = vr;
-    verts[6] = vb;
-    // left top
-    verts[10] = vl;
-    verts[11] = vt;
-    // right top
-    verts[15] = vr;
-    verts[16] = vt;
-};
-
-var _updateColor = cc.Assembler2D.prototype.updateColor;
-cc.Assembler2D.prototype.updateColor = function (comp, color) {
-    this._dirtyPtr[0] |= cc.Assembler.FLAG_VERTICES_OPACITY_CHANGED;
-    _updateColor.call(this, comp, color);
-};
+module.exports={
+  "O_RDONLY": 0,
+  "O_WRONLY": 1,
+  "O_RDWR": 2,
+  "S_IFMT": 61440,
+  "S_IFREG": 32768,
+  "S_IFDIR": 16384,
+  "S_IFCHR": 8192,
+  "S_IFBLK": 24576,
+  "S_IFIFO": 4096,
+  "S_IFLNK": 40960,
+  "S_IFSOCK": 49152,
+  "O_CREAT": 512,
+  "O_EXCL": 2048,
+  "O_NOCTTY": 131072,
+  "O_TRUNC": 1024,
+  "O_APPEND": 8,
+  "O_DIRECTORY": 1048576,
+  "O_NOFOLLOW": 256,
+  "O_SYNC": 128,
+  "O_SYMLINK": 2097152,
+  "O_NONBLOCK": 4,
+  "S_IRWXU": 448,
+  "S_IRUSR": 256,
+  "S_IWUSR": 128,
+  "S_IXUSR": 64,
+  "S_IRWXG": 56,
+  "S_IRGRP": 32,
+  "S_IWGRP": 16,
+  "S_IXGRP": 8,
+  "S_IRWXO": 7,
+  "S_IROTH": 4,
+  "S_IWOTH": 2,
+  "S_IXOTH": 1,
+  "E2BIG": 7,
+  "EACCES": 13,
+  "EADDRINUSE": 48,
+  "EADDRNOTAVAIL": 49,
+  "EAFNOSUPPORT": 47,
+  "EAGAIN": 35,
+  "EALREADY": 37,
+  "EBADF": 9,
+  "EBADMSG": 94,
+  "EBUSY": 16,
+  "ECANCELED": 89,
+  "ECHILD": 10,
+  "ECONNABORTED": 53,
+  "ECONNREFUSED": 61,
+  "ECONNRESET": 54,
+  "EDEADLK": 11,
+  "EDESTADDRREQ": 39,
+  "EDOM": 33,
+  "EDQUOT": 69,
+  "EEXIST": 17,
+  "EFAULT": 14,
+  "EFBIG": 27,
+  "EHOSTUNREACH": 65,
+  "EIDRM": 90,
+  "EILSEQ": 92,
+  "EINPROGRESS": 36,
+  "EINTR": 4,
+  "EINVAL": 22,
+  "EIO": 5,
+  "EISCONN": 56,
+  "EISDIR": 21,
+  "ELOOP": 62,
+  "EMFILE": 24,
+  "EMLINK": 31,
+  "EMSGSIZE": 40,
+  "EMULTIHOP": 95,
+  "ENAMETOOLONG": 63,
+  "ENETDOWN": 50,
+  "ENETRESET": 52,
+  "ENETUNREACH": 51,
+  "ENFILE": 23,
+  "ENOBUFS": 55,
+  "ENODATA": 96,
+  "ENODEV": 19,
+  "ENOENT": 2,
+  "ENOEXEC": 8,
+  "ENOLCK": 77,
+  "ENOLINK": 97,
+  "ENOMEM": 12,
+  "ENOMSG": 91,
+  "ENOPROTOOPT": 42,
+  "ENOSPC": 28,
+  "ENOSR": 98,
+  "ENOSTR": 99,
+  "ENOSYS": 78,
+  "ENOTCONN": 57,
+  "ENOTDIR": 20,
+  "ENOTEMPTY": 66,
+  "ENOTSOCK": 38,
+  "ENOTSUP": 45,
+  "ENOTTY": 25,
+  "ENXIO": 6,
+  "EOPNOTSUPP": 102,
+  "EOVERFLOW": 84,
+  "EPERM": 1,
+  "EPIPE": 32,
+  "EPROTO": 100,
+  "EPROTONOSUPPORT": 43,
+  "EPROTOTYPE": 41,
+  "ERANGE": 34,
+  "EROFS": 30,
+  "ESPIPE": 29,
+  "ESRCH": 3,
+  "ESTALE": 70,
+  "ETIME": 101,
+  "ETIMEDOUT": 60,
+  "ETXTBSY": 26,
+  "EWOULDBLOCK": 35,
+  "EXDEV": 18,
+  "SIGHUP": 1,
+  "SIGINT": 2,
+  "SIGQUIT": 3,
+  "SIGILL": 4,
+  "SIGTRAP": 5,
+  "SIGABRT": 6,
+  "SIGIOT": 6,
+  "SIGBUS": 10,
+  "SIGFPE": 8,
+  "SIGKILL": 9,
+  "SIGUSR1": 30,
+  "SIGSEGV": 11,
+  "SIGUSR2": 31,
+  "SIGPIPE": 13,
+  "SIGALRM": 14,
+  "SIGTERM": 15,
+  "SIGCHLD": 20,
+  "SIGCONT": 19,
+  "SIGSTOP": 17,
+  "SIGTSTP": 18,
+  "SIGTTIN": 21,
+  "SIGTTOU": 22,
+  "SIGURG": 16,
+  "SIGXCPU": 24,
+  "SIGXFSZ": 25,
+  "SIGVTALRM": 26,
+  "SIGPROF": 27,
+  "SIGWINCH": 28,
+  "SIGIO": 23,
+  "SIGSYS": 12,
+  "SSL_OP_ALL": 2147486719,
+  "SSL_OP_ALLOW_UNSAFE_LEGACY_RENEGOTIATION": 262144,
+  "SSL_OP_CIPHER_SERVER_PREFERENCE": 4194304,
+  "SSL_OP_CISCO_ANYCONNECT": 32768,
+  "SSL_OP_COOKIE_EXCHANGE": 8192,
+  "SSL_OP_CRYPTOPRO_TLSEXT_BUG": 2147483648,
+  "SSL_OP_DONT_INSERT_EMPTY_FRAGMENTS": 2048,
+  "SSL_OP_EPHEMERAL_RSA": 0,
+  "SSL_OP_LEGACY_SERVER_CONNECT": 4,
+  "SSL_OP_MICROSOFT_BIG_SSLV3_BUFFER": 32,
+  "SSL_OP_MICROSOFT_SESS_ID_BUG": 1,
+  "SSL_OP_MSIE_SSLV2_RSA_PADDING": 0,
+  "SSL_OP_NETSCAPE_CA_DN_BUG": 536870912,
+  "SSL_OP_NETSCAPE_CHALLENGE_BUG": 2,
+  "SSL_OP_NETSCAPE_DEMO_CIPHER_CHANGE_BUG": 1073741824,
+  "SSL_OP_NETSCAPE_REUSE_CIPHER_CHANGE_BUG": 8,
+  "SSL_OP_NO_COMPRESSION": 131072,
+  "SSL_OP_NO_QUERY_MTU": 4096,
+  "SSL_OP_NO_SESSION_RESUMPTION_ON_RENEGOTIATION": 65536,
+  "SSL_OP_NO_SSLv2": 16777216,
+  "SSL_OP_NO_SSLv3": 33554432,
+  "SSL_OP_NO_TICKET": 16384,
+  "SSL_OP_NO_TLSv1": 67108864,
+  "SSL_OP_NO_TLSv1_1": 268435456,
+  "SSL_OP_NO_TLSv1_2": 134217728,
+  "SSL_OP_PKCS1_CHECK_1": 0,
+  "SSL_OP_PKCS1_CHECK_2": 0,
+  "SSL_OP_SINGLE_DH_USE": 1048576,
+  "SSL_OP_SINGLE_ECDH_USE": 524288,
+  "SSL_OP_SSLEAY_080_CLIENT_DH_BUG": 128,
+  "SSL_OP_SSLREF2_REUSE_CERT_TYPE_BUG": 0,
+  "SSL_OP_TLS_BLOCK_PADDING_BUG": 512,
+  "SSL_OP_TLS_D5_BUG": 256,
+  "SSL_OP_TLS_ROLLBACK_BUG": 8388608,
+  "ENGINE_METHOD_DSA": 2,
+  "ENGINE_METHOD_DH": 4,
+  "ENGINE_METHOD_RAND": 8,
+  "ENGINE_METHOD_ECDH": 16,
+  "ENGINE_METHOD_ECDSA": 32,
+  "ENGINE_METHOD_CIPHERS": 64,
+  "ENGINE_METHOD_DIGESTS": 128,
+  "ENGINE_METHOD_STORE": 256,
+  "ENGINE_METHOD_PKEY_METHS": 512,
+  "ENGINE_METHOD_PKEY_ASN1_METHS": 1024,
+  "ENGINE_METHOD_ALL": 65535,
+  "ENGINE_METHOD_NONE": 0,
+  "DH_CHECK_P_NOT_SAFE_PRIME": 2,
+  "DH_CHECK_P_NOT_PRIME": 1,
+  "DH_UNABLE_TO_CHECK_GENERATOR": 4,
+  "DH_NOT_SUITABLE_GENERATOR": 8,
+  "NPN_ENABLED": 1,
+  "RSA_PKCS1_PADDING": 1,
+  "RSA_SSLV23_PADDING": 2,
+  "RSA_NO_PADDING": 3,
+  "RSA_PKCS1_OAEP_PADDING": 4,
+  "RSA_X931_PADDING": 5,
+  "RSA_PKCS1_PSS_PADDING": 6,
+  "POINT_CONVERSION_COMPRESSED": 2,
+  "POINT_CONVERSION_UNCOMPRESSED": 4,
+  "POINT_CONVERSION_HYBRID": 6,
+  "F_OK": 0,
+  "R_OK": 4,
+  "W_OK": 2,
+  "X_OK": 1,
+  "UV_UDP_REUSEADDR": 4
+}
 
 },{}],2:[function(require,module,exports){
 "use strict";
 
-(function () {
-            if (!cc.Assembler3D) return;
+cc.Assembler2D.prototype.updateWorldVerts = function (comp) {
+  var local = this._local;
+  var verts = this._renderData.vDatas[0];
+  var vl = local[0],
+      vr = local[2],
+      vb = local[1],
+      vt = local[3]; // left bottom
 
-            cc.Assembler3D.updateWorldVerts = function (comp) {
-                        var local = this._local;
-                        var world = this._renderData.vDatas[0];
-                        var vl = local[0],
-                            vr = local[2],
-                            vb = local[1],
-                            vt = local[3];
+  verts[0] = vl;
+  verts[1] = vb; // right bottom
 
-                        // left bottom
-                        var floatsPerVert = this.floatsPerVert;
-                        var offset = 0;
-                        world[offset] = vl;
-                        world[offset + 1] = vb;
-                        world[offset + 2] = 0;
-                        offset += floatsPerVert;
+  verts[5] = vr;
+  verts[6] = vb; // left top
 
-                        // right bottom
-                        world[offset] = vr;
-                        world[offset + 1] = vb;
-                        world[offset + 2] = 0;
-                        offset += floatsPerVert;
+  verts[10] = vl;
+  verts[11] = vt; // right top
 
-                        // left top
-                        world[offset] = vl;
-                        world[offset + 1] = vt;
-                        world[offset + 2] = 0;
-                        offset += floatsPerVert;
+  verts[15] = vr;
+  verts[16] = vt;
+};
 
-                        // right top
-                        world[offset] = vr;
-                        world[offset + 1] = vt;
-                        world[offset + 2] = 0;
-            };
-})();
+var _updateColor = cc.Assembler2D.prototype.updateColor;
+
+cc.Assembler2D.prototype.updateColor = function (comp, color) {
+  this._dirtyPtr[0] |= cc.Assembler.FLAG_VERTICES_OPACITY_CHANGED;
+
+  _updateColor.call(this, comp, color);
+};
 
 },{}],3:[function(require,module,exports){
 "use strict";
 
-/****************************************************************************
- Copyright (c) 2018 Xiamen Yaji Software Co., Ltd.
+(function () {
+  if (!cc.Assembler3D) return;
 
- http://www.cocos.com
+  cc.Assembler3D.updateWorldVerts = function (comp) {
+    var local = this._local;
+    var world = this._renderData.vDatas[0];
+    var vl = local[0],
+        vr = local[2],
+        vb = local[1],
+        vt = local[3]; // left bottom
 
- Permission is hereby granted, free of charge, to any person obtaining a copy
- of this software and associated engine source code (the "Software"), a limited,
-  worldwide, royalty-free, non-assignable, revocable and non-exclusive license
- to use Cocos Creator solely to develop games on your target platforms. You shall
-  not use Cocos Creator software for developing other software or tools that's
-  used for developing games. You are not granted to publish, distribute,
-  sublicense, and/or sell copies of Cocos Creator.
+    var floatsPerVert = this.floatsPerVert;
+    var offset = 0;
+    world[offset] = vl;
+    world[offset + 1] = vb;
+    world[offset + 2] = 0;
+    offset += floatsPerVert; // right bottom
 
- The software or tools in this License Agreement are licensed, not sold.
- Xiamen Yaji Software Co., Ltd. reserves all rights not expressly granted to you.
+    world[offset] = vr;
+    world[offset + 1] = vb;
+    world[offset + 2] = 0;
+    offset += floatsPerVert; // left top
 
- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- THE SOFTWARE.
- ****************************************************************************/
+    world[offset] = vl;
+    world[offset + 1] = vt;
+    world[offset + 2] = 0;
+    offset += floatsPerVert; // right top
 
-var RenderFlow = cc.RenderFlow;
-
-var originInit = cc.Assembler.prototype.init;
-
-var FLAG_VERTICES_OPACITY_CHANGED = 1 << 0;
-var FLAG_VERTICES_DIRTY = 1 << 1;
-
-var Assembler = {
-    _ctor: function _ctor() {
-        this._dirtyPtr = new Uint32Array(1);
-        this.setDirty(this._dirtyPtr);
-        this.initVertexFormat();
-    },
-    destroy: function destroy() {
-        this._renderComp = null;
-        this._effect = null;
-    },
-    clear: function clear() {
-        this._renderData.clear();
-    },
-    _extendNative: function _extendNative() {
-        renderer.Assembler.prototype.ctor.call(this);
-    },
-    initVertexFormat: function initVertexFormat() {
-        var vfmt = this.getVfmt();
-        if (!vfmt) return;
-        this.setVertexFormat(vfmt._nativeObj);
-    },
-    init: function init(renderComp) {
-        this._effect = [];
-
-        originInit.call(this, renderComp);
-
-        if (renderComp.node && renderComp.node._proxy) {
-            renderComp.node._proxy.setAssembler(this);
-        }
-    },
-    _updateRenderData: function _updateRenderData() {
-        if (!this._renderComp || !this._renderComp.isValid) return;
-        this.updateRenderData(this._renderComp);
-
-        var materials = this._renderComp.sharedMaterials;
-        for (var i = 0; i < materials.length; i++) {
-            var m = materials[i];
-            // TODO: find why material can be null
-            if (!m) continue;
-            m.getHash();
-            this.updateMaterial(i, m);
-        }
-    },
-    updateRenderData: function updateRenderData(comp) {
-        comp._assembler.updateMaterial(0, comp.sharedMaterials[0]);
-    },
-    updateMaterial: function updateMaterial(iaIndex, material) {
-        var effect = material && material.effect;
-        if (this._effect[iaIndex] !== effect) {
-            this._effect[iaIndex] = effect;
-            this.updateEffect(iaIndex, effect ? effect._nativeObj : null);
-        }
-    },
-    updateColor: function updateColor(comp, color) {
-        this._dirtyPtr[0] |= FLAG_VERTICES_OPACITY_CHANGED;
-    }
-};
-
-cc.Assembler.FLAG_VERTICES_OPACITY_CHANGED = FLAG_VERTICES_OPACITY_CHANGED;
-cc.Assembler.FLAG_VERTICES_DIRTY = FLAG_VERTICES_DIRTY;
-
-Object.setPrototypeOf(cc.Assembler.prototype, renderer.Assembler.prototype);
-
-cc.js.mixin(cc.Assembler.prototype, Assembler);
-
-module.exports = Assembler;
+    world[offset] = vr;
+    world[offset + 1] = vt;
+    world[offset + 2] = 0;
+  };
+})();
 
 },{}],4:[function(require,module,exports){
 "use strict";
 
-var proto = cc.Graphics.__assembler__.prototype;
+/****************************************************************************
+ Copyright (c) 2018 Xiamen Yaji Software Co., Ltd.
 
+ http://www.cocos.com
+
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated engine source code (the "Software"), a limited,
+  worldwide, royalty-free, non-assignable, revocable and non-exclusive license
+ to use Cocos Creator solely to develop games on your target platforms. You shall
+  not use Cocos Creator software for developing other software or tools that's
+  used for developing games. You are not granted to publish, distribute,
+  sublicense, and/or sell copies of Cocos Creator.
+
+ The software or tools in this License Agreement are licensed, not sold.
+ Xiamen Yaji Software Co., Ltd. reserves all rights not expressly granted to you.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
+ ****************************************************************************/
+var RenderFlow = cc.RenderFlow;
+var originInit = cc.Assembler.prototype.init;
+var FLAG_VERTICES_OPACITY_CHANGED = 1 << 0;
+var FLAG_VERTICES_DIRTY = 1 << 1;
+var Assembler = {
+  _ctor: function _ctor() {
+    this._dirtyPtr = new Uint32Array(1);
+    this.setDirty(this._dirtyPtr);
+    this.initVertexFormat();
+  },
+  destroy: function destroy() {
+    this._renderComp = null;
+    this._effect = null;
+  },
+  clear: function clear() {
+    this._renderData.clear();
+  },
+  _extendNative: function _extendNative() {
+    renderer.Assembler.prototype.ctor.call(this);
+  },
+  initVertexFormat: function initVertexFormat() {
+    var vfmt = this.getVfmt();
+    if (!vfmt) return;
+    this.setVertexFormat(vfmt._nativeObj);
+  },
+  init: function init(renderComp) {
+    this._effect = [];
+    originInit.call(this, renderComp);
+
+    if (renderComp.node && renderComp.node._proxy) {
+      renderComp.node._proxy.setAssembler(this);
+    }
+  },
+  _updateRenderData: function _updateRenderData() {
+    if (!this._renderComp || !this._renderComp.isValid) return;
+    this.updateRenderData(this._renderComp);
+    var materials = this._renderComp._materials;
+
+    for (var i = 0; i < materials.length; i++) {
+      var m = materials[i]; // TODO: find why material can be null
+
+      if (!m) continue;
+      m.getHash();
+      this.updateMaterial(i, m);
+    }
+  },
+  updateRenderData: function updateRenderData(comp) {
+    comp._assembler.updateMaterial(0, comp._materials[0]);
+  },
+  updateMaterial: function updateMaterial(iaIndex, material) {
+    var effect = material && material.effect;
+
+    if (this._effect[iaIndex] !== effect) {
+      this._effect[iaIndex] = effect;
+      this.updateEffect(iaIndex, effect ? effect._nativeObj : null);
+    }
+  },
+  updateColor: function updateColor(comp, color) {
+    this._dirtyPtr[0] |= FLAG_VERTICES_OPACITY_CHANGED;
+  }
+};
+cc.Assembler.FLAG_VERTICES_OPACITY_CHANGED = FLAG_VERTICES_OPACITY_CHANGED;
+cc.Assembler.FLAG_VERTICES_DIRTY = FLAG_VERTICES_DIRTY;
+Object.setPrototypeOf(cc.Assembler.prototype, renderer.Assembler.prototype);
+cc.js.mixin(cc.Assembler.prototype, Assembler);
+module.exports = Assembler;
+
+},{}],5:[function(require,module,exports){
+"use strict";
+
+var proto = cc.Graphics.__assembler__.prototype;
 var _init = proto.init;
+
 proto.init = function (renderComp) {
-    _init.call(this, renderComp);
-    this.ignoreOpacityFlag();
+  _init.call(this, renderComp);
+
+  this.ignoreOpacityFlag();
 };
 
 proto.genBuffer = function (graphics, cverts) {
-    var buffers = this.getBuffers();
-    var buffer = buffers[this._bufferOffset];
-    var meshbuffer = buffer.meshbuffer;
-
-    meshbuffer.requestStatic(cverts, cverts * 3);
-    this._buffer = buffer;
-
-    meshbuffer.setNativeAssembler(this);
-    return buffer;
+  var buffers = this.getBuffers();
+  var buffer = buffers[this._bufferOffset];
+  var meshbuffer = buffer.meshbuffer;
+  meshbuffer.requestStatic(cverts, cverts * 3);
+  this._buffer = buffer;
+  meshbuffer.setNativeAssembler(this);
+  return buffer;
 };
 
 var _stroke = proto.stroke;
+
 proto.stroke = function (graphics) {
-    _stroke.call(this, graphics);
-    var buffer = this._buffer;
-    buffer.meshbuffer.used(buffer.vertexStart, buffer.indiceStart);
+  _stroke.call(this, graphics);
+
+  var buffer = this._buffer;
+  buffer.meshbuffer.used(buffer.vertexStart, buffer.indiceStart);
 };
 
 var _fill = proto.fill;
+
 proto.fill = function (graphics) {
-    _fill.call(this, graphics);
-    var buffer = this._buffer;
-    buffer.meshbuffer.used(buffer.vertexStart, buffer.indiceStart);
+  _fill.call(this, graphics);
+
+  var buffer = this._buffer;
+  buffer.meshbuffer.used(buffer.vertexStart, buffer.indiceStart);
 };
 
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 "use strict";
 
 /****************************************************************************
@@ -237,13 +439,13 @@ proto.fill = function (graphics) {
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
  ****************************************************************************/
-
 var originReserveQuads = cc.Label.__assembler__.Bmfont.prototype._reserveQuads;
 Object.assign(cc.Label.__assembler__.Bmfont.prototype, {
   updateWorldVerts: function updateWorldVerts(comp) {
     var local = this._local;
     var world = this._renderData.vDatas[0];
     var floatsPerVert = this.floatsPerVert;
+
     for (var offset = 0, l = local.length; offset < l; offset += floatsPerVert) {
       world[offset] = local[offset];
       world[offset + 1] = local[offset + 1];
@@ -251,76 +453,39 @@ Object.assign(cc.Label.__assembler__.Bmfont.prototype, {
   }
 });
 
-},{}],6:[function(require,module,exports){
-"use strict";
-
-(function () {
-    if (!cc.Label.__assembler__.Bmfont3D) return;
-
-    var proto = cc.Label.__assembler__.Bmfont3D.prototype;
-
-    Object.assign(proto, {
-        updateWorldVerts: function updateWorldVerts(comp) {
-            var local = this._local;
-            var world = this._renderData.vDatas[0];
-
-            var floatsPerVert = this.floatsPerVert;
-            for (var offset = 0, l = world.length; offset < l; offset += floatsPerVert) {
-                world[offset] = local[offset];
-                world[offset + 1] = local[offset + 1];
-                world[offset + 2] = 0;
-            }
-        }
-    });
-})();
-
 },{}],7:[function(require,module,exports){
 "use strict";
 
 (function () {
-    if (!cc.Label.__assembler__.TTF3D) return;
+  if (!cc.Label.__assembler__.Bmfont3D) return;
+  var proto = cc.Label.__assembler__.Bmfont3D.prototype;
+  Object.assign(proto, {
+    updateWorldVerts: function updateWorldVerts(comp) {
+      var local = this._local;
+      var world = this._renderData.vDatas[0];
+      var floatsPerVert = this.floatsPerVert;
 
-    var proto = cc.Label.__assembler__.TTF3D.prototype;
-
-    Object.assign(proto, {
-        updateWorldVerts: cc.Assembler3D.updateWorldVerts
-    });
+      for (var offset = 0, l = world.length; offset < l; offset += floatsPerVert) {
+        world[offset] = local[offset];
+        world[offset + 1] = local[offset + 1];
+        world[offset + 2] = 0;
+      }
+    }
+  });
 })();
 
 },{}],8:[function(require,module,exports){
-'use strict';
+"use strict";
 
-/****************************************************************************
- Copyright (c) 2018 Xiamen Yaji Software Co., Ltd.
+(function () {
+  if (!cc.Label.__assembler__.TTF3D) return;
+  var proto = cc.Label.__assembler__.TTF3D.prototype;
+  Object.assign(proto, {
+    updateWorldVerts: cc.Assembler3D.updateWorldVerts
+  });
+})();
 
- http://www.cocos.com
-
- Permission is hereby granted, free of charge, to any person obtaining a copy
- of this software and associated engine source code (the "Software"), a limited,
-  worldwide, royalty-free, non-assignable, revocable and non-exclusive license
- to use Cocos Creator solely to develop games on your target platforms. You shall
-  not use Cocos Creator software for developing other software or tools that's
-  used for developing games. You are not granted to publish, distribute,
-  sublicense, and/or sell copies of Cocos Creator.
-
- The software or tools in this License Agreement are licensed, not sold.
- Xiamen Yaji Software Co., Ltd. reserves all rights not expressly granted to you.
-
- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- THE SOFTWARE.
- ****************************************************************************/
-
-require('./2d/bmfont.js');
-
-require('./3d/bmfont.js');
-require('./3d/ttf.js');
-
-},{"./2d/bmfont.js":5,"./3d/bmfont.js":6,"./3d/ttf.js":7}],9:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 "use strict";
 
 /****************************************************************************
@@ -347,170 +512,181 @@ require('./3d/ttf.js');
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
  ****************************************************************************/
+require('./2d/bmfont.js');
 
+require('./3d/bmfont.js');
+
+require('./3d/ttf.js');
+
+},{"./2d/bmfont.js":6,"./3d/bmfont.js":7,"./3d/ttf.js":8}],10:[function(require,module,exports){
+"use strict";
+
+/****************************************************************************
+ Copyright (c) 2018 Xiamen Yaji Software Co., Ltd.
+
+ http://www.cocos.com
+
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated engine source code (the "Software"), a limited,
+  worldwide, royalty-free, non-assignable, revocable and non-exclusive license
+ to use Cocos Creator solely to develop games on your target platforms. You shall
+  not use Cocos Creator software for developing other software or tools that's
+  used for developing games. You are not granted to publish, distribute,
+  sublicense, and/or sell copies of Cocos Creator.
+
+ The software or tools in this License Agreement are licensed, not sold.
+ Xiamen Yaji Software Co., Ltd. reserves all rights not expressly granted to you.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
+ ****************************************************************************/
 var Mask = cc.Mask;
 var RenderFlow = cc.RenderFlow;
 var spriteAssembler = cc.Sprite.__assembler__.Simple.prototype;
 var graphicsAssembler = cc.Graphics.__assembler__.prototype;
-
 var proto = cc.Mask.__assembler__.prototype;
-var _updateRenderData = proto.updateRenderData;
+var _updateRenderData = proto.updateRenderData; // Avoid constructor being overridden.
+
+renderer.MaskAssembler.prototype.constructor = cc.Mask.__assembler__;
 cc.js.mixin(proto, {
-    _extendNative: function _extendNative() {
-        renderer.MaskAssembler.prototype.ctor.call(this);
-    },
-    initLocal: function initLocal() {
-        this._local = new Float32Array(4);
-        renderer.MaskAssembler.prototype.setLocalData.call(this, this._local);
-    },
-    updateRenderData: function updateRenderData(mask) {
-        _updateRenderData.call(this, mask);
+  _extendNative: function _extendNative() {
+    renderer.MaskAssembler.prototype.ctor.call(this);
+  },
+  initLocal: function initLocal() {
+    this._local = new Float32Array(4);
+    renderer.MaskAssembler.prototype.setLocalData.call(this, this._local);
+  },
+  updateRenderData: function updateRenderData(mask) {
+    _updateRenderData.call(this, mask);
 
-        mask._clearGraphics._assembler.updateMaterial(0, mask._clearMaterial);
+    mask._clearGraphics._assembler.updateMaterial(0, mask._clearMaterial);
 
-        this.setMaskInverted(mask.inverted);
-        this.setUseModel(mask._type !== Mask.Type.IMAGE_STENCIL);
-        this.setImageStencil(mask._type === Mask.Type.IMAGE_STENCIL);
-
-        mask.node._renderFlag |= cc.RenderFlow.FLAG_UPDATE_RENDER_DATA;
-    }
+    this.setMaskInverted(mask.inverted);
+    this.setUseModel(mask._type !== Mask.Type.IMAGE_STENCIL);
+    this.setImageStencil(mask._type === Mask.Type.IMAGE_STENCIL);
+    mask.node._renderFlag |= cc.RenderFlow.FLAG_UPDATE_RENDER_DATA;
+  }
 }, renderer.MaskAssembler.prototype);
-
 var originCreateGraphics = cc.Mask.prototype._createGraphics;
+var originRemoveGraphics = cc.Mask.prototype._removeGraphics;
 cc.js.mixin(cc.Mask.prototype, {
-    _createGraphics: function _createGraphics() {
-        originCreateGraphics.call(this);
-        if (this._graphics) {
-            this._assembler.setRenderSubHandle(this._graphics._assembler);
-        }
+  _createGraphics: function _createGraphics() {
+    originCreateGraphics.call(this);
 
-        if (this._clearGraphics) {
-            this._clearGraphics._assembler.ignoreWorldMatrix();
-            this._assembler.setClearSubHandle(this._clearGraphics._assembler);
-        }
+    if (this._graphics) {
+      this._assembler.setRenderSubHandle(this._graphics._assembler);
+    } // TODO: remove clearGraphics
+
+
+    if (!this._clearGraphics) {
+      this._clearGraphics = new cc.Graphics();
+      cc.Assembler.init(this._clearGraphics);
+      this._clearGraphics.node = new cc.Node();
+
+      this._clearGraphics._activateMaterial();
+
+      this._clearGraphics.lineWidth = 0;
+
+      this._clearGraphics.rect(-1, -1, 2, 2);
+
+      this._clearGraphics.fill();
+
+      this._clearGraphics._assembler.ignoreWorldMatrix();
+
+      this._assembler.setClearSubHandle(this._clearGraphics._assembler);
     }
+  },
+  _removeGraphics: function _removeGraphics() {
+    originRemoveGraphics.call(this); // TODO: remove clearGraphics
+
+    if (this._clearGraphics) {
+      this._clearGraphics.destroy();
+
+      this._clearGraphics = null;
+    }
+  }
 });
 
-},{}],10:[function(require,module,exports){
-'use strict';
+},{}],11:[function(require,module,exports){
+"use strict";
 
 (function () {
-    var Mesh = cc.MeshRenderer;
-    if (Mesh === undefined) return;
-    var proto = cc.MeshRenderer.__assembler__.prototype;
-    var _init = proto.init;
-    cc.js.mixin(proto, {
-        initVertexFormat: function initVertexFormat() {},
-        _extendNative: function _extendNative() {
-            renderer.MeshAssembler.prototype.ctor.call(this);
-        },
-        init: function init(comp) {
-            _init.call(this, comp);
+  var Mesh = cc.MeshRenderer;
+  if (Mesh === undefined) return;
+  var proto = cc.MeshRenderer.__assembler__.prototype;
+  var _init = proto.init;
+  cc.js.mixin(proto, {
+    initVertexFormat: function initVertexFormat() {},
+    _extendNative: function _extendNative() {
+      renderer.MeshAssembler.prototype.ctor.call(this);
+    },
+    init: function init(comp) {
+      _init.call(this, comp);
 
-            this._renderDataList = new renderer.RenderDataList();
-            this.setRenderDataList(this._renderDataList);
+      this.updateMeshData(true);
+    },
+    setRenderNode: function setRenderNode(node) {
+      this.setNode(node._proxy);
+    },
+    updateRenderData: function updateRenderData(comp) {
+      this.updateMeshData();
+      comp.node._renderFlag |= cc.RenderFlow.FLAG_UPDATE_RENDER_DATA;
+    },
+    updateMeshData: function updateMeshData(force) {
+      var comp = this._renderComp;
+      var mesh = comp.mesh;
+      if (!mesh || !mesh.loaded) return;
+      var subdatas = comp.mesh.subDatas;
 
-            this.setUseModel(true);
-            this.updateMeshData();
-        },
-        updateRenderData: function updateRenderData(comp) {},
-        setRenderNode: function setRenderNode(node) {
-            this.setNode(node._proxy);
-        },
-        updateMeshData: function updateMeshData() {
-            var comp = this._renderComp;
-            var mesh = comp.mesh;
-            if (!mesh) return;
+      for (var i = 0, len = subdatas.length; i < len; i++) {
+        var data = subdatas[i];
 
-            if (!mesh.loaded) {
-                mesh.once('load', this.updateMeshData, this);
-                return;
-            }
-
-            var subdatas = comp.mesh.subDatas;
-            for (var i = 0, len = subdatas.length; i < len; i++) {
-                var data = subdatas[i];
-                if (data.vDirty || data.iDirty) {
-                    this._renderDataList.updateMesh(i, data.vData, data.iData);
-                }
-            }
-            this.setCustomProperties(comp._customProperties._nativeObj);
-            this.setVertexFormat(subdatas[0].vfm._nativeObj);
+        if (force || data.vDirty || data.iDirty) {
+          this.updateIAData(i, data.vfm._nativeObj, data.vData, data.iData);
+          data.vDirty = false;
+          data.iDirty = false;
         }
-    }, renderer.MeshAssembler.prototype);
+      }
+    }
+  }, renderer.MeshAssembler.prototype);
 })();
 
-},{}],11:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 "use strict";
 
 var proto = cc.MotionStreak.__assembler__.prototype;
 var _init = proto.init;
 var _update = proto.update;
 cc.js.mixin(proto, {
-    init: function init(comp) {
-        _init.call(this, comp);
+  init: function init(comp) {
+    _init.call(this, comp);
 
-        this.setUseModel(false);
-        this.ignoreWorldMatrix();
-        this.ignoreOpacityFlag();
-    },
-    update: function update(comp, dt) {
-        comp.node._updateWorldMatrix();
+    this.setUseModel(false);
+    this.ignoreWorldMatrix();
+    this.ignoreOpacityFlag();
+  },
+  update: function update(comp, dt) {
+    comp.node._updateWorldMatrix();
 
-        _update.call(this, comp, dt);
+    _update.call(this, comp, dt);
 
-        var _renderData$_flexBuff = this._renderData._flexBuffer,
-            iData = _renderData$_flexBuff.iData,
-            usedVertices = _renderData$_flexBuff.usedVertices;
+    var _this$_renderData$_fl = this._renderData._flexBuffer,
+        iData = _this$_renderData$_fl.iData,
+        usedVertices = _this$_renderData$_fl.usedVertices;
+    var indiceOffset = 0;
 
-        var indiceOffset = 0;
-        for (var i = 0, l = usedVertices; i < l; i += 2) {
-            iData[indiceOffset++] = i;
-            iData[indiceOffset++] = i + 2;
-            iData[indiceOffset++] = i + 1;
-            iData[indiceOffset++] = i + 1;
-            iData[indiceOffset++] = i + 2;
-            iData[indiceOffset++] = i + 3;
-        }
-    }
-});
-
-},{}],12:[function(require,module,exports){
-"use strict";
-
-/****************************************************************************
- Copyright (c) 2018 Xiamen Yaji Software Co., Ltd.
-
- http://www.cocos.com
-
- Permission is hereby granted, free of charge, to any person obtaining a copy
- of this software and associated engine source code (the "Software"), a limited,
-  worldwide, royalty-free, non-assignable, revocable and non-exclusive license
- to use Cocos Creator solely to develop games on your target platforms. You shall
-  not use Cocos Creator software for developing other software or tools that's
-  used for developing games. You are not granted to publish, distribute,
-  sublicense, and/or sell copies of Cocos Creator.
-
- The software or tools in this License Agreement are licensed, not sold.
- Xiamen Yaji Software Co., Ltd. reserves all rights not expressly granted to you.
-
- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- THE SOFTWARE.
- ****************************************************************************/
-
-Object.assign(cc.Sprite.__assembler__.Mesh.prototype, {
-  updateWorldVerts: function updateWorldVerts(sprite) {
-    var local = this._local;
-    var world = this._renderData.vDatas[0];
-    var floatsPerVert = this.floatsPerVert;
-    for (var i = 0, l = local.length / 2; i < l; i++) {
-      world[i * floatsPerVert] = local[i * 2];
-      world[i * floatsPerVert + 1] = local[i * 2 + 1];
+    for (var i = 0, l = usedVertices; i < l; i += 2) {
+      iData[indiceOffset++] = i;
+      iData[indiceOffset++] = i + 2;
+      iData[indiceOffset++] = i + 1;
+      iData[indiceOffset++] = i + 1;
+      iData[indiceOffset++] = i + 2;
+      iData[indiceOffset++] = i + 3;
     }
   }
 });
@@ -518,6 +694,75 @@ Object.assign(cc.Sprite.__assembler__.Mesh.prototype, {
 },{}],13:[function(require,module,exports){
 "use strict";
 
+(function () {
+  var PS = cc.ParticleSystem3D;
+  if (PS === undefined) return;
+  var proto = PS.__assembler__.prototype;
+  var _init = proto.init;
+  var _updateRenderData = proto.updateRenderData;
+  cc.js.mixin(proto, {
+    initVertexFormat: function initVertexFormat() {},
+    _extendNative: function _extendNative() {
+      renderer.Particle3DAssembler.prototype.ctor.call(this);
+    },
+    init: function init(comp) {
+      _init.call(this, comp);
+
+      this._renderDataList = new renderer.RenderDataList();
+      this.setRenderDataList(this._renderDataList);
+      this.ignoreOpacityFlag();
+      this.updateMeshData();
+      this.setUseModel(true);
+    },
+    updateRenderData: function updateRenderData(comp) {
+      _updateRenderData.call(this, comp);
+
+      if (comp._vertsDirty) {
+        this.updateMeshData();
+        comp._vertsDirty = false;
+      }
+    },
+    setRenderNode: function setRenderNode(node) {
+      this.setNode(node._proxy);
+    },
+    updateMeshData: function updateMeshData() {
+      if (!this._model) {
+        return;
+      }
+
+      var subdatas = this._model._subDatas;
+
+      for (var i = 0, len = subdatas.length; i < len; i++) {
+        var data = subdatas[i];
+
+        if (data.vDirty && data.enable) {
+          this._renderDataList.updateMesh(i, data.vData, data.iData);
+        }
+      }
+
+      this.setVertexFormat(subdatas[0].vfm._nativeObj);
+      this.setSimulationSpace(this._particleSystem.simulationSpace);
+
+      if (subdatas[1] && subdatas[1].enable) {
+        this.setTrailVertexFormat(subdatas[1].vfm._nativeObj);
+        this.setTrailModuleSpace(this._particleSystem.trailModule.space);
+      }
+    },
+    setSimulationSpace: function setSimulationSpace(space) {
+      this.setParticleSpace(space);
+    },
+    setTrailModuleSpace: function setTrailModuleSpace(space) {
+      this.setTrailSpace(space);
+    },
+    updateIA: function updateIA(index, count, vDirty, iDirty) {
+      this.updateIndicesRange(index, 0, count);
+    }
+  }, renderer.Particle3DAssembler.prototype);
+})();
+
+},{}],14:[function(require,module,exports){
+"use strict";
+
 /****************************************************************************
  Copyright (c) 2018 Xiamen Yaji Software Co., Ltd.
 
@@ -542,12 +787,52 @@ Object.assign(cc.Sprite.__assembler__.Mesh.prototype, {
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
  ****************************************************************************/
+Object.assign(cc.Sprite.__assembler__.Mesh.prototype, {
+  updateWorldVerts: function updateWorldVerts(sprite) {
+    var local = this._local;
+    var world = this._renderData.vDatas[0];
+    var floatsPerVert = this.floatsPerVert;
 
+    for (var i = 0, l = local.length / 2; i < l; i++) {
+      world[i * floatsPerVert] = local[i * 2];
+      world[i * floatsPerVert + 1] = local[i * 2 + 1];
+    }
+  }
+});
+
+},{}],15:[function(require,module,exports){
+"use strict";
+
+/****************************************************************************
+ Copyright (c) 2018 Xiamen Yaji Software Co., Ltd.
+
+ http://www.cocos.com
+
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated engine source code (the "Software"), a limited,
+  worldwide, royalty-free, non-assignable, revocable and non-exclusive license
+ to use Cocos Creator solely to develop games on your target platforms. You shall
+  not use Cocos Creator software for developing other software or tools that's
+  used for developing games. You are not granted to publish, distribute,
+  sublicense, and/or sell copies of Cocos Creator.
+
+ The software or tools in this License Agreement are licensed, not sold.
+ Xiamen Yaji Software Co., Ltd. reserves all rights not expressly granted to you.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
+ ****************************************************************************/
 Object.assign(cc.Sprite.__assembler__.RadialFilled.prototype, {
   updateWorldVerts: function updateWorldVerts(sprite) {
     var local = this._local;
     var world = this._renderData.vDatas[0];
     var floatsPerVert = this.floatsPerVert;
+
     for (var offset = 0, l = world.length; offset < l; offset += floatsPerVert) {
       world[offset] = local[offset];
       world[offset + 1] = local[offset + 1];
@@ -555,7 +840,7 @@ Object.assign(cc.Sprite.__assembler__.RadialFilled.prototype, {
   }
 });
 
-},{}],14:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 "use strict";
 
 /****************************************************************************
@@ -598,7 +883,7 @@ proto.initLocal = function () {
   nativeProto.setLocalData.call(this, this._local);
 };
 
-},{}],15:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 "use strict";
 
 /****************************************************************************
@@ -625,7 +910,6 @@ proto.initLocal = function () {
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
  ****************************************************************************/
-
 var proto = cc.Sprite.__assembler__.Sliced.prototype;
 var nativeProto = renderer.SlicedSprite2D.prototype;
 
@@ -642,7 +926,7 @@ proto.initLocal = function () {
   nativeProto.setLocalData.call(this, this._local);
 };
 
-},{}],16:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 "use strict";
 
 /****************************************************************************
@@ -669,7 +953,6 @@ proto.initLocal = function () {
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
  ****************************************************************************/
-
 Object.assign(cc.Sprite.__assembler__.Tiled.prototype, {
   updateWorldVerts: function updateWorldVerts(sprite) {
     var renderData = this._renderData;
@@ -679,34 +962,30 @@ Object.assign(cc.Sprite.__assembler__.Tiled.prototype, {
     var world = renderData.vDatas[0];
     var row = this.row,
         col = this.col;
-
-
-    var x = void 0,
-        x1 = void 0,
-        y = void 0,
-        y1 = void 0;
+    var x, x1, y, y1;
     var floatsPerVert = this.floatsPerVert;
     var vertexOffset = 0;
+
     for (var yindex = 0, ylength = row; yindex < ylength; ++yindex) {
       y = localY[yindex];
       y1 = localY[yindex + 1];
+
       for (var xindex = 0, xlength = col; xindex < xlength; ++xindex) {
         x = localX[xindex];
-        x1 = localX[xindex + 1];
+        x1 = localX[xindex + 1]; // lb
 
-        // lb
         world[vertexOffset] = x;
         world[vertexOffset + 1] = y;
-        vertexOffset += floatsPerVert;
-        // rb
+        vertexOffset += floatsPerVert; // rb
+
         world[vertexOffset] = x1;
         world[vertexOffset + 1] = y;
-        vertexOffset += floatsPerVert;
-        // lt
+        vertexOffset += floatsPerVert; // lt
+
         world[vertexOffset] = x;
         world[vertexOffset + 1] = y1;
-        vertexOffset += floatsPerVert;
-        // rt
+        vertexOffset += floatsPerVert; // rt
+
         world[vertexOffset] = x1;
         world[vertexOffset + 1] = y1;
         vertexOffset += floatsPerVert;
@@ -715,156 +994,138 @@ Object.assign(cc.Sprite.__assembler__.Tiled.prototype, {
   }
 });
 
-},{}],17:[function(require,module,exports){
-"use strict";
-
-(function () {
-    if (!cc.Sprite.__assembler__.BarFilled3D) return;
-
-    var proto = cc.Sprite.__assembler__.BarFilled3D.prototype;
-
-    Object.assign(proto, {
-        updateWorldVerts: cc.Assembler3D.updateWorldVerts
-    });
-})();
-
-},{}],18:[function(require,module,exports){
-"use strict";
-
-(function () {
-    if (!cc.Sprite.__assembler__.Mesh3D) return;
-
-    var proto = cc.Sprite.__assembler__.Mesh3D.prototype;
-
-    Object.assign(proto, {
-        updateWorldVerts: function updateWorldVerts(sprite) {
-            var local = this._local;
-            var world = this._renderData.vDatas[0];
-
-            var floatsPerVert = this.floatsPerVert,
-                offset = 0;
-            for (var i = 0, j = 0, l = local.length / 2; i < l; i++, offset += floatsPerVert) {
-                j = i * 2;
-                world[offset] = local[j];
-                world[offset + 1] = local[j++];
-                world[offset + 2] = 0;
-            }
-        }
-    });
-})();
-
 },{}],19:[function(require,module,exports){
 "use strict";
 
 (function () {
-    if (!cc.Sprite.__assembler__.RadialFilled3D) return;
-
-    var proto = cc.Sprite.__assembler__.RadialFilled3D.prototype;
-
-    Object.assign(proto, {
-        updateWorldVerts: function updateWorldVerts(sprite) {
-            var local = this._local;
-            var world = this._renderData.vDatas[0];
-
-            var floatsPerVert = this.floatsPerVert;
-            for (var offset = 0, l = world.length; offset < l; offset += floatsPerVert) {
-                world[offset] = local[offset];
-                world[offset + 1] = local[offset + 1];
-                world[offset + 2] = 0;
-            }
-        }
-    });
+  if (!cc.Sprite.__assembler__.BarFilled3D) return;
+  var proto = cc.Sprite.__assembler__.BarFilled3D.prototype;
+  Object.assign(proto, {
+    updateWorldVerts: cc.Assembler3D.updateWorldVerts
+  });
 })();
 
 },{}],20:[function(require,module,exports){
 "use strict";
 
 (function () {
-    if (!cc.Sprite.__assembler__.Simple3D) return;
+  if (!cc.Sprite.__assembler__.Mesh3D) return;
+  var proto = cc.Sprite.__assembler__.Mesh3D.prototype;
+  Object.assign(proto, {
+    updateWorldVerts: function updateWorldVerts(sprite) {
+      var local = this._local;
+      var world = this._renderData.vDatas[0];
+      var floatsPerVert = this.floatsPerVert,
+          offset = 0;
 
-    var proto = cc.Sprite.__assembler__.Simple3D.prototype;
-    var nativeProto = renderer.SimpleSprite3D.prototype;
-
-    Object.assign(proto, {
-        _extendNative: nativeProto.ctor
-    });
+      for (var i = 0, j = 0, l = local.length / 2; i < l; i++, offset += floatsPerVert) {
+        j = i * 2;
+        world[offset] = local[j];
+        world[offset + 1] = local[j++];
+        world[offset + 2] = 0;
+      }
+    }
+  });
 })();
 
 },{}],21:[function(require,module,exports){
 "use strict";
 
 (function () {
-    if (!cc.Sprite.__assembler__.Sliced3D) return;
+  if (!cc.Sprite.__assembler__.RadialFilled3D) return;
+  var proto = cc.Sprite.__assembler__.RadialFilled3D.prototype;
+  Object.assign(proto, {
+    updateWorldVerts: function updateWorldVerts(sprite) {
+      var local = this._local;
+      var world = this._renderData.vDatas[0];
+      var floatsPerVert = this.floatsPerVert;
 
-    var proto = cc.Sprite.__assembler__.Sliced3D.prototype;
-    var nativeProto = renderer.SlicedSprite3D.prototype;
-
-    Object.assign(proto, {
-        _extendNative: nativeProto.ctor
-    });
+      for (var offset = 0, l = world.length; offset < l; offset += floatsPerVert) {
+        world[offset] = local[offset];
+        world[offset + 1] = local[offset + 1];
+        world[offset + 2] = 0;
+      }
+    }
+  });
 })();
 
 },{}],22:[function(require,module,exports){
 "use strict";
 
 (function () {
-    if (!cc.Sprite.__assembler__.Tiled3D) return;
-
-    var proto = cc.Sprite.__assembler__.Tiled3D.prototype;
-
-    Object.assign(proto, {
-        updateWorldVerts: function updateWorldVerts(sprite) {
-            var local = this._local;
-            var localX = local.x,
-                localY = local.y;
-            var world = this._renderData.vDatas[0];
-            var row = this.row,
-                col = this.col;
-
-            var x = void 0,
-                x1 = void 0,
-                y = void 0,
-                y1 = void 0;
-            var vertexOffset = 0;
-            for (var yindex = 0, ylength = row; yindex < ylength; ++yindex) {
-                y = localY[yindex];
-                y1 = localY[yindex + 1];
-                for (var xindex = 0, xlength = col; xindex < xlength; ++xindex) {
-                    x = localX[xindex];
-                    x1 = localX[xindex + 1];
-
-                    // left bottom
-                    var padding = 6;
-                    world[vertexOffset] = x;
-                    world[vertexOffset + 1] = y;
-                    world[vertexOffset + 2] = 0;
-                    vertexOffset += padding;
-
-                    // right bottom
-                    world[vertexOffset] = x1;
-                    world[vertexOffset + 1] = y;
-                    world[vertexOffset + 2] = 0;
-                    vertexOffset += padding;
-
-                    // left top
-                    world[vertexOffset] = x;
-                    world[vertexOffset + 1] = y1;
-                    world[vertexOffset + 2] = 0;
-                    vertexOffset += padding;
-
-                    // right top
-                    world[vertexOffset] = x1;
-                    world[vertexOffset + 1] = y1;
-                    world[vertexOffset + 2] = 0;
-                    vertexOffset += padding;
-                }
-            }
-        }
-    });
+  if (!cc.Sprite.__assembler__.Simple3D) return;
+  var proto = cc.Sprite.__assembler__.Simple3D.prototype;
+  var nativeProto = renderer.SimpleSprite3D.prototype;
+  Object.assign(proto, {
+    _extendNative: nativeProto.ctor
+  });
 })();
 
 },{}],23:[function(require,module,exports){
-'use strict';
+"use strict";
+
+(function () {
+  if (!cc.Sprite.__assembler__.Sliced3D) return;
+  var proto = cc.Sprite.__assembler__.Sliced3D.prototype;
+  var nativeProto = renderer.SlicedSprite3D.prototype;
+  Object.assign(proto, {
+    _extendNative: nativeProto.ctor
+  });
+})();
+
+},{}],24:[function(require,module,exports){
+"use strict";
+
+(function () {
+  if (!cc.Sprite.__assembler__.Tiled3D) return;
+  var proto = cc.Sprite.__assembler__.Tiled3D.prototype;
+  Object.assign(proto, {
+    updateWorldVerts: function updateWorldVerts(sprite) {
+      var local = this._local;
+      var localX = local.x,
+          localY = local.y;
+      var world = this._renderData.vDatas[0];
+      var row = this.row,
+          col = this.col;
+      var x, x1, y, y1;
+      var vertexOffset = 0;
+
+      for (var yindex = 0, ylength = row; yindex < ylength; ++yindex) {
+        y = localY[yindex];
+        y1 = localY[yindex + 1];
+
+        for (var xindex = 0, xlength = col; xindex < xlength; ++xindex) {
+          x = localX[xindex];
+          x1 = localX[xindex + 1]; // left bottom
+
+          var padding = 6;
+          world[vertexOffset] = x;
+          world[vertexOffset + 1] = y;
+          world[vertexOffset + 2] = 0;
+          vertexOffset += padding; // right bottom
+
+          world[vertexOffset] = x1;
+          world[vertexOffset + 1] = y;
+          world[vertexOffset + 2] = 0;
+          vertexOffset += padding; // left top
+
+          world[vertexOffset] = x;
+          world[vertexOffset + 1] = y1;
+          world[vertexOffset + 2] = 0;
+          vertexOffset += padding; // right top
+
+          world[vertexOffset] = x1;
+          world[vertexOffset + 1] = y1;
+          world[vertexOffset + 2] = 0;
+          vertexOffset += padding;
+        }
+      }
+    }
+  });
+})();
+
+},{}],25:[function(require,module,exports){
+"use strict";
 
 /****************************************************************************
  Copyright (c) 2018 Xiamen Yaji Software Co., Ltd.
@@ -890,22 +1151,30 @@ Object.assign(cc.Sprite.__assembler__.Tiled.prototype, {
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
  ****************************************************************************/
-
 require('./2d/sliced.js');
+
 require('./2d/tiled.js');
+
 require('./2d/radial-filled.js');
+
 require('./2d/simple.js');
+
 require('./2d/mesh.js');
 
 require('./3d/sliced.js');
+
 require('./3d/simple.js');
+
 require('./3d/tiled.js');
+
 require('./3d/mesh.js');
+
 require('./3d/bar-filled.js');
+
 require('./3d/radial-filled.js');
 
-},{"./2d/mesh.js":12,"./2d/radial-filled.js":13,"./2d/simple.js":14,"./2d/sliced.js":15,"./2d/tiled.js":16,"./3d/bar-filled.js":17,"./3d/mesh.js":18,"./3d/radial-filled.js":19,"./3d/simple.js":20,"./3d/sliced.js":21,"./3d/tiled.js":22}],24:[function(require,module,exports){
-'use strict';
+},{"./2d/mesh.js":14,"./2d/radial-filled.js":15,"./2d/simple.js":16,"./2d/sliced.js":17,"./2d/tiled.js":18,"./3d/bar-filled.js":19,"./3d/mesh.js":20,"./3d/radial-filled.js":21,"./3d/simple.js":22,"./3d/sliced.js":23,"./3d/tiled.js":24}],26:[function(require,module,exports){
+"use strict";
 
 /****************************************************************************
  Copyright (c) 2018 Xiamen Yaji Software Co., Ltd.
@@ -931,52 +1200,80 @@ require('./3d/radial-filled.js');
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
  ****************************************************************************/
-
 require('./jsb-sys.js');
+
 require('./jsb-game.js');
+
 require('./jsb-videoplayer.js');
+
 require('./jsb-webview.js');
+
 require('./jsb-audio.js');
+
 require('./jsb-loader.js');
+
 require('./jsb-editbox.js');
+
 require('./jsb-reflection.js');
+
 require('./jsb-assets-manager.js');
 
 if (CC_NATIVERENDERER) {
   require('./jsb-effect.js');
-  require('./jsb-custom-properties.js');
+
+  require('./jsb-effect-variant.js');
+
   require('./scene/camera.js');
+
   require('./scene/light.js');
+
   require('./scene/node-proxy.js');
-  require('./scene/render-flow.js');
-  // must be required after render flow
+
+  require('./scene/render-flow.js'); // must be required after render flow
+
+
   require('./scene/node.js');
 
   cc.game.on(cc.game.EVENT_ENGINE_INITED, function () {
     require('./scene/mesh-buffer.js');
+
     require('./scene/quad-buffer.js');
+
     require('./scene/render-data.js');
 
     require('./assemblers/assembler.js');
+
     require('./assemblers/assembler-2d.js');
+
     require('./assemblers/assembler-3d.js');
 
     require('./assemblers/sprite/index.js');
+
     require('./assemblers/label/index.js');
+
     require('./assemblers/mask-assembler.js');
+
     require('./assemblers/graphics-assembler.js');
+
     require('./assemblers/motion-streak.js');
+
     require('./assemblers/mesh-renderer.js');
 
+    require('./assemblers/particle-3d-assembler.js');
+
     require('./jsb-dragonbones.js');
+
     require('./jsb-spine-skeleton.js');
+
     require('./jsb-particle.js');
+
     require('./jsb-tiledmap.js');
+
     require('./jsb-skin-mesh.js');
   });
 }
 
-},{"./assemblers/assembler-2d.js":1,"./assemblers/assembler-3d.js":2,"./assemblers/assembler.js":3,"./assemblers/graphics-assembler.js":4,"./assemblers/label/index.js":8,"./assemblers/mask-assembler.js":9,"./assemblers/mesh-renderer.js":10,"./assemblers/motion-streak.js":11,"./assemblers/sprite/index.js":23,"./jsb-assets-manager.js":25,"./jsb-audio.js":26,"./jsb-custom-properties.js":27,"./jsb-dragonbones.js":28,"./jsb-editbox.js":29,"./jsb-effect.js":30,"./jsb-game.js":31,"./jsb-loader.js":32,"./jsb-particle.js":33,"./jsb-reflection.js":34,"./jsb-skin-mesh.js":35,"./jsb-spine-skeleton.js":36,"./jsb-sys.js":37,"./jsb-tiledmap.js":38,"./jsb-videoplayer.js":39,"./jsb-webview.js":40,"./scene/camera.js":41,"./scene/light.js":42,"./scene/mesh-buffer.js":43,"./scene/node-proxy.js":44,"./scene/node.js":45,"./scene/quad-buffer.js":46,"./scene/render-data.js":47,"./scene/render-flow.js":48}],25:[function(require,module,exports){
+},{"./assemblers/assembler-2d.js":2,"./assemblers/assembler-3d.js":3,"./assemblers/assembler.js":4,"./assemblers/graphics-assembler.js":5,"./assemblers/label/index.js":9,"./assemblers/mask-assembler.js":10,"./assemblers/mesh-renderer.js":11,"./assemblers/motion-streak.js":12,"./assemblers/particle-3d-assembler.js":13,"./assemblers/sprite/index.js":25,"./jsb-assets-manager.js":27,"./jsb-audio.js":28,"./jsb-dragonbones.js":29,"./jsb-editbox.js":30,"./jsb-effect-variant.js":31,"./jsb-effect.js":32,"./jsb-game.js":33,"./jsb-loader.js":34,"./jsb-particle.js":35,"./jsb-reflection.js":36,"./jsb-skin-mesh.js":37,"./jsb-spine-skeleton.js":38,"./jsb-sys.js":39,"./jsb-tiledmap.js":40,"./jsb-videoplayer.js":42,"./jsb-webview.js":43,"./scene/camera.js":44,"./scene/light.js":45,"./scene/mesh-buffer.js":46,"./scene/node-proxy.js":47,"./scene/node.js":48,"./scene/quad-buffer.js":49,"./scene/render-data.js":50,"./scene/render-flow.js":51}],27:[function(require,module,exports){
 "use strict";
 
 /*
@@ -1000,47 +1297,44 @@ if (CC_NATIVERENDERER) {
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
 if (jsb.AssetsManager) {
-    jsb.AssetsManager.State = {
-        UNINITED: 0,
-        UNCHECKED: 1,
-        PREDOWNLOAD_VERSION: 2,
-        DOWNLOADING_VERSION: 3,
-        VERSION_LOADED: 4,
-        PREDOWNLOAD_MANIFEST: 5,
-        DOWNLOADING_MANIFEST: 6,
-        MANIFEST_LOADED: 7,
-        NEED_UPDATE: 8,
-        READY_TO_UPDATE: 9,
-        UPDATING: 10,
-        UNZIPPING: 11,
-        UP_TO_DATE: 12,
-        FAIL_TO_UPDATE: 13
-    };
-
-    jsb.Manifest.DownloadState = {
-        UNSTARTED: 0,
-        DOWNLOADING: 1,
-        SUCCESSED: 2,
-        UNMARKED: 3
-    };
-
-    jsb.EventAssetsManager.ERROR_NO_LOCAL_MANIFEST = 0;
-    jsb.EventAssetsManager.ERROR_DOWNLOAD_MANIFEST = 1;
-    jsb.EventAssetsManager.ERROR_PARSE_MANIFEST = 2;
-    jsb.EventAssetsManager.NEW_VERSION_FOUND = 3;
-    jsb.EventAssetsManager.ALREADY_UP_TO_DATE = 4;
-    jsb.EventAssetsManager.UPDATE_PROGRESSION = 5;
-    jsb.EventAssetsManager.ASSET_UPDATED = 6;
-    jsb.EventAssetsManager.ERROR_UPDATING = 7;
-    jsb.EventAssetsManager.UPDATE_FINISHED = 8;
-    jsb.EventAssetsManager.UPDATE_FAILED = 9;
-    jsb.EventAssetsManager.ERROR_DECOMPRESS = 10;
+  jsb.AssetsManager.State = {
+    UNINITED: 0,
+    UNCHECKED: 1,
+    PREDOWNLOAD_VERSION: 2,
+    DOWNLOADING_VERSION: 3,
+    VERSION_LOADED: 4,
+    PREDOWNLOAD_MANIFEST: 5,
+    DOWNLOADING_MANIFEST: 6,
+    MANIFEST_LOADED: 7,
+    NEED_UPDATE: 8,
+    READY_TO_UPDATE: 9,
+    UPDATING: 10,
+    UNZIPPING: 11,
+    UP_TO_DATE: 12,
+    FAIL_TO_UPDATE: 13
+  };
+  jsb.Manifest.DownloadState = {
+    UNSTARTED: 0,
+    DOWNLOADING: 1,
+    SUCCESSED: 2,
+    UNMARKED: 3
+  };
+  jsb.EventAssetsManager.ERROR_NO_LOCAL_MANIFEST = 0;
+  jsb.EventAssetsManager.ERROR_DOWNLOAD_MANIFEST = 1;
+  jsb.EventAssetsManager.ERROR_PARSE_MANIFEST = 2;
+  jsb.EventAssetsManager.NEW_VERSION_FOUND = 3;
+  jsb.EventAssetsManager.ALREADY_UP_TO_DATE = 4;
+  jsb.EventAssetsManager.UPDATE_PROGRESSION = 5;
+  jsb.EventAssetsManager.ASSET_UPDATED = 6;
+  jsb.EventAssetsManager.ERROR_UPDATING = 7;
+  jsb.EventAssetsManager.UPDATE_FINISHED = 8;
+  jsb.EventAssetsManager.UPDATE_FAILED = 9;
+  jsb.EventAssetsManager.ERROR_DECOMPRESS = 10;
 }
 
-},{}],26:[function(require,module,exports){
-'use strict';
+},{}],28:[function(require,module,exports){
+"use strict";
 
 /****************************************************************************
  Copyright (c) 2013-2016 Chukong Technologies Inc.
@@ -1067,916 +1361,256 @@ if (jsb.AssetsManager) {
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
  ****************************************************************************/
-
 cc.Audio = function (src) {
-    this.src = src;
-    this.volume = 1;
-    this.loop = false;
-    this.id = -1;
+  this.src = src;
+  this.volume = 1;
+  this.loop = false;
+  this.id = -1;
 };
 
 var handleVolume = function handleVolume(volume) {
-    if (volume === undefined) {
-        // set default volume as 1
-        volume = 1;
-    } else if (typeof volume === 'string') {
-        volume = Number.parseFloat(volume);
-    }
-    return volume;
+  if (volume === undefined) {
+    // set default volume as 1
+    volume = 1;
+  } else if (typeof volume === 'string') {
+    volume = Number.parseFloat(volume);
+  }
+
+  return volume;
 };
 
 (function (proto, audioEngine) {
-    if (!audioEngine) return;
+  if (!audioEngine) return; // Using the new audioEngine
 
-    // Using the new audioEngine
-    cc.audioEngine = audioEngine;
-    audioEngine.setMaxWebAudioSize = function () {};
+  cc.audioEngine = audioEngine;
 
-    cc.Audio.State = audioEngine.AudioState;
+  audioEngine.setMaxWebAudioSize = function () {};
 
-    proto.play = function () {
-        audioEngine.stop(this.id);
+  cc.Audio.State = audioEngine.AudioState;
 
-        var clip = this.src;
-        this.id = audioEngine.play(clip, this.loop, this.volume);
-    };
+  proto.play = function () {
+    audioEngine.stop(this.id);
+    var clip = this.src;
+    this.id = audioEngine.play(clip, this.loop, this.volume);
+  };
 
-    proto.pause = function () {
-        audioEngine.pause(this.id);
-    };
+  proto.pause = function () {
+    audioEngine.pause(this.id);
+  };
 
-    proto.resume = function () {
-        audioEngine.resume(this.id);
-    };
+  proto.resume = function () {
+    audioEngine.resume(this.id);
+  };
 
-    proto.stop = function () {
-        audioEngine.stop(this.id);
-    };
+  proto.stop = function () {
+    audioEngine.stop(this.id);
+  };
 
-    proto.destroy = function () {};
+  proto.destroy = function () {};
 
-    proto.setLoop = function (loop) {
-        this.loop = loop;
-        audioEngine.setLoop(this.id, loop);
-    };
+  proto.setLoop = function (loop) {
+    this.loop = loop;
+    audioEngine.setLoop(this.id, loop);
+  };
 
-    proto.getLoop = function () {
-        return this.loop;
-    };
+  proto.getLoop = function () {
+    return this.loop;
+  };
 
-    proto.setVolume = function (volume) {
-        volume = handleVolume(volume);
-        this.volume = volume;
-        return audioEngine.setVolume(this.id, volume);
-    };
+  proto.setVolume = function (volume) {
+    volume = handleVolume(volume);
+    this.volume = volume;
+    return audioEngine.setVolume(this.id, volume);
+  };
 
-    proto.getVolume = function () {
-        return this.volume;
-    };
+  proto.getVolume = function () {
+    return this.volume;
+  };
 
-    proto.setCurrentTime = function (time) {
-        audioEngine.setCurrentTime(this.id, time);
-    };
+  proto.setCurrentTime = function (time) {
+    audioEngine.setCurrentTime(this.id, time);
+  };
 
-    proto.getCurrentTime = function () {
-        return audioEngine.getCurrentTime(this.id);
-    };
+  proto.getCurrentTime = function () {
+    return audioEngine.getCurrentTime(this.id);
+  };
 
-    proto.getDuration = function () {
-        return audioEngine.getDuration(this.id);
-    };
+  proto.getDuration = function () {
+    return audioEngine.getDuration(this.id);
+  };
 
-    proto.getState = function () {
-        return audioEngine.getState(this.id);
-    };
+  proto.getState = function () {
+    return audioEngine.getState(this.id);
+  }; // polyfill audioEngine
 
-    // polyfill audioEngine
 
-    var _music = {
-        id: -1,
-        clip: '',
-        loop: false,
-        volume: 1
-    };
-    var _effect = {
-        volume: 1
-    };
+  var _music = {
+    id: -1,
+    clip: '',
+    loop: false,
+    volume: 1
+  };
+  var _effect = {
+    volume: 1
+  };
 
-    audioEngine.play = function (clip, loop, volume) {
-        if (typeof volume !== 'number') {
-            volume = 1;
-        }
-        var audioFilePath = void 0;
-        var md5Pipe = cc.loader.md5Pipe;
-        if (typeof clip === 'string') {
-            // backward compatibility since 1.10
-            cc.warnID(8401, 'cc.audioEngine', 'cc.AudioClip', 'AudioClip', 'cc.AudioClip', 'audio');
-            audioFilePath = clip;
-            if (md5Pipe) {
-                audioFilePath = md5Pipe.transformURL(audioFilePath);
-            }
-        } else {
-            if (clip.loaded) {
-                audioFilePath = clip._nativeAsset;
-            } else {
-                // audio delay loading
-                clip._nativeAsset = audioFilePath = md5Pipe ? md5Pipe.transformURL(clip.nativeUrl) : clip.nativeUrl;
-                clip.loaded = true;
-            }
-        }
-        return audioEngine.play2d(audioFilePath, loop, volume);
-    };
-    audioEngine.playMusic = function (clip, loop) {
-        audioEngine.stop(_music.id);
-        _music.id = audioEngine.play(clip, loop, _music.volume);
-        _music.loop = loop;
-        _music.clip = clip;
-        return _music.id;
-    };
-    audioEngine.stopMusic = function () {
-        audioEngine.stop(_music.id);
-    };
-    audioEngine.pauseMusic = function () {
-        audioEngine.pause(_music.id);
-        return _music.id;
-    };
-    audioEngine.resumeMusic = function () {
-        audioEngine.resume(_music.id);
-        return _music.id;
-    };
-    audioEngine.getMusicVolume = function () {
-        return _music.volume;
-    };
-    audioEngine.setMusicVolume = function (volume) {
-        _music.volume = handleVolume(volume);
-        audioEngine.setVolume(_music.id, _music.volume);
-        return volume;
-    };
-    audioEngine.isMusicPlaying = function () {
-        return audioEngine.getState(_music.id) === audioEngine.AudioState.PLAYING;
-    };
-    audioEngine.playEffect = function (filePath, loop) {
-        return audioEngine.play(filePath, loop || false, _effect.volume);
-    };
-    audioEngine.setEffectsVolume = function (volume) {
-        _effect.volume = handleVolume(volume);
-    };
-    audioEngine.getEffectsVolume = function () {
-        return _effect.volume;
-    };
-    audioEngine.pauseEffect = function (audioID) {
-        return audioEngine.pause(audioID);
-    };
-    audioEngine.pauseAllEffects = function () {
-        var musicPlay = audioEngine.getState(_music.id) === audioEngine.AudioState.PLAYING;
-        audioEngine.pauseAll();
-        if (musicPlay) {
-            audioEngine.resume(_music.id);
-        }
-    };
-    audioEngine.resumeEffect = function (id) {
-        audioEngine.resume(id);
-    };
-    audioEngine.resumeAllEffects = function () {
-        var musicPaused = audioEngine.getState(_music.id) === audioEngine.AudioState.PAUSED;
-        audioEngine.resumeAll();
-        if (musicPaused && audioEngine.getState(_music.id) === audioEngine.AudioState.PLAYING) {
-            audioEngine.pause(_music.id);
-        }
-    };
-    audioEngine.stopEffect = function (id) {
-        return audioEngine.stop(id);
-    };
-    audioEngine.stopAllEffects = function () {
-        var musicPlaying = audioEngine.getState(_music.id) === audioEngine.AudioState.PLAYING;
-        var currentTime = audioEngine.getCurrentTime(_music.id);
-        audioEngine.stopAll();
-        if (musicPlaying) {
-            _music.id = audioEngine.play(_music.clip, _music.loop);
-            audioEngine.setCurrentTime(_music.id, currentTime);
-        }
-    };
+  audioEngine.play = function (clip, loop, volume) {
+    if (typeof volume !== 'number') {
+      volume = 1;
+    }
 
-    // Unnecessary on native platform
-    audioEngine._break = function () {};
-    audioEngine._restore = function () {};
+    var audioFilePath;
+    var md5Pipe = cc.loader.md5Pipe;
 
-    // deprecated
+    if (typeof clip === 'string') {
+      // backward compatibility since 1.10
+      cc.warnID(8401, 'cc.audioEngine', 'cc.AudioClip', 'AudioClip', 'cc.AudioClip', 'audio');
+      audioFilePath = clip;
 
-    audioEngine._uncache = audioEngine.uncache;
-    audioEngine.uncache = function (clip) {
-        var path;
-        if (typeof clip === 'string') {
-            // backward compatibility since 1.10
-            cc.warnID(8401, 'cc.audioEngine', 'cc.AudioClip', 'AudioClip', 'cc.AudioClip', 'audio');
-            path = clip;
-        } else {
-            if (!clip) {
-                return;
-            }
-            path = clip._nativeAsset;
-        }
-        audioEngine._uncache(path);
-    };
+      if (md5Pipe) {
+        audioFilePath = md5Pipe.transformURL(audioFilePath);
+      }
+    } else {
+      if (clip.loaded) {
+        audioFilePath = clip._nativeAsset;
+      } else {
+        // audio delay loading
+        clip._nativeAsset = audioFilePath = md5Pipe ? md5Pipe.transformURL(clip.nativeUrl) : clip.nativeUrl;
+        clip.loaded = true;
+      }
+    }
 
-    audioEngine._preload = audioEngine.preload;
-    audioEngine.preload = function (filePath, callback) {
-        cc.warn('`cc.audioEngine.preload` is deprecated, use `cc.loader.loadRes(url, cc.AudioClip)` instead please.');
-        audioEngine._preload(filePath, callback);
-    };
+    return audioEngine.play2d(audioFilePath, loop, volume);
+  };
+
+  audioEngine.playMusic = function (clip, loop) {
+    audioEngine.stop(_music.id);
+    _music.id = audioEngine.play(clip, loop, _music.volume);
+    _music.loop = loop;
+    _music.clip = clip;
+    return _music.id;
+  };
+
+  audioEngine.stopMusic = function () {
+    audioEngine.stop(_music.id);
+  };
+
+  audioEngine.pauseMusic = function () {
+    audioEngine.pause(_music.id);
+    return _music.id;
+  };
+
+  audioEngine.resumeMusic = function () {
+    audioEngine.resume(_music.id);
+    return _music.id;
+  };
+
+  audioEngine.getMusicVolume = function () {
+    return _music.volume;
+  };
+
+  audioEngine.setMusicVolume = function (volume) {
+    _music.volume = handleVolume(volume);
+    audioEngine.setVolume(_music.id, _music.volume);
+    return volume;
+  };
+
+  audioEngine.isMusicPlaying = function () {
+    return audioEngine.getState(_music.id) === audioEngine.AudioState.PLAYING;
+  };
+
+  audioEngine.playEffect = function (filePath, loop) {
+    return audioEngine.play(filePath, loop || false, _effect.volume);
+  };
+
+  audioEngine.setEffectsVolume = function (volume) {
+    _effect.volume = handleVolume(volume);
+  };
+
+  audioEngine.getEffectsVolume = function () {
+    return _effect.volume;
+  };
+
+  audioEngine.pauseEffect = function (audioID) {
+    return audioEngine.pause(audioID);
+  };
+
+  audioEngine.pauseAllEffects = function () {
+    var musicPlay = audioEngine.getState(_music.id) === audioEngine.AudioState.PLAYING;
+    audioEngine.pauseAll();
+
+    if (musicPlay) {
+      audioEngine.resume(_music.id);
+    }
+  };
+
+  audioEngine.resumeEffect = function (id) {
+    audioEngine.resume(id);
+  };
+
+  audioEngine.resumeAllEffects = function () {
+    var musicPaused = audioEngine.getState(_music.id) === audioEngine.AudioState.PAUSED;
+    audioEngine.resumeAll();
+
+    if (musicPaused && audioEngine.getState(_music.id) === audioEngine.AudioState.PLAYING) {
+      audioEngine.pause(_music.id);
+    }
+  };
+
+  audioEngine.stopEffect = function (id) {
+    return audioEngine.stop(id);
+  };
+
+  audioEngine.stopAllEffects = function () {
+    var musicPlaying = audioEngine.getState(_music.id) === audioEngine.AudioState.PLAYING;
+    var currentTime = audioEngine.getCurrentTime(_music.id);
+    audioEngine.stopAll();
+
+    if (musicPlaying) {
+      _music.id = audioEngine.play(_music.clip, _music.loop);
+      audioEngine.setCurrentTime(_music.id, currentTime);
+    }
+  }; // Unnecessary on native platform
+
+
+  audioEngine._break = function () {};
+
+  audioEngine._restore = function () {}; // deprecated
+
+
+  audioEngine._uncache = audioEngine.uncache;
+
+  audioEngine.uncache = function (clip) {
+    var path;
+
+    if (typeof clip === 'string') {
+      // backward compatibility since 1.10
+      cc.warnID(8401, 'cc.audioEngine', 'cc.AudioClip', 'AudioClip', 'cc.AudioClip', 'audio');
+      path = clip;
+    } else {
+      if (!clip) {
+        return;
+      }
+
+      path = clip._nativeAsset;
+    }
+
+    audioEngine._uncache(path);
+  };
+
+  audioEngine._preload = audioEngine.preload;
+
+  audioEngine.preload = function (filePath, callback) {
+    cc.warn('`cc.audioEngine.preload` is deprecated, use `cc.loader.loadRes(url, cc.AudioClip)` instead please.');
+
+    audioEngine._preload(filePath, callback);
+  };
 })(cc.Audio.prototype, jsb.AudioEngine);
 
-},{}],27:[function(require,module,exports){
-"use strict";
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-// Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
-(function () {
-    if (!cc.CustomProperties) return;
-
-    var NativeCustomProperties = function () {
-        function NativeCustomProperties() {
-            _classCallCheck(this, NativeCustomProperties);
-
-            this._nativeObj = new renderer.CustomProperties();
-        }
-
-        _createClass(NativeCustomProperties, [{
-            key: "setProperty",
-            value: function setProperty(name, value, type, directly) {
-                var prop = void 0;
-                if (value.constructor === cc.Texture2D) {
-                    prop = value.getImpl();
-                } else if (Array.isArray(value)) {
-                    prop = new Float32Array(value);
-                } else {
-                    prop = value;
-                }
-
-                this._nativeObj.setProperty(name, type, prop, directly);
-            }
-        }, {
-            key: "define",
-            value: function define(name, value) {
-                this._nativeObj.define(name, value);
-            }
-        }]);
-
-        return NativeCustomProperties;
-    }();
-
-    cc.CustomProperties = NativeCustomProperties;
-})();
-
-},{}],28:[function(require,module,exports){
-"use strict";
-
-/****************************************************************************
- Copyright (c) 2018 Xiamen Yaji Software Co., Ltd.
-
- http://www.cocos.com
-
- Permission is hereby granted, free of charge, to any person obtaining a copy
- of this software and associated engine source code (the "Software"), a limited,
-  worldwide, royalty-free, non-assignable, revocable and non-exclusive license
- to use Cocos Creator solely to develop games on your target platforms. You shall
-  not use Cocos Creator software for developing other software or tools that's
-  used for developing games. You are not granted to publish, distribute,
-  sublicense, and/or sell copies of Cocos Creator.
-
- The software or tools in this License Agreement are licensed, not sold.
- Xiamen Yaji Software Co., Ltd. reserves all rights not expressly granted to you.
-
- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- THE SOFTWARE.
- ****************************************************************************/
-(function () {
-    if (window.dragonBones === undefined || window.middleware === undefined) return;
-    if (dragonBones.DragonBonesAtlasAsset === undefined) return;
-
-    // dragonbones global time scale.
-    Object.defineProperty(dragonBones, 'timeScale', {
-        get: function get() {
-            return this._timeScale;
-        },
-        set: function set(value) {
-            this._timeScale = value;
-            var factory = this.CCFactory.getInstance();
-            factory.setTimeScale(value);
-        },
-
-        configurable: true
-    });
-
-    jsb.generateGetSet(dragonBones);
-    var _slotColor = cc.color(0, 0, 255, 255);
-    var _boneColor = cc.color(255, 0, 0, 255);
-    var _originColor = cc.color(0, 255, 0, 255);
-
-    ////////////////////////////////////////////////////////////
-    // override dragonBones library by native dragonBones
-    ////////////////////////////////////////////////////////////
-    //--------------------
-    // adapt event name
-    //--------------------
-    dragonBones.EventObject.START = "start";
-    dragonBones.EventObject.LOOP_COMPLETE = "loopComplete";
-    dragonBones.EventObject.COMPLETE = "complete";
-    dragonBones.EventObject.FADE_IN = "fadeIn";
-    dragonBones.EventObject.FADE_IN_COMPLETE = "fadeInComplete";
-    dragonBones.EventObject.FADE_OUT = "fadeOut";
-    dragonBones.EventObject.FADE_OUT_COMPLETE = "fadeOutComplete";
-    dragonBones.EventObject.FRAME_EVENT = "frameEvent";
-    dragonBones.EventObject.SOUND_EVENT = "soundEvent";
-
-    dragonBones.DragonBones = {
-        ANGLE_TO_RADIAN: Math.PI / 180,
-        RADIAN_TO_ANGLE: 180 / Math.PI
-    };
-
-    //-------------------
-    // native factory
-    //-------------------
-
-    var factoryProto = dragonBones.CCFactory.prototype;
-    factoryProto.createArmatureNode = function (comp, armatureName, node) {
-        node = node || new cc.Node();
-        var display = node.getComponent(dragonBones.ArmatureDisplay);
-        if (!display) {
-            display = node.addComponent(dragonBones.ArmatureDisplay);
-        }
-
-        node.name = armatureName;
-
-        display._armatureName = armatureName;
-        display._N$dragonAsset = comp.dragonAsset;
-        display._N$dragonAtlasAsset = comp.dragonAtlasAsset;
-        display._init();
-
-        return display;
-    };
-
-    var _replaceSkin = factoryProto.replaceSkin;
-    factoryProto.replaceSkin = function (armatrue, skinData, isOverride, exclude) {
-        if (isOverride == undefined) isOverride = false;
-        exclude = exclude || [];
-        _replaceSkin.call(this, armatrue, skinData, isOverride, exclude);
-    };
-
-    var _changeSkin = factoryProto.changeSkin;
-    factoryProto.changeSkin = function (armatrue, skinData, exclude) {
-        _changeSkin.call(this, armatrue, skinData, exclude);
-    };
-
-    //-------------------
-    // native animation state
-    //-------------------
-    var animationStateProto = dragonBones.AnimationState.prototype;
-    var _isPlaying = animationStateProto.isPlaying;
-    Object.defineProperty(animationStateProto, 'isPlaying', {
-        get: function get() {
-            return _isPlaying.call(this);
-        }
-    });
-
-    //-------------------
-    // native armature
-    //-------------------
-    var armatureProto = dragonBones.Armature.prototype;
-
-    armatureProto.addEventListener = function (eventType, listener, target) {
-        if (!this.__persistentDisplay__) {
-            this.__persistentDisplay__ = this.getDisplay();
-        }
-        this.__persistentDisplay__.on(eventType, listener, target);
-    };
-
-    armatureProto.removeEventListener = function (eventType, listener, target) {
-        if (!this.__persistentDisplay__) {
-            this.__persistentDisplay__ = this.getDisplay();
-        }
-        this.__persistentDisplay__.off(eventType, listener, target);
-    };
-
-    //--------------------------
-    // native CCArmatureDisplay
-    //--------------------------
-    var nativeArmatureDisplayProto = dragonBones.CCArmatureDisplay.prototype;
-
-    Object.defineProperty(nativeArmatureDisplayProto, "node", {
-        get: function get() {
-            return this;
-        }
-    });
-
-    nativeArmatureDisplayProto.getRootNode = function () {
-        var rootDisplay = this.getRootDisplay();
-        return rootDisplay && rootDisplay._ccNode;
-    };
-
-    nativeArmatureDisplayProto.convertToWorldSpace = function (point) {
-        var newPos = this.convertToRootSpace(point);
-        var ccNode = this.getRootNode();
-        if (!ccNode) return newPos;
-        var finalPos = ccNode.convertToWorldSpace(newPos);
-        return finalPos;
-    };
-
-    nativeArmatureDisplayProto.initEvent = function () {
-        if (this._eventTarget) {
-            return;
-        }
-        this._eventTarget = new cc.EventTarget();
-        this.setDBEventCallback(function (eventObject) {
-            this._eventTarget.emit(eventObject.type, eventObject);
-        });
-    };
-
-    nativeArmatureDisplayProto.on = function (type, listener, target) {
-        this.initEvent();
-        this._eventTarget.on(type, listener, target);
-        this.addDBEventListener(type, listener);
-    };
-
-    nativeArmatureDisplayProto.off = function (type, listener, target) {
-        this.initEvent();
-        this._eventTarget.off(type, listener, target);
-        this.removeDBEventListener(type, listener);
-    };
-
-    nativeArmatureDisplayProto.once = function (type, listener, target) {
-        this.initEvent();
-        this._eventTarget.once(type, listener, target);
-        this.addDBEventListener(type, listener);
-    };
-
-    ////////////////////////////////////////////////////////////
-    // override DragonBonesAtlasAsset
-    ////////////////////////////////////////////////////////////
-    var dbAtlas = dragonBones.DragonBonesAtlasAsset.prototype;
-    var _gTextureIdx = 1;
-    var _textureKeyMap = {};
-    var _textureMap = new WeakMap();
-    var _textureIdx2Name = {};
-
-    dbAtlas.removeRecordTexture = function (texture) {
-        if (!texture) return;
-        delete _textureIdx2Name[texture.url];
-        var index = texture.__textureIndex__;
-        if (index) {
-            var texKey = _textureKeyMap[index];
-            if (texKey && _textureMap.has(texKey)) {
-                _textureMap.delete(texKey);
-                delete _textureKeyMap[index];
-            }
-        }
-    };
-
-    dbAtlas.recordTexture = function () {
-        if (this._texture && this._oldTexture !== this._texture) {
-            this.removeRecordTexture(this._oldTexture);
-            var texKey = _textureKeyMap[_gTextureIdx] = { key: _gTextureIdx };
-            _textureMap.set(texKey, this._texture);
-            this._oldTexture = this._texture;
-            this._texture.__textureIndex__ = _gTextureIdx;
-            _gTextureIdx++;
-        }
-    };
-
-    dbAtlas.getTextureByIndex = function (textureIdx) {
-        var texKey = _textureKeyMap[textureIdx];
-        if (!texKey) return;
-        return _textureMap.get(texKey);
-    };
-
-    dbAtlas.updateTextureAtlasData = function (factory) {
-        var url = this._texture.url;
-        var preAtlasInfo = _textureIdx2Name[url];
-        var index = void 0;
-
-        // If the texture has store the atlas info before,then get native atlas object,and 
-        // update script texture map.
-        if (preAtlasInfo) {
-            index = preAtlasInfo.index;
-            this._textureAtlasData = factory.getTextureAtlasDataByIndex(preAtlasInfo.name, index);
-            var texKey = _textureKeyMap[preAtlasInfo.index];
-            _textureMap.set(texKey, this._texture);
-            this._texture.__textureIndex__ = index;
-            // If script has store the atlas info,but native has no atlas object,then
-            // still new native texture2d object,but no call recordTexture to increase
-            // textureIndex.
-            if (this._textureAtlasData) {
-                return;
-            }
-        } else {
-            this.recordTexture();
-        }
-
-        index = this._texture.__textureIndex__;
-        this.jsbTexture = new middleware.Texture2D();
-        this.jsbTexture.setRealTextureIndex(index);
-        this.jsbTexture.setPixelsWide(this._texture.width);
-        this.jsbTexture.setPixelsHigh(this._texture.height);
-        this._textureAtlasData = factory.parseTextureAtlasData(this.atlasJson, this.jsbTexture, this._uuid);
-        this.jsbTexture.setNativeTexture(this._texture.getImpl());
-
-        _textureIdx2Name[url] = { name: this._textureAtlasData.name, index: index };
-    };
-
-    dbAtlas.init = function (factory) {
-        this._factory = factory;
-
-        // If create by manual, uuid is empty.
-        if (!this._uuid) {
-            var atlasJsonObj = JSON.parse(this.atlasJson);
-            this._uuid = atlasJsonObj.name;
-        }
-
-        if (this._textureAtlasData) {
-            factory.addTextureAtlasData(this._textureAtlasData, this._uuid);
-        } else {
-            this.updateTextureAtlasData(factory);
-        }
-    };
-
-    dbAtlas._clear = function (dontRecordTexture) {
-        if (this._factory) {
-            this._factory.removeTextureAtlasData(this._uuid, true);
-            this._factory.removeDragonBonesDataByUUID(this._uuid, true);
-        }
-        this._textureAtlasData = null;
-        if (!dontRecordTexture) {
-            this.recordTexture();
-        }
-    };
-
-    dbAtlas.destroy = function () {
-        this.removeRecordTexture(this._texture);
-        this._clear(true);
-        cc.Asset.prototype.destroy.call(this);
-    };
-
-    ////////////////////////////////////////////////////////////
-    // override DragonBonesAsset
-    ////////////////////////////////////////////////////////////
-    var dbAsset = dragonBones.DragonBonesAsset.prototype;
-
-    dbAsset.init = function (factory, atlasUUID) {
-        this._factory = factory;
-
-        // If create by manual, uuid is empty.
-        // Only support json format, if remote load dbbin, must set uuid by manual.
-        if (!this._uuid && this.dragonBonesJson) {
-            var rawData = JSON.parse(this.dragonBonesJson);
-            this._uuid = rawData.name;
-        }
-
-        var armatureKey = this._uuid + "#" + atlasUUID;
-        var dragonBonesData = this._factory.getDragonBonesData(armatureKey);
-        if (dragonBonesData) return armatureKey;
-
-        var filePath = null;
-        if (this.dragonBonesJson) {
-            filePath = this.dragonBonesJson;
-        } else {
-            filePath = cc.loader.md5Pipe ? cc.loader.md5Pipe.transformURL(this.nativeUrl) : this.nativeUrl;
-        }
-        this._factory.parseDragonBonesDataByPath(filePath, armatureKey);
-        return armatureKey;
-    };
-
-    var armatureCacheMgr = dragonBones.ArmatureCacheMgr.getInstance();
-    dragonBones.armatureCacheMgr = armatureCacheMgr;
-    dbAsset._clear = function () {
-        if (this._factory) {
-            this._factory.removeDragonBonesDataByUUID(this._uuid, true);
-        }
-        armatureCacheMgr.removeArmatureCache(this._uuid);
-    };
-
-    ////////////////////////////////////////////////////////////
-    // override ArmatureDisplay
-    ////////////////////////////////////////////////////////////
-    dragonBones.ArmatureDisplay._assembler = null;
-    var armatureDisplayProto = dragonBones.ArmatureDisplay.prototype;
-    var renderCompProto = cc.RenderComponent.prototype;
-    var AnimationCacheMode = dragonBones.ArmatureDisplay.AnimationCacheMode;
-
-    Object.defineProperty(armatureDisplayProto, 'armatureName', {
-        get: function get() {
-            return this._armatureName;
-        },
-        set: function set(value) {
-            this._armatureName = value;
-            var animNames = this.getAnimationNames(this._armatureName);
-
-            if (!this.animationName || animNames.indexOf(this.animationName) < 0) {
-                this.animationName = '';
-            }
-
-            if (this._armature) {
-                if (!this.isAnimationCached()) {
-                    this._factory.remove(this._armature);
-                }
-                this._armature.dispose();
-                this._armature = null;
-            }
-            this._nativeDisplay = null;
-
-            this._refresh();
-            if (this._armature && !this.isAnimationCached()) {
-                this._factory.add(this._armature);
-            }
-        },
-
-        visible: false
-    });
-
-    Object.defineProperty(armatureDisplayProto, "premultipliedAlpha", {
-        get: function get() {
-            if (this._premultipliedAlpha === undefined) {
-                return false;
-            }
-            return this._premultipliedAlpha;
-        },
-        set: function set(value) {
-            this._premultipliedAlpha = value;
-            if (this._nativeDisplay) {
-                this._nativeDisplay.setOpacityModifyRGB(this._premultipliedAlpha);
-            }
-        }
-    });
-
-    var _initDebugDraw = armatureDisplayProto._initDebugDraw;
-    armatureDisplayProto._initDebugDraw = function () {
-        _initDebugDraw.call(this);
-        if (this._armature && !this.isAnimationCached()) {
-            this._nativeDisplay.setDebugBonesEnabled(this.debugBones);
-        }
-    };
-
-    var _updateBatch = armatureDisplayProto._updateBatch;
-    armatureDisplayProto._updateBatch = function () {
-        _updateBatch.call(this);
-        if (this._nativeDisplay) {
-            this._nativeDisplay.setBatchEnabled(this.enableBatch);
-        }
-        this._assembler && this._assembler.clearEffect();
-    };
-
-    armatureDisplayProto._clearRenderData = function () {
-        this._nativeDisplay = null;
-    };
-
-    armatureDisplayProto._resetAssembler = function () {
-        this._assembler = new renderer.CustomAssembler();
-        this.node._proxy.setAssembler(this._assembler);
-    };
-
-    var _setMaterial = armatureDisplayProto.setMaterial;
-    armatureDisplayProto.setMaterial = function (index, material) {
-        _setMaterial.call(this, index, material);
-        this._assembler && this._assembler.clearEffect();
-        if (this._nativeDisplay) {
-            var nativeEffect = material.effect._nativeObj;
-            this._nativeDisplay.setEffect(nativeEffect);
-        }
-    };
-
-    armatureDisplayProto._buildArmature = function () {
-        if (!this.dragonAsset || !this.dragonAtlasAsset || !this.armatureName) {
-            this._clearRenderData();
-            return;
-        }
-
-        if (this._nativeDisplay) {
-            this._nativeDisplay.dispose();
-            this._nativeDisplay._comp = null;
-            this._nativeDisplay = null;
-        }
-
-        var atlasUUID = this.dragonAtlasAsset._uuid;
-        this._armatureKey = this.dragonAsset.init(this._factory, atlasUUID);
-
-        if (this.isAnimationCached()) {
-            this._nativeDisplay = new dragonBones.CCArmatureCacheDisplay(this.armatureName, this._armatureKey, atlasUUID, this._cacheMode == AnimationCacheMode.SHARED_CACHE);
-            this._armature = this._nativeDisplay.armature();
-        } else {
-            this._nativeDisplay = this._factory.buildArmatureDisplay(this.armatureName, this._armatureKey, "", atlasUUID);
-            if (!this._nativeDisplay) {
-                this._clearRenderData();
-                return;
-            }
-
-            this._nativeDisplay.setDebugBonesEnabled(this.debugBones);
-            this._armature = this._nativeDisplay.armature();
-            this._armature.animation.timeScale = this.timeScale;
-        }
-
-        // add all event into native display
-        var callbackTable = this._eventTarget._callbackTable;
-        // just use to adapt to native api
-        var emptyHandle = function emptyHandle() {};
-        for (var key in callbackTable) {
-            var list = callbackTable[key];
-            if (!list || !list.callbackInfos || !list.callbackInfos.length) continue;
-            if (this.isAnimationCached()) {
-                this._nativeDisplay.addDBEventListener(key);
-            } else {
-                this._nativeDisplay.addDBEventListener(key, emptyHandle);
-            }
-        }
-
-        this._nativeDisplay._ccNode = this.node;
-        this._nativeDisplay._comp = this;
-        this._nativeDisplay._eventTarget = this._eventTarget;
-
-        this._nativeDisplay.bindNodeProxy(this.node._proxy);
-        this._nativeDisplay.setOpacityModifyRGB(this.premultipliedAlpha);
-        this._nativeDisplay.setBatchEnabled(this.enableBatch);
-        this._nativeDisplay.setColor(this.node.color);
-
-        this._nativeDisplay.setDBEventCallback(function (eventObject) {
-            this._eventTarget.emit(eventObject.type, eventObject);
-        });
-
-        this._activateMaterial();
-
-        if (this.animationName) {
-            this.playAnimation(this.animationName, this.playTimes);
-        }
-    };
-
-    armatureDisplayProto._updateColor = function () {
-        if (this._nativeDisplay) {
-            this._nativeDisplay.setColor(this.node.color);
-        }
-    };
-
-    armatureDisplayProto.playAnimation = function (animName, playTimes) {
-        this.playTimes = playTimes === undefined ? -1 : playTimes;
-        this.animationName = animName;
-
-        if (this._nativeDisplay) {
-            if (this.isAnimationCached()) {
-                return this._nativeDisplay.playAnimation(animName, this.playTimes);
-            } else {
-                if (this._armature) {
-                    return this._armature.animation.play(animName, this.playTimes);
-                }
-            }
-        }
-        return null;
-    };
-
-    armatureDisplayProto.updateAnimationCache = function (animName) {
-        if (!this.isAnimationCached()) return;
-        if (this._nativeDisplay) {
-            if (animName) {
-                this._nativeDisplay.updateAnimationCache(animName);
-            } else {
-                this._nativeDisplay.updateAllAnimationCache();
-            }
-        }
-    };
-
-    armatureDisplayProto.invalidAnimationCache = function () {
-        if (!this.isAnimationCached()) return;
-        if (this._nativeDisplay) {
-            this._nativeDisplay.updateAllAnimationCache();
-        }
-    };
-
-    armatureDisplayProto._prepareToRender = function () {
-        this.markForUpdateRenderData(false);
-        // only when component's onEnable function has been invoke, need to enable render
-        if (this.node && this.node._renderComponent == this) {
-            this.markForRender(true);
-        }
-    };
-
-    armatureDisplayProto.onEnable = function () {
-        renderCompProto.onEnable.call(this);
-        if (this._armature && !this.isAnimationCached()) {
-            this._factory.add(this._armature);
-        }
-        this._activateMaterial();
-    };
-
-    armatureDisplayProto.onDisable = function () {
-        renderCompProto.onDisable.call(this);
-        if (this._armature && !this.isAnimationCached()) {
-            this._factory.remove(this._armature);
-        }
-    };
-
-    var _onLoad = armatureDisplayProto.onLoad;
-    armatureDisplayProto.onLoad = function () {
-        if (_onLoad) {
-            _onLoad.call(this);
-        }
-    };
-
-    armatureDisplayProto.once = function (eventType, listener, target) {
-        if (this._nativeDisplay) {
-            if (this.isAnimationCached()) {
-                this._nativeDisplay.addDBEventListener(eventType);
-            } else {
-                this._nativeDisplay.addDBEventListener(eventType, listener);
-            }
-        }
-        this._eventTarget.once(eventType, listener, target);
-    };
-
-    armatureDisplayProto.addEventListener = function (eventType, listener, target) {
-        if (this._nativeDisplay) {
-            if (this.isAnimationCached()) {
-                this._nativeDisplay.addDBEventListener(eventType);
-            } else {
-                this._nativeDisplay.addDBEventListener(eventType, listener);
-            }
-        }
-        this._eventTarget.on(eventType, listener, target);
-    };
-
-    armatureDisplayProto.removeEventListener = function (eventType, listener, target) {
-        if (this._nativeDisplay) {
-            if (this.isAnimationCached()) {
-                this._nativeDisplay.removeDBEventListener(eventType);
-            } else {
-                this._nativeDisplay.removeDBEventListener(eventType, listener);
-            }
-        }
-        this._eventTarget.off(eventType, listener, target);
-    };
-
-    var _onDestroy = armatureDisplayProto.onDestroy;
-    armatureDisplayProto.onDestroy = function () {
-        _onDestroy.call(this);
-        if (this._nativeDisplay) {
-            this._nativeDisplay.dispose();
-            this._nativeDisplay._comp = null;
-            this._nativeDisplay = null;
-        }
-        this._materialCache = null;
-    };
-
-    armatureDisplayProto.update = function () {
-        var nativeDisplay = this._nativeDisplay;
-        if (!nativeDisplay) return;
-
-        var node = this.node;
-        if (!node) return;
-
-        if (!this.isAnimationCached() && this._debugDraw && this.debugBones) {
-
-            var _nativeDisplay = this._nativeDisplay;
-            this._debugData = this._debugData || _nativeDisplay.getDebugData();
-            if (!this._debugData) return;
-
-            var graphics = this._debugDraw;
-            graphics.clear();
-
-            var debugData = this._debugData;
-            var debugIdx = 0;
-
-            graphics.lineWidth = 5;
-            graphics.strokeColor = _boneColor;
-            graphics.fillColor = _slotColor; // Root bone color is same as slot color.
-
-            var debugBonesLen = debugData[debugIdx++];
-            for (var i = 0; i < debugBonesLen; i += 4) {
-                var bx = debugData[debugIdx++];
-                var by = debugData[debugIdx++];
-                var x = debugData[debugIdx++];
-                var y = debugData[debugIdx++];
-
-                // Bone lengths.
-                graphics.moveTo(bx, by);
-                graphics.lineTo(x, y);
-                graphics.stroke();
-
-                // Bone origins.
-                graphics.circle(bx, by, Math.PI * 2);
-                graphics.fill();
-                if (i === 0) {
-                    graphics.fillColor = _originColor;
-                }
-            }
-        }
-    };
-})();
-
 },{}],29:[function(require,module,exports){
-'use strict';
+"use strict";
+
+var _constants = require("constants");
 
 /****************************************************************************
  Copyright (c) 2018 Xiamen Yaji Software Co., Ltd.
@@ -2002,579 +1636,1079 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
  ****************************************************************************/
-
 (function () {
-    if (!(cc && cc.EditBox)) {
-        return;
+  if (window.dragonBones === undefined || window.middleware === undefined) return;
+  if (dragonBones.DragonBonesAtlasAsset === undefined) return; // dragonbones global time scale.
+
+  Object.defineProperty(dragonBones, 'timeScale', {
+    get: function get() {
+      return this._timeScale;
+    },
+    set: function set(value) {
+      this._timeScale = value;
+      var factory = this.CCFactory.getInstance();
+      factory.setTimeScale(value);
+    },
+    configurable: true
+  });
+  jsb.generateGetSet(dragonBones);
+
+  var _slotColor = cc.color(0, 0, 255, 255);
+
+  var _boneColor = cc.color(255, 0, 0, 255);
+
+  var _originColor = cc.color(0, 255, 0, 255); ////////////////////////////////////////////////////////////
+  // override dragonBones library by native dragonBones
+  ////////////////////////////////////////////////////////////
+  //--------------------
+  // adapt event name
+  //--------------------
+
+
+  dragonBones.EventObject.START = "start";
+  dragonBones.EventObject.LOOP_COMPLETE = "loopComplete";
+  dragonBones.EventObject.COMPLETE = "complete";
+  dragonBones.EventObject.FADE_IN = "fadeIn";
+  dragonBones.EventObject.FADE_IN_COMPLETE = "fadeInComplete";
+  dragonBones.EventObject.FADE_OUT = "fadeOut";
+  dragonBones.EventObject.FADE_OUT_COMPLETE = "fadeOutComplete";
+  dragonBones.EventObject.FRAME_EVENT = "frameEvent";
+  dragonBones.EventObject.SOUND_EVENT = "soundEvent";
+  dragonBones.DragonBones = {
+    ANGLE_TO_RADIAN: Math.PI / 180,
+    RADIAN_TO_ANGLE: 180 / Math.PI
+  }; //-------------------
+  // native factory
+  //-------------------
+
+  var factoryProto = dragonBones.CCFactory.prototype;
+
+  factoryProto.createArmatureNode = function (comp, armatureName, node) {
+    node = node || new cc.Node();
+    var display = node.getComponent(dragonBones.ArmatureDisplay);
+
+    if (!display) {
+      display = node.addComponent(dragonBones.ArmatureDisplay);
     }
-    var EditBox = cc.EditBox;
-    var js = cc.js;
-    var KeyboardReturnType = EditBox.KeyboardReturnType;
-    var InputMode = EditBox.InputMode;
-    var InputFlag = EditBox.InputFlag;
 
-    var math = cc.vmath;
-    var worldMat = math.mat4.create(),
-        cameraMat = math.mat4.create();
+    node.name = armatureName;
+    display._armatureName = armatureName;
+    display._N$dragonAsset = comp.dragonAsset;
+    display._N$dragonAtlasAsset = comp.dragonAtlasAsset;
 
-    function getInputType(type) {
-        switch (type) {
-            case InputMode.EMAIL_ADDR:
-                return 'email';
-            case InputMode.NUMERIC:
-            case InputMode.DECIMAL:
-                return 'number';
-            case InputMode.PHONE_NUMBER:
-                return 'phone';
-            case InputMode.URL:
-                return 'url';
-            case InputMode.SINGLE_LINE:
-            case InputMode.ANY:
-            default:
-                return 'text';
-        }
+    display._init();
+
+    return display;
+  };
+
+  var _replaceSkin = factoryProto.replaceSkin;
+
+  factoryProto.replaceSkin = function (armatrue, skinData, isOverride, exclude) {
+    if (isOverride == undefined) isOverride = false;
+    exclude = exclude || [];
+
+    _replaceSkin.call(this, armatrue, skinData, isOverride, exclude);
+  };
+
+  var _changeSkin = factoryProto.changeSkin;
+
+  factoryProto.changeSkin = function (armatrue, skinData, exclude) {
+    _changeSkin.call(this, armatrue, skinData, exclude);
+  }; //-------------------
+  // native animation state
+  //-------------------
+
+
+  var animationStateProto = dragonBones.AnimationState.prototype;
+  var _isPlaying = animationStateProto.isPlaying;
+  Object.defineProperty(animationStateProto, 'isPlaying', {
+    get: function get() {
+      return _isPlaying.call(this);
+    }
+  }); //-------------------
+  // native armature
+  //-------------------
+
+  var armatureProto = dragonBones.Armature.prototype;
+
+  armatureProto.addEventListener = function (eventType, listener, target) {
+    if (!this.__persistentDisplay__) {
+      this.__persistentDisplay__ = this.getDisplay();
     }
 
-    function getKeyboardReturnType(type) {
-        switch (type) {
-            case KeyboardReturnType.DEFAULT:
-            case KeyboardReturnType.DONE:
-                return 'done';
-            case KeyboardReturnType.SEND:
-                return 'send';
-            case KeyboardReturnType.SEARCH:
-                return 'search';
-            case KeyboardReturnType.GO:
-                return 'go';
-            case KeyboardReturnType.NEXT:
-                return 'next';
-        }
-        return 'done';
+    this.__persistentDisplay__.on(eventType, listener, target);
+  };
+
+  armatureProto.removeEventListener = function (eventType, listener, target) {
+    if (!this.__persistentDisplay__) {
+      this.__persistentDisplay__ = this.getDisplay();
     }
 
-    var BaseClass = EditBox._ImplClass;
-    function JsbEditBoxImpl() {
-        BaseClass.call(this);
+    this.__persistentDisplay__.off(eventType, listener, target);
+  }; //--------------------------
+  // native CCArmatureDisplay
+  //--------------------------
+
+
+  var nativeArmatureDisplayProto = dragonBones.CCArmatureDisplay.prototype;
+  Object.defineProperty(nativeArmatureDisplayProto, "node", {
+    get: function get() {
+      return this;
+    }
+  });
+
+  nativeArmatureDisplayProto.getRootNode = function () {
+    var rootDisplay = this.getRootDisplay();
+    return rootDisplay && rootDisplay._ccNode;
+  };
+
+  nativeArmatureDisplayProto.convertToWorldSpace = function (point) {
+    var newPos = this.convertToRootSpace(point);
+    newPos = cc.v2(newPos.x, newPos.y);
+    var ccNode = this.getRootNode();
+    if (!ccNode) return newPos;
+    var finalPos = ccNode.convertToWorldSpaceAR(newPos);
+    return finalPos;
+  };
+
+  nativeArmatureDisplayProto.initEvent = function () {
+    if (this._eventTarget) {
+      return;
     }
 
-    js.extend(JsbEditBoxImpl, BaseClass);
-    EditBox._ImplClass = JsbEditBoxImpl;
-
-    Object.assign(JsbEditBoxImpl.prototype, {
-        init: function init(delegate) {
-            if (!delegate) {
-                cc.error('EditBox init failed');
-                return;
-            }
-            this._delegate = delegate;
-        },
-        beginEditing: function beginEditing() {
-            var self = this;
-            var delegate = this._delegate;
-            var multiline = delegate.inputMode === InputMode.ANY;
-            var rect = this._getRect();
-
-            var inputTypeString = getInputType(delegate.inputMode);
-            if (delegate.inputFlag === InputFlag.PASSWORD) {
-                inputTypeString = 'password';
-            }
-
-            function onConfirm(res) {
-                delegate.editBoxEditingReturn();
-            }
-
-            function onInput(res) {
-                if (res.value.length > delegate.maxLength) {
-                    res.value = res.value.slice(0, delegate.maxLength);
-                }
-                if (delegate._string !== res.value) {
-                    delegate.editBoxTextChanged(res.value);
-                }
-            }
-
-            function onComplete(res) {
-                self.endEditing();
-                jsb.inputBox.offConfirm(onConfirm);
-                jsb.inputBox.offInput(onInput);
-                jsb.inputBox.offComplete(onComplete);
-            }
-
-            jsb.inputBox.onInput(onInput);
-            jsb.inputBox.onConfirm(onConfirm);
-            jsb.inputBox.onComplete(onComplete);
-
-            if (!cc.sys.isMobile) {
-                this._delegate._hideLabels();
-            }
-            jsb.inputBox.show({
-                defaultValue: delegate._string,
-                maxLength: delegate.maxLength,
-                multiple: multiline,
-                confirmHold: false,
-                confirmType: getKeyboardReturnType(delegate.returnType),
-                inputType: inputTypeString,
-                originX: rect.x,
-                originY: rect.y,
-                width: rect.width,
-                height: rect.height
-            });
-            this._editing = true;
-            delegate.editBoxEditingDidBegan();
-        },
-        endEditing: function endEditing() {
-            this._editing = false;
-            if (!cc.sys.isMobile) {
-                this._delegate._showLabels();
-            }
-            jsb.inputBox.hide();
-            this._delegate.editBoxEditingDidEnded();
-        },
-        _getRect: function _getRect() {
-            var node = this._delegate.node,
-                viewScaleX = cc.view._scaleX,
-                viewScaleY = cc.view._scaleY;
-            var dpr = cc.view._devicePixelRatio;
-            node.getWorldMatrix(worldMat);
-
-            var camera = cc.Camera.findCamera(node);
-            camera.getWorldToScreenMatrix2D(cameraMat);
-            math.mat4.mul(cameraMat, cameraMat, worldMat);
-
-            var contentSize = node._contentSize;
-            var vec3 = cc.v3();
-            vec3.x = -node._anchorPoint.x * contentSize.width;
-            vec3.y = -node._anchorPoint.y * contentSize.height;
-
-            math.mat4.translate(cameraMat, cameraMat, vec3);
-
-            viewScaleX /= dpr;
-            viewScaleY /= dpr;
-
-            var finalScaleX = cameraMat.m[0] * viewScaleX;
-            var finaleScaleY = cameraMat.m[5] * viewScaleY;
-
-            var viewportRect = cc.view._viewportRect;
-            var offsetX = viewportRect.x / dpr,
-                offsetY = viewportRect.y / dpr;
-            return {
-                x: cameraMat.m[12] * viewScaleX + offsetX,
-                y: cameraMat.m[13] * viewScaleY + offsetY,
-                width: contentSize.width * finalScaleX,
-                height: contentSize.height * finaleScaleY
-            };
-        }
+    this._eventTarget = new cc.EventTarget();
+    this.setDBEventCallback(function (eventObject) {
+      this._eventTarget.emit(eventObject.type, eventObject);
     });
+  };
+
+  nativeArmatureDisplayProto.on = function (type, listener, target) {
+    this.initEvent();
+
+    this._eventTarget.on(type, listener, target);
+
+    this.addDBEventListener(type, listener);
+  };
+
+  nativeArmatureDisplayProto.off = function (type, listener, target) {
+    this.initEvent();
+
+    this._eventTarget.off(type, listener, target);
+
+    this.removeDBEventListener(type, listener);
+  };
+
+  nativeArmatureDisplayProto.once = function (type, listener, target) {
+    this.initEvent();
+
+    this._eventTarget.once(type, listener, target);
+
+    this.addDBEventListener(type, listener);
+  }; ////////////////////////////////////////////////////////////
+  // override DragonBonesAtlasAsset
+  ////////////////////////////////////////////////////////////
+
+
+  var dbAtlas = dragonBones.DragonBonesAtlasAsset.prototype;
+  var _gTextureIdx = 1;
+  var _textureKeyMap = {};
+
+  var _textureMap = new WeakMap();
+
+  var _textureIdx2Name = {};
+
+  dbAtlas.removeRecordTexture = function (texture) {
+    if (!texture) return;
+    delete _textureIdx2Name[texture.url];
+    var index = texture.__textureIndex__;
+
+    if (index) {
+      var texKey = _textureKeyMap[index];
+
+      if (texKey && _textureMap.has(texKey)) {
+        _textureMap["delete"](texKey);
+
+        delete _textureKeyMap[index];
+      }
+    }
+  };
+
+  dbAtlas.recordTexture = function () {
+    if (this._texture && this._oldTexture !== this._texture) {
+      this.removeRecordTexture(this._oldTexture);
+      var texKey = _textureKeyMap[_gTextureIdx] = {
+        key: _gTextureIdx
+      };
+
+      _textureMap.set(texKey, this._texture);
+
+      this._oldTexture = this._texture;
+      this._texture.__textureIndex__ = _gTextureIdx;
+      _gTextureIdx++;
+    }
+  };
+
+  dbAtlas.getTextureByIndex = function (textureIdx) {
+    var texKey = _textureKeyMap[textureIdx];
+    if (!texKey) return;
+    return _textureMap.get(texKey);
+  };
+
+  dbAtlas.updateTextureAtlasData = function (factory) {
+    var url = this._texture.url;
+    var preAtlasInfo = _textureIdx2Name[url];
+    var index; // If the texture has store the atlas info before,then get native atlas object,and 
+    // update script texture map.
+
+    if (preAtlasInfo) {
+      index = preAtlasInfo.index;
+      this._textureAtlasData = factory.getTextureAtlasDataByIndex(preAtlasInfo.name, index);
+      var texKey = _textureKeyMap[preAtlasInfo.index];
+
+      _textureMap.set(texKey, this._texture);
+
+      this._texture.__textureIndex__ = index; // If script has store the atlas info,but native has no atlas object,then
+      // still new native texture2d object,but no call recordTexture to increase
+      // textureIndex.
+
+      if (this._textureAtlasData) {
+        return;
+      }
+    } else {
+      this.recordTexture();
+    }
+
+    index = this._texture.__textureIndex__;
+    this.jsbTexture = new middleware.Texture2D();
+    this.jsbTexture.setRealTextureIndex(index);
+    this.jsbTexture.setPixelsWide(this._texture.width);
+    this.jsbTexture.setPixelsHigh(this._texture.height);
+    this._textureAtlasData = factory.parseTextureAtlasData(this.atlasJson, this.jsbTexture, this._uuid);
+    this.jsbTexture.setNativeTexture(this._texture.getImpl());
+    _textureIdx2Name[url] = {
+      name: this._textureAtlasData.name,
+      index: index
+    };
+  };
+
+  dbAtlas.init = function (factory) {
+    this._factory = factory; // If create by manual, uuid is empty.
+
+    if (!this._uuid) {
+      var atlasJsonObj = JSON.parse(this.atlasJson);
+      this._uuid = atlasJsonObj.name;
+    }
+
+    if (this._textureAtlasData) {
+      factory.addTextureAtlasData(this._textureAtlasData, this._uuid);
+    } else {
+      this.updateTextureAtlasData(factory);
+    }
+  };
+
+  dbAtlas._clear = function (dontRecordTexture) {
+    if (this._factory) {
+      this._factory.removeTextureAtlasData(this._uuid, true);
+
+      this._factory.removeDragonBonesDataByUUID(this._uuid, true);
+    }
+
+    this._textureAtlasData = null;
+
+    if (!dontRecordTexture) {
+      this.recordTexture();
+    }
+  };
+
+  dbAtlas.destroy = function () {
+    this.removeRecordTexture(this._texture);
+
+    this._clear(true);
+
+    cc.Asset.prototype.destroy.call(this);
+  }; ////////////////////////////////////////////////////////////
+  // override DragonBonesAsset
+  ////////////////////////////////////////////////////////////
+
+
+  var dbAsset = dragonBones.DragonBonesAsset.prototype;
+
+  dbAsset.init = function (factory, atlasUUID) {
+    this._factory = factory; // If create by manual, uuid is empty.
+    // Only support json format, if remote load dbbin, must set uuid by manual.
+
+    if (!this._uuid && this.dragonBonesJson) {
+      var rawData = JSON.parse(this.dragonBonesJson);
+      this._uuid = rawData.name;
+    }
+
+    var armatureKey = this._uuid + "#" + atlasUUID;
+
+    var dragonBonesData = this._factory.getDragonBonesData(armatureKey);
+
+    if (dragonBonesData) return armatureKey;
+    var filePath = null;
+
+    if (this.dragonBonesJson) {
+      filePath = this.dragonBonesJson;
+    } else {
+      filePath = cc.loader.md5Pipe ? cc.loader.md5Pipe.transformURL(this.nativeUrl) : this.nativeUrl;
+    }
+
+    this._factory.parseDragonBonesDataByPath(filePath, armatureKey);
+
+    return armatureKey;
+  };
+
+  var armatureCacheMgr = dragonBones.ArmatureCacheMgr.getInstance();
+  dragonBones.armatureCacheMgr = armatureCacheMgr;
+
+  dbAsset._clear = function () {
+    if (this._factory) {
+      this._factory.removeDragonBonesDataByUUID(this._uuid, true);
+    }
+
+    armatureCacheMgr.removeArmatureCache(this._uuid);
+  }; ////////////////////////////////////////////////////////////
+  // adapt attach util
+  ////////////////////////////////////////////////////////////
+
+
+  var attachUtilProto = dragonBones.AttachUtil.prototype;
+  var _attachUtilInit = attachUtilProto.init;
+
+  attachUtilProto.init = function (armatureDisplay) {
+    _attachUtilInit.call(this, armatureDisplay);
+
+    this._nativeDisplay = armatureDisplay._nativeDisplay;
+    this._attachUtilNative = null;
+  };
+
+  var _generateAllAttachedNodes = attachUtilProto.generateAllAttachedNodes;
+
+  attachUtilProto.generateAllAttachedNodes = function () {
+    var res = _generateAllAttachedNodes.call(this);
+
+    this._associateAttachedNode();
+
+    return res;
+  };
+
+  var _generateAttachedNodes = attachUtilProto.generateAttachedNodes;
+
+  attachUtilProto.generateAttachedNodes = function (boneName) {
+    var res = _generateAttachedNodes.call(this, boneName);
+
+    this._associateAttachedNode();
+
+    return res;
+  };
+
+  var _associateAttachedNode = attachUtilProto._associateAttachedNode;
+
+  attachUtilProto._associateAttachedNode = function () {
+    if (!this._inited) return;
+
+    var rootNode = this._armatureNode.getChildByName('ATTACHED_NODE_TREE');
+
+    if (!rootNode || !rootNode.isValid) return; // associate js
+
+    _associateAttachedNode.call(this); // associate native
+
+
+    if (!this._attachUtilNative) {
+      if (this._armatureDisplay.isAnimationCached()) {
+        this._attachUtilNative = new dragonBones.CacheModeAttachUtil();
+      } else {
+        this._attachUtilNative = new dragonBones.RealTimeAttachUtil();
+      }
+
+      this._nativeDisplay.setAttachUtil(this._attachUtilNative);
+    }
+
+    this._attachUtilNative.associateAttachedNode(this._armature, this._armatureNode._proxy);
+  }; ////////////////////////////////////////////////////////////
+  // override ArmatureDisplay
+  ////////////////////////////////////////////////////////////
+
+
+  dragonBones.ArmatureDisplay._assembler = null;
+  var armatureDisplayProto = dragonBones.ArmatureDisplay.prototype;
+  var renderCompProto = cc.RenderComponent.prototype;
+  var AnimationCacheMode = dragonBones.ArmatureDisplay.AnimationCacheMode;
+  Object.defineProperty(armatureDisplayProto, 'armatureName', {
+    get: function get() {
+      return this._armatureName;
+    },
+    set: function set(value) {
+      this._armatureName = value;
+      var animNames = this.getAnimationNames(this._armatureName);
+
+      if (!this.animationName || animNames.indexOf(this.animationName) < 0) {
+        this.animationName = '';
+      }
+
+      if (this._armature) {
+        if (!this.isAnimationCached()) {
+          this._factory.remove(this._armature);
+        }
+
+        this._armature.dispose();
+
+        this._armature = null;
+      }
+
+      this._nativeDisplay = null;
+
+      this._refresh();
+
+      if (this._armature && !this.isAnimationCached()) {
+        this._factory.add(this._armature);
+      }
+    },
+    visible: false
+  });
+  Object.defineProperty(armatureDisplayProto, "premultipliedAlpha", {
+    get: function get() {
+      if (this._premultipliedAlpha === undefined) {
+        return false;
+      }
+
+      return this._premultipliedAlpha;
+    },
+    set: function set(value) {
+      this._premultipliedAlpha = value;
+
+      if (this._nativeDisplay) {
+        this._nativeDisplay.setOpacityModifyRGB(this._premultipliedAlpha);
+      }
+    }
+  });
+  var _initDebugDraw = armatureDisplayProto._initDebugDraw;
+
+  armatureDisplayProto._initDebugDraw = function () {
+    _initDebugDraw.call(this);
+
+    if (this._armature && !this.isAnimationCached()) {
+      this._nativeDisplay.setDebugBonesEnabled(this.debugBones);
+    }
+  };
+
+  var _updateBatch = armatureDisplayProto._updateBatch;
+
+  armatureDisplayProto._updateBatch = function () {
+    _updateBatch.call(this);
+
+    if (this._nativeDisplay) {
+      this._nativeDisplay.setBatchEnabled(this.enableBatch);
+    }
+
+    this._assembler && this._assembler.clearEffect();
+  };
+
+  armatureDisplayProto._clearRenderData = function () {
+    this._nativeDisplay = null;
+  };
+
+  armatureDisplayProto._resetAssembler = function () {
+    this._assembler = new renderer.CustomAssembler();
+
+    this.node._proxy.setAssembler(this._assembler);
+  };
+
+  var _updateMaterial = armatureDisplayProto._updateMaterial;
+  var _materialHash2IDMap = {};
+  var _materialId = 1;
+
+  armatureDisplayProto._updateMaterial = function () {
+    _updateMaterial.call(this);
+
+    this._assembler && this._assembler.clearEffect();
+    var baseMaterial = this.getMaterial(0);
+
+    if (this._nativeDisplay && baseMaterial) {
+      var originHash = baseMaterial.effect.getHash();
+      var id = _materialHash2IDMap[originHash] || _materialId++;
+      _materialHash2IDMap[originHash] = id;
+      baseMaterial.effect.updateHash(id);
+      var nativeEffect = baseMaterial.effect._nativeObj;
+
+      this._nativeDisplay.setEffect(nativeEffect);
+    }
+  };
+
+  armatureDisplayProto._buildArmature = function () {
+    if (!this.dragonAsset || !this.dragonAtlasAsset || !this.armatureName) {
+      this._clearRenderData();
+
+      return;
+    }
+
+    if (this._nativeDisplay) {
+      this._nativeDisplay.dispose();
+
+      this._nativeDisplay._comp = null;
+      this._nativeDisplay = null;
+    }
+
+    var atlasUUID = this.dragonAtlasAsset._uuid;
+    this._armatureKey = this.dragonAsset.init(this._factory, atlasUUID);
+
+    if (this.isAnimationCached()) {
+      this._nativeDisplay = new dragonBones.CCArmatureCacheDisplay(this.armatureName, this._armatureKey, atlasUUID, this._cacheMode == AnimationCacheMode.SHARED_CACHE);
+      this._armature = this._nativeDisplay.armature();
+    } else {
+      this._nativeDisplay = this._factory.buildArmatureDisplay(this.armatureName, this._armatureKey, "", atlasUUID);
+
+      if (!this._nativeDisplay) {
+        this._clearRenderData();
+
+        return;
+      }
+
+      this._nativeDisplay.setDebugBonesEnabled(this.debugBones);
+
+      this._armature = this._nativeDisplay.armature();
+      this._armature.animation.timeScale = this.timeScale;
+
+      this._factory.add(this._armature);
+    } // add all event into native display
+
+
+    var callbackTable = this._eventTarget._callbackTable; // just use to adapt to native api
+
+    var emptyHandle = function emptyHandle() {};
+
+    for (var key in callbackTable) {
+      var list = callbackTable[key];
+      if (!list || !list.callbackInfos || !list.callbackInfos.length) continue;
+
+      if (this.isAnimationCached()) {
+        this._nativeDisplay.addDBEventListener(key);
+      } else {
+        this._nativeDisplay.addDBEventListener(key, emptyHandle);
+      }
+    }
+
+    this._preCacheMode = this._cacheMode;
+    this._nativeDisplay._ccNode = this.node;
+    this._nativeDisplay._comp = this;
+    this._nativeDisplay._eventTarget = this._eventTarget;
+
+    this._nativeDisplay.bindNodeProxy(this.node._proxy);
+
+    this._nativeDisplay.setOpacityModifyRGB(this.premultipliedAlpha);
+
+    this._nativeDisplay.setBatchEnabled(this.enableBatch);
+
+    this._nativeDisplay.setColor(this.node.color);
+
+    this._nativeDisplay.setDBEventCallback(function (eventObject) {
+      this._eventTarget.emit(eventObject.type, eventObject);
+    });
+
+    this.attachUtil.init(this);
+
+    this.attachUtil._associateAttachedNode();
+
+    if (this.animationName) {
+      this.playAnimation(this.animationName, this.playTimes);
+    }
+
+    this._updateMaterial();
+
+    this.markForRender(true);
+  };
+
+  armatureDisplayProto._updateColor = function () {
+    if (this._nativeDisplay) {
+      this._nativeDisplay.setColor(this.node.color);
+    }
+  };
+
+  armatureDisplayProto.playAnimation = function (animName, playTimes) {
+    this.playTimes = playTimes === undefined ? -1 : playTimes;
+    this.animationName = animName;
+
+    if (this._nativeDisplay) {
+      if (this.isAnimationCached()) {
+        return this._nativeDisplay.playAnimation(animName, this.playTimes);
+      } else {
+        if (this._armature) {
+          return this._armature.animation.play(animName, this.playTimes);
+        }
+      }
+    }
+
+    return null;
+  };
+
+  armatureDisplayProto.updateAnimationCache = function (animName) {
+    if (!this.isAnimationCached()) return;
+
+    if (this._nativeDisplay) {
+      if (animName) {
+        this._nativeDisplay.updateAnimationCache(animName);
+      } else {
+        this._nativeDisplay.updateAllAnimationCache();
+      }
+    }
+  };
+
+  armatureDisplayProto.invalidAnimationCache = function () {
+    if (!this.isAnimationCached()) return;
+
+    if (this._nativeDisplay) {
+      this._nativeDisplay.updateAllAnimationCache();
+    }
+  };
+
+  armatureDisplayProto.onEnable = function () {
+    renderCompProto.onEnable.call(this);
+
+    if (this._armature && !this.isAnimationCached()) {
+      this._factory.add(this._armature);
+    }
+  };
+
+  armatureDisplayProto.onDisable = function () {
+    renderCompProto.onDisable.call(this);
+
+    if (this._armature && !this.isAnimationCached()) {
+      this._factory.remove(this._armature);
+    }
+  };
+
+  var _onLoad = armatureDisplayProto.onLoad;
+
+  armatureDisplayProto.onLoad = function () {
+    if (_onLoad) {
+      _onLoad.call(this);
+    }
+  };
+
+  armatureDisplayProto.once = function (eventType, listener, target) {
+    if (this._nativeDisplay) {
+      if (this.isAnimationCached()) {
+        this._nativeDisplay.addDBEventListener(eventType);
+      } else {
+        this._nativeDisplay.addDBEventListener(eventType, listener);
+      }
+    }
+
+    this._eventTarget.once(eventType, listener, target);
+  };
+
+  armatureDisplayProto.addEventListener = function (eventType, listener, target) {
+    if (this._nativeDisplay) {
+      if (this.isAnimationCached()) {
+        this._nativeDisplay.addDBEventListener(eventType);
+      } else {
+        this._nativeDisplay.addDBEventListener(eventType, listener);
+      }
+    }
+
+    this._eventTarget.on(eventType, listener, target);
+  };
+
+  armatureDisplayProto.removeEventListener = function (eventType, listener, target) {
+    if (this._nativeDisplay) {
+      if (this.isAnimationCached()) {
+        this._nativeDisplay.removeDBEventListener(eventType);
+      } else {
+        this._nativeDisplay.removeDBEventListener(eventType, listener);
+      }
+    }
+
+    this._eventTarget.off(eventType, listener, target);
+  };
+
+  var _onDestroy = armatureDisplayProto.onDestroy;
+
+  armatureDisplayProto.onDestroy = function () {
+    _onDestroy.call(this);
+
+    if (this._nativeDisplay) {
+      this._nativeDisplay.dispose();
+
+      this._nativeDisplay._comp = null;
+      this._nativeDisplay = null;
+    }
+
+    this._materialCache = null;
+  };
+
+  armatureDisplayProto.update = function () {
+    var nativeDisplay = this._nativeDisplay;
+    if (!nativeDisplay) return;
+    var node = this.node;
+    if (!node) return;
+
+    if (!this.isAnimationCached() && this._debugDraw && this.debugBones) {
+      var _nativeDisplay = this._nativeDisplay;
+      this._debugData = this._debugData || _nativeDisplay.getDebugData();
+      if (!this._debugData) return;
+      var graphics = this._debugDraw;
+      graphics.clear();
+      var debugData = this._debugData;
+      var debugIdx = 0;
+      graphics.lineWidth = 5;
+      graphics.strokeColor = _boneColor;
+      graphics.fillColor = _slotColor; // Root bone color is same as slot color.
+
+      var debugBonesLen = debugData[debugIdx++];
+
+      for (var i = 0; i < debugBonesLen; i += 4) {
+        var bx = debugData[debugIdx++];
+        var by = debugData[debugIdx++];
+        var x = debugData[debugIdx++];
+        var y = debugData[debugIdx++]; // Bone lengths.
+
+        graphics.moveTo(bx, by);
+        graphics.lineTo(x, y);
+        graphics.stroke(); // Bone origins.
+
+        graphics.circle(bx, by, Math.PI * 2);
+        graphics.fill();
+
+        if (i === 0) {
+          graphics.fillColor = _originColor;
+        }
+      }
+    }
+  };
 })();
 
-},{}],30:[function(require,module,exports){
+},{"constants":1}],30:[function(require,module,exports){
 "use strict";
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+/****************************************************************************
+ Copyright (c) 2018 Xiamen Yaji Software Co., Ltd.
 
-var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+ http://www.cocos.com
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated engine source code (the "Software"), a limited,
+  worldwide, royalty-free, non-assignable, revocable and non-exclusive license
+ to use Cocos Creator solely to develop games on your target platforms. You shall
+  not use Cocos Creator software for developing other software or tools that's
+  used for developing games. You are not granted to publish, distribute,
+  sublicense, and/or sell copies of Cocos Creator.
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+ The software or tools in this License Agreement are licensed, not sold.
+ Xiamen Yaji Software Co., Ltd. reserves all rights not expressly granted to you.
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
+ ****************************************************************************/
+(function () {
+  if (!(cc && cc.EditBox)) {
+    return;
+  }
 
-// Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
-var gfx = window.gfx;
+  var EditBox = cc.EditBox;
+  var js = cc.js;
+  var KeyboardReturnType = EditBox.KeyboardReturnType;
+  var InputMode = EditBox.InputMode;
+  var InputFlag = EditBox.InputFlag;
+  var MAX_VALUE = 65535;
+  var worldMat = new cc.Mat4(),
+      cameraMat = new cc.Mat4();
 
-var Effect = cc.Effect;
+  function getInputType(type) {
+    switch (type) {
+      case InputMode.EMAIL_ADDR:
+        return 'email';
 
-var NativeEffect = function (_Effect) {
-    _inherits(NativeEffect, _Effect);
+      case InputMode.NUMERIC:
+      case InputMode.DECIMAL:
+        return 'number';
 
-    function NativeEffect(name, techniques) {
-        var properties = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-        var defines = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
-        var dependencies = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : [];
-        var asset = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : null;
+      case InputMode.PHONE_NUMBER:
+        return 'phone';
 
-        _classCallCheck(this, NativeEffect);
+      case InputMode.URL:
+        return 'url';
 
-        var _this = _possibleConstructorReturn(this, (NativeEffect.__proto__ || Object.getPrototypeOf(NativeEffect)).call(this, name, techniques, properties, defines, dependencies));
+      case InputMode.SINGLE_LINE:
+      case InputMode.ANY:
+      default:
+        return 'text';
+    }
+  }
 
-        if (asset) {
-            var definesArr = [];
-            for (var key in defines) {
-                definesArr.push({ name: key, value: defines[key] });
-            }
+  function getKeyboardReturnType(type) {
+    switch (type) {
+      case KeyboardReturnType.DEFAULT:
+      case KeyboardReturnType.DONE:
+        return 'done';
 
-            _this._nativeObj = new renderer.EffectNative();
-            _this._nativeObj.init(JSON.stringify(asset), properties, definesArr);
-            _this._nativePtr = _this._nativeObj.self();
-        }
-        return _this;
+      case KeyboardReturnType.SEND:
+        return 'send';
+
+      case KeyboardReturnType.SEARCH:
+        return 'search';
+
+      case KeyboardReturnType.GO:
+        return 'go';
+
+      case KeyboardReturnType.NEXT:
+        return 'next';
     }
 
-    _createClass(NativeEffect, [{
-        key: "setCullMode",
-        value: function setCullMode() {
-            var cullMode = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : gfx.CULL_BACK;
+    return 'done';
+  }
 
-            _get(NativeEffect.prototype.__proto__ || Object.getPrototypeOf(NativeEffect.prototype), "setCullMode", this).call(this, cullMode);
-            this._nativeObj.setCullMode(cullMode);
-        }
-    }, {
-        key: "setBlend",
-        value: function setBlend() {
-            var enabled = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
-            var blendEq = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : gfx.BLEND_FUNC_ADD;
-            var blendSrc = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : gfx.BLEND_SRC_ALPHA;
-            var blendDst = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : gfx.BLEND_ONE_MINUS_SRC_ALPHA;
-            var blendAlphaEq = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : gfx.BLEND_FUNC_ADD;
-            var blendSrcAlpha = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : gfx.BLEND_SRC_ALPHA;
-            var blendDstAlpha = arguments.length > 6 && arguments[6] !== undefined ? arguments[6] : gfx.BLEND_ONE_MINUS_SRC_ALPHA;
-            var blendColor = arguments.length > 7 && arguments[7] !== undefined ? arguments[7] : 0xffffffff;
+  var BaseClass = EditBox._ImplClass;
 
-            _get(NativeEffect.prototype.__proto__ || Object.getPrototypeOf(NativeEffect.prototype), "setBlend", this).call(this, enabled, blendEq, blendSrc, blendDst, blendAlphaEq, blendSrcAlpha, blendDstAlpha, blendColor);
-            this._nativeObj.setBlend(blendEq, blendSrc, blendDst, blendAlphaEq, blendSrcAlpha, blendDstAlpha, blendColor);
-        }
-    }, {
-        key: "setStencilEnabled",
-        value: function setStencilEnabled(enabled) {
-            _get(NativeEffect.prototype.__proto__ || Object.getPrototypeOf(NativeEffect.prototype), "setStencilEnabled", this).call(this, enabled);
-            this._nativeObj.setStencilTest(enabled);
-        }
-    }, {
-        key: "setStencil",
-        value: function setStencil() {
-            var enabled = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : gfx.STENCIL_INHERIT;
-            var stencilFunc = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : gfx.DS_FUNC_ALWAYS;
-            var stencilRef = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
-            var stencilMask = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 0xff;
-            var stencilFailOp = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : gfx.STENCIL_OP_KEEP;
-            var stencilZFailOp = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : gfx.STENCIL_OP_KEEP;
-            var stencilZPassOp = arguments.length > 6 && arguments[6] !== undefined ? arguments[6] : gfx.STENCIL_OP_KEEP;
-            var stencilWriteMask = arguments.length > 7 && arguments[7] !== undefined ? arguments[7] : 0xff;
+  function JsbEditBoxImpl() {
+    BaseClass.call(this);
+  }
 
-            _get(NativeEffect.prototype.__proto__ || Object.getPrototypeOf(NativeEffect.prototype), "setStencil", this).call(this, enabled, stencilFunc, stencilRef, stencilMask, stencilFailOp, stencilZFailOp, stencilZPassOp, stencilWriteMask);
-            this._nativeObj.setStencil(stencilFunc, stencilRef, stencilMask, stencilFailOp, stencilZFailOp, stencilZPassOp, stencilWriteMask);
-        }
-    }, {
-        key: "define",
-        value: function define(name, value) {
-            _get(NativeEffect.prototype.__proto__ || Object.getPrototypeOf(NativeEffect.prototype), "define", this).call(this, name, value);
-            this._nativeObj.define(name, value);
-        }
-    }, {
-        key: "updateHash",
-        value: function updateHash(hash) {
-            this._nativeObj.updateHash(hash);
-        }
-    }, {
-        key: "getTechnique",
-        value: function getTechnique(stage) {}
-    }, {
-        key: "setProperty",
-        value: function setProperty(name, val) {
-            _get(NativeEffect.prototype.__proto__ || Object.getPrototypeOf(NativeEffect.prototype), "setProperty", this).call(this, name, val);
+  js.extend(JsbEditBoxImpl, BaseClass);
+  EditBox._ImplClass = JsbEditBoxImpl;
+  Object.assign(JsbEditBoxImpl.prototype, {
+    init: function init(delegate) {
+      if (!delegate) {
+        cc.error('EditBox init failed');
+        return;
+      }
 
-            var prop = this._properties[name];
-            if (prop) {
-                this._nativeObj.setProperty(name, prop.value);
-            }
+      this._delegate = delegate;
+    },
+    beginEditing: function beginEditing() {
+      var self = this;
+      var delegate = this._delegate;
+      var multiline = delegate.inputMode === InputMode.ANY;
+
+      var rect = this._getRect();
+
+      var maxLength = delegate.maxLength < 0 ? MAX_VALUE : delegate.maxLength;
+      var inputTypeString = getInputType(delegate.inputMode);
+
+      if (delegate.inputFlag === InputFlag.PASSWORD) {
+        inputTypeString = 'password';
+      }
+
+      function onConfirm(res) {
+        delegate.editBoxEditingReturn();
+      }
+
+      function onInput(res) {
+        if (delegate._string !== res.value) {
+          delegate.editBoxTextChanged(res.value);
         }
-    }, {
-        key: "clone",
-        value: function clone() {
-            var effect = _get(NativeEffect.prototype.__proto__ || Object.getPrototypeOf(NativeEffect.prototype), "clone", this).call(this);
-            effect._nativeObj = new renderer.EffectNative();
-            effect._nativeObj.copy(this._nativeObj);
-            effect._nativePtr = effect._nativeObj.self();
-            return effect;
-        }
-    }]);
+      }
 
-    return NativeEffect;
-}(Effect);
+      function onComplete(res) {
+        self.endEditing();
+      }
 
-// Effect.parseTechniques = function () {
-//     return [];
-// }
+      jsb.inputBox.onInput(onInput);
+      jsb.inputBox.onConfirm(onConfirm);
+      jsb.inputBox.onComplete(onComplete);
 
-cc.Effect = NativeEffect;
+      if (!cc.sys.isMobile) {
+        this._delegate._hideLabels();
+      }
+
+      jsb.inputBox.show({
+        defaultValue: delegate._string,
+        maxLength: maxLength,
+        multiple: multiline,
+        confirmHold: false,
+        confirmType: getKeyboardReturnType(delegate.returnType),
+        inputType: inputTypeString,
+        originX: rect.x,
+        originY: rect.y,
+        width: rect.width,
+        height: rect.height
+      });
+      this._editing = true;
+      delegate.editBoxEditingDidBegan();
+    },
+    endEditing: function endEditing() {
+      jsb.inputBox.offConfirm();
+      jsb.inputBox.offInput();
+      jsb.inputBox.offComplete();
+      this._editing = false;
+
+      if (!cc.sys.isMobile) {
+        this._delegate._showLabels();
+      }
+
+      jsb.inputBox.hide();
+
+      this._delegate.editBoxEditingDidEnded();
+    },
+    _getRect: function _getRect() {
+      var node = this._delegate.node,
+          viewScaleX = cc.view._scaleX,
+          viewScaleY = cc.view._scaleY;
+      var dpr = cc.view._devicePixelRatio;
+      node.getWorldMatrix(worldMat);
+      var camera = cc.Camera.findCamera(node);
+      camera.getWorldToScreenMatrix2D(cameraMat);
+      cc.Mat4.multiply(cameraMat, cameraMat, worldMat);
+      var contentSize = node._contentSize;
+      var vec3 = cc.v3();
+      vec3.x = -node._anchorPoint.x * contentSize.width;
+      vec3.y = -node._anchorPoint.y * contentSize.height;
+      cc.Mat4.translate(cameraMat, cameraMat, vec3);
+      viewScaleX /= dpr;
+      viewScaleY /= dpr;
+      var finalScaleX = cameraMat.m[0] * viewScaleX;
+      var finaleScaleY = cameraMat.m[5] * viewScaleY;
+      var viewportRect = cc.view._viewportRect;
+      var offsetX = viewportRect.x / dpr,
+          offsetY = viewportRect.y / dpr;
+      return {
+        x: cameraMat.m[12] * viewScaleX + offsetX,
+        y: cameraMat.m[13] * viewScaleY + offsetY,
+        width: contentSize.width * finalScaleX,
+        height: contentSize.height * finaleScaleY
+      };
+    }
+  });
+})();
 
 },{}],31:[function(require,module,exports){
 "use strict";
 
-/****************************************************************************
- Copyright (c) 2018 Xiamen Yaji Software Co., Ltd.
+// Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
+(function () {
+  if (!cc.EffectVariant) return;
+  var EffectVariant = cc.EffectVariant;
+  var _init = EffectVariant.prototype.init;
+  Object.assign(EffectVariant.prototype, {
+    init: function init(effect) {
+      _init.call(this, effect);
 
- http://www.cocos.com
+      this._nativeObj = new renderer.EffectVariant(effect._nativeObj);
+    },
+    _onEffectChanged: function _onEffectChanged() {
+      var nativeEffect = this._effect ? this._effect._nativeObj : null;
 
- Permission is hereby granted, free of charge, to any person obtaining a copy
- of this software and associated engine source code (the "Software"), a limited,
-  worldwide, royalty-free, non-assignable, revocable and non-exclusive license
- to use Cocos Creator solely to develop games on your target platforms. You shall
-  not use Cocos Creator software for developing other software or tools that's
-  used for developing games. You are not granted to publish, distribute,
-  sublicense, and/or sell copies of Cocos Creator.
-
- The software or tools in this License Agreement are licensed, not sold.
- Xiamen Yaji Software Co., Ltd. reserves all rights not expressly granted to you.
-
- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- THE SOFTWARE.
- ****************************************************************************/
-
-cc.game.restart = function () {
-  __restartVM();
-};
-
-jsb.onHide = function () {
-  cc.game.emit(cc.game.EVENT_HIDE);
-};
-
-jsb.onShow = function () {
-  cc.game.emit(cc.game.EVENT_SHOW);
-};
-
-jsb.onResize = function (size) {
-  if (size.width === 0 || size.height === 0) return;
-  window.resize(size.width, size.height);
-  cc.view.setCanvasSize(window.innerWidth, window.innerHeight);
-};
+      this._nativeObj.setEffect(nativeEffect);
+    },
+    updateHash: function updateHash(hash) {
+      this._nativeObj.updateHash(hash);
+    }
+  });
+})();
 
 },{}],32:[function(require,module,exports){
-/****************************************************************************
- Copyright (c) 2013-2016 Chukong Technologies Inc.
- Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
+"use strict";
 
- http://www.cocos.com
+// Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
+var gfx = window.gfx; // Effect
 
- Permission is hereby granted, free of charge, to any person obtaining a copy
- of this software and associated engine source code (the "Software"), a limited,
-  worldwide, royalty-free, non-assignable, revocable and  non-exclusive license
- to use Cocos Creator solely to develop games on your target platforms. You shall
-  not use Cocos Creator software for developing other software or tools that's
-  used for developing games. You are not granted to publish, distribute,
-  sublicense, and/or sell copies of Cocos Creator.
+var Effect = cc.Effect;
+var _init = Effect.prototype.init;
+var _clone = Effect.prototype.clone;
+Object.assign(Effect.prototype, {
+  init: function init(name, techniques, techniqueIndex, asset, createNative) {
+    _init.call(this, name, techniques, techniqueIndex, asset);
 
- The software or tools in this License Agreement are licensed, not sold.
- Xiamen Yaji Software Co., Ltd. reserves all rights not expressly granted to you.
+    if (createNative) {
+      this._nativeObj = new renderer.EffectNative();
 
- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- THE SOFTWARE.
- ****************************************************************************/
-'use strict';
+      this._nativeObj.init(techniques);
 
-function downloadScript(item, callback) {
-    require(item.url);
-    return null;
-}
-
-var audioDownloader = new jsb.Downloader();
-var audioUrlMap = {}; // key: url, value: { loadingItem, callback }
-
-audioDownloader.setOnFileTaskSuccess(function (task) {
-    var _audioUrlMap$task$req = audioUrlMap[task.requestURL],
-        item = _audioUrlMap$task$req.item,
-        callback = _audioUrlMap$task$req.callback;
-
-    if (!(item && callback)) {
-        return;
+      this._nativePtr = this._nativeObj.self();
     }
+  },
+  clone: function clone() {
+    var effect = _clone.call(this);
 
-    item.url = task.storagePath;
-    item.rawUrl = task.storagePath;
+    effect._nativeObj = new renderer.EffectNative();
 
-    callback(null, item);
-    delete audioUrlMap[task.requestURL];
-});
+    effect._nativeObj.copy(this._nativeObj);
 
-audioDownloader.setOnTaskError(function (task, errorCode, errorCodeInternal, errorStr) {
-    var callback = audioUrlMap[task.requestURL].callback;
+    effect._nativePtr = effect._nativeObj.self();
+    return effect;
+  }
+}); // EffectBase
 
-    callback && callback(errorStr, null);
-    delete audioUrlMap[task.requestURL];
-});
+var EffectBase = cc.EffectBase;
+var _setCullMode = EffectBase.prototype.setCullMode;
+var _setBlend = EffectBase.prototype.setBlend;
+var _setStencilEnabled = EffectBase.prototype.setStencilEnabled;
+var _setStencil = EffectBase.prototype.setStencil;
+var _setDepth = EffectBase.prototype.setDepth;
+var _define = EffectBase.prototype.define;
+var _setProperty = EffectBase.prototype.setProperty;
+Object.assign(EffectBase.prototype, {
+  setCullMode: function setCullMode() {
+    var cullMode = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : gfx.CULL_BACK;
+    var passIdx = arguments.length > 1 ? arguments[1] : undefined;
 
-function downloadAudio(item, callback) {
-    if (/^http/.test(item.url)) {
-        var index = item.url.lastIndexOf('/');
-        var fileName = item.url.substr(index + 1);
-        var storagePath = jsb.fileUtils.getWritablePath() + fileName;
+    _setCullMode.call(this, cullMode, passIdx);
 
-        // load from local cache
-        if (jsb.fileUtils.isFileExist(storagePath)) {
-            item.url = storagePath;
-            item.rawUrl = storagePath;
-            callback && callback(null, item);
-        }
-        // download remote audio
-        else {
-                audioUrlMap[item.url] = { item: item, callback: callback };
-                audioDownloader.createDownloadFileTask(item.url, storagePath);
-            }
-        // Don't return anything to use async loading.
-    } else {
-        return item.url;
+    this._nativeObj.setCullMode(cullMode, passIdx === undefined ? -1 : passIdx);
+  },
+  setBlend: function setBlend() {
+    var enabled = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+    var blendEq = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : gfx.BLEND_FUNC_ADD;
+    var blendSrc = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : gfx.BLEND_SRC_ALPHA;
+    var blendDst = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : gfx.BLEND_ONE_MINUS_SRC_ALPHA;
+    var blendAlphaEq = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : gfx.BLEND_FUNC_ADD;
+    var blendSrcAlpha = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : gfx.BLEND_SRC_ALPHA;
+    var blendDstAlpha = arguments.length > 6 && arguments[6] !== undefined ? arguments[6] : gfx.BLEND_ONE_MINUS_SRC_ALPHA;
+    var blendColor = arguments.length > 7 && arguments[7] !== undefined ? arguments[7] : 0xffffffff;
+    var passIdx = arguments.length > 8 ? arguments[8] : undefined;
+
+    _setBlend.call(this, enabled, blendEq, blendSrc, blendDst, blendAlphaEq, blendSrcAlpha, blendDstAlpha, blendColor, passIdx);
+
+    this._nativeObj.setBlend(enabled, blendEq, blendSrc, blendDst, blendAlphaEq, blendSrcAlpha, blendDstAlpha, blendColor, passIdx === undefined ? -1 : passIdx);
+  },
+  setDepth: function setDepth(depthTest, depthWrite, depthFunc, passIdx) {
+    _setDepth.call(this, depthTest, depthWrite, depthFunc, passIdx);
+
+    this._nativeObj.setDepth(depthTest, depthWrite, depthFunc, passIdx === undefined ? -1 : passIdx);
+  },
+  setStencilEnabled: function setStencilEnabled(enabled, passIdx) {
+    _setStencilEnabled.call(this, enabled, passIdx);
+
+    this._nativeObj.setStencilTest(enabled, passIdx === undefined ? -1 : passIdx);
+  },
+  setStencil: function setStencil() {
+    var enabled = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : gfx.STENCIL_INHERIT;
+    var stencilFunc = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : gfx.DS_FUNC_ALWAYS;
+    var stencilRef = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+    var stencilMask = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 0xff;
+    var stencilFailOp = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : gfx.STENCIL_OP_KEEP;
+    var stencilZFailOp = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : gfx.STENCIL_OP_KEEP;
+    var stencilZPassOp = arguments.length > 6 && arguments[6] !== undefined ? arguments[6] : gfx.STENCIL_OP_KEEP;
+    var stencilWriteMask = arguments.length > 7 && arguments[7] !== undefined ? arguments[7] : 0xff;
+    var passIdx = arguments.length > 8 ? arguments[8] : undefined;
+
+    _setStencil.call(this, enabled, stencilFunc, stencilRef, stencilMask, stencilFailOp, stencilZFailOp, stencilZPassOp, stencilWriteMask, passIdx);
+
+    this._nativeObj.setStencil(stencilFunc, stencilRef, stencilMask, stencilFailOp, stencilZFailOp, stencilZPassOp, stencilWriteMask, passIdx === undefined ? -1 : passIdx);
+  },
+  define: function define(name, value, passIdx, force) {
+    _define.call(this, name, value, passIdx, force);
+
+    this._nativeObj.define(name, value, passIdx === undefined ? -1 : passIdx);
+  },
+  updateHash: function updateHash(hash) {
+    this._nativeObj.updateHash(hash);
+  },
+  setProperty: function setProperty(name, val, passIdx, directly) {
+    _setProperty.call(this, name, val, passIdx);
+
+    var prop = this.getProperty(name);
+
+    if (prop !== undefined) {
+      this._nativeObj.setProperty(name, prop, passIdx === undefined ? -1 : passIdx, directly);
     }
-}
-
-function loadAudio(item, callback) {
-    var loadByDeserializedAsset = item._owner instanceof cc.AudioClip;
-    if (loadByDeserializedAsset) {
-        return item.url;
-    } else {
-        var audioClip = new cc.AudioClip();
-        // obtain user url through nativeUrl
-        audioClip._setRawAsset(item.rawUrl, false);
-        // obtain download url through _nativeAsset
-        audioClip._nativeAsset = item.url;
-        return audioClip;
-    }
-}
-
-function downloadImage(item, callback) {
-    var img = new Image();
-    img.src = item.url;
-    img.onload = function (info) {
-        callback(null, img);
-    };
-    // Don't return anything to use async loading.
-}
-
-function _getFontFamily(fontHandle) {
-    var ttfIndex = fontHandle.lastIndexOf(".ttf");
-    if (ttfIndex === -1) return fontHandle;
-
-    var slashPos = fontHandle.lastIndexOf("/");
-    var fontFamilyName;
-    if (slashPos === -1) {
-        fontFamilyName = fontHandle.substring(0, ttfIndex) + "_LABEL";
-    } else {
-        fontFamilyName = fontHandle.substring(slashPos + 1, ttfIndex) + "_LABEL";
-    }
-    if (fontFamilyName.indexOf(' ') !== -1) {
-        fontFamilyName = '"' + fontFamilyName + '"';
-    }
-    return fontFamilyName;
-}
-
-function downloadText(item) {
-    var url = item.url;
-
-    var result = jsb.fileUtils.getStringFromFile(url);
-    if (typeof result === 'string' && result) {
-        return result;
-    } else {
-        return new Error('Download text failed: ' + url);
-    }
-}
-
-function downloadBinary(item) {
-    var url = item.url;
-
-    var result = jsb.fileUtils.getDataFromFile(url);
-    if (result) {
-        return result;
-    } else {
-        return new Error('Download binary file failed: ' + url);
-    }
-}
-
-function loadFont(item, callback) {
-    var url = item.url;
-    var fontFamilyName = _getFontFamily(url);
-
-    var fontFace = new FontFace(fontFamilyName, "url('" + url + "')");
-    document.fonts.add(fontFace);
-
-    fontFace.load();
-    fontFace.loaded.then(function () {
-        callback(null, fontFamilyName);
-    }, function () {
-        cc.warnID(4933, fontFamilyName);
-        callback(null, fontFamilyName);
-    });
-}
-
-function loadCompressedTex(item) {
-    return item.content;
-}
-
-cc.loader.addDownloadHandlers({
-    // JS
-    'js': downloadScript,
-    'jsc': downloadScript,
-
-    // Images
-    'png': downloadImage,
-    'jpg': downloadImage,
-    'bmp': downloadImage,
-    'jpeg': downloadImage,
-    'gif': downloadImage,
-    'ico': downloadImage,
-    'tiff': downloadImage,
-    'webp': downloadImage,
-    'image': downloadImage,
-    'pvr': downloadImage,
-    'pkm': downloadImage,
-
-    // Audio
-    'mp3': downloadAudio,
-    'ogg': downloadAudio,
-    'wav': downloadAudio,
-    'mp4': downloadAudio,
-    'm4a': downloadAudio,
-
-    // Text
-    'txt': downloadText,
-    'xml': downloadText,
-    'vsh': downloadText,
-    'fsh': downloadText,
-    'atlas': downloadText,
-
-    'tmx': downloadText,
-    'tsx': downloadText,
-
-    'json': downloadText,
-    'ExportJson': downloadText,
-    'plist': downloadText,
-
-    'fnt': downloadText,
-
-    'binary': downloadBinary,
-    'bin': downloadBinary,
-    'dbbin': downloadBinary,
-
-    'default': downloadText
-});
-
-cc.loader.addLoadHandlers({
-    // Font
-    'font': loadFont,
-    'eot': loadFont,
-    'ttf': loadFont,
-    'woff': loadFont,
-    'svg': loadFont,
-    'ttc': loadFont,
-
-    // Audio
-    'mp3': loadAudio,
-    'ogg': loadAudio,
-    'wav': loadAudio,
-    'mp4': loadAudio,
-    'm4a': loadAudio,
-
-    // compressed texture
-    'pvr': loadCompressedTex,
-    'pkm': loadCompressedTex
+  }
 });
 
 },{}],33:[function(require,module,exports){
@@ -2604,276 +2738,257 @@ cc.loader.addLoadHandlers({
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
  ****************************************************************************/
+cc.game.restart = function () {
+  __restartVM();
+};
 
-(function () {
-    if (window.middleware === undefined) return;
-    var ParticleSystem = cc.ParticleSystem;
-    if (ParticleSystem === undefined) return;
-    var PSProto = ParticleSystem.prototype;
+jsb.onPause = function () {
+  cc.game.emit(cc.game.EVENT_HIDE);
+};
 
-    PSProto.initProperties = function () {
+jsb.onResume = function () {
+  cc.game.emit(cc.game.EVENT_SHOW);
+};
 
-        this._simulator = new middleware.ParticleSimulator();
-
-        this._previewTimer = null;
-        this._focused = false;
-        this._texture = null;
-        this._renderData = null;
-
-        this._simulator.__particleSystem__ = this;
-
-        this._simulator.setFinishedCallback(function () {
-            var self = this.__particleSystem__;
-            self._finishedSimulation();
-        });
-
-        this._simulator.setStopCallback(function () {
-            var self = this.__particleSystem__;
-            self.stopSystem();
-        });
-
-        this._initProperties();
-    };
-
-    // value type properties
-    var propertiesList = ["positionType", "emissionRate", "totalParticles", "duration", "emitterMode", "life", "lifeVar", "startSize", "startSizeVar", "endSize", "endSizeVar", "startSpin", "startSpinVar", "endSpin", "endSpinVar", "angle", "angleVar", "speed", "speedVar", "radialAccel", "radialAccelVar", "tangentialAccel", "tangentialAccelVar", "rotationIsDir", "startRadius", "startRadiusVar", "endRadius", "endRadiusVar", "rotatePerS", "rotatePerSVar"];
-
-    propertiesList.forEach(function (getSetName) {
-        var varName = "_" + getSetName;
-        Object.defineProperty(PSProto, getSetName, {
-            get: function get() {
-                this[varName] === undefined && (this[varName] = 0);
-                return this[varName];
-            },
-            set: function set(val) {
-                this[varName] = val;
-                this._simulator && (this._simulator[getSetName] = val);
-            }
-        });
-    });
-
-    // object type properties
-    var objPropList = ['gravity', 'sourcePos', 'posVar', 'startColor', 'startColorVar', 'endColor', 'endColorVar'];
-
-    PSProto._initProperties = function () {
-        // init properties
-        for (var key in propertiesList) {
-            var propName = propertiesList[key];
-            this[propName] = this[propName];
-        }
-
-        for (var _key in objPropList) {
-            var _propName = objPropList[_key];
-            this[_propName] = this[_propName];
-        }
-    }, Object.defineProperty(PSProto, 'gravity', {
-        get: function get() {
-            !this._gravity && (this._gravity = cc.v2(0, 0));
-            return this._gravity;
-        },
-        set: function set(val) {
-            if (!val) return;
-            !this._gravity && (this._gravity = cc.v2(0, 0));
-
-            this.gravity.x = val.x;
-            this.gravity.y = val.y;
-            this._simulator && this._simulator.setGravity(val.x, val.y, 0);
-        }
-    });
-
-    Object.defineProperty(PSProto, 'sourcePos', {
-        get: function get() {
-            !this._sourcePos && (this._sourcePos = cc.v2(0, 0));
-            return this._sourcePos;
-        },
-        set: function set(val) {
-            if (!val) return;
-            !this._sourcePos && (this._sourcePos = cc.v2(0, 0));
-
-            this._sourcePos.x = val.x;
-            this._sourcePos.y = val.y;
-            this._simulator && this._simulator.setSourcePos(val.x, val.y, 0);
-        }
-    });
-
-    Object.defineProperty(PSProto, 'posVar', {
-        get: function get() {
-            !this._posVar && (this._posVar = cc.v2(0, 0));
-            return this._posVar;
-        },
-        set: function set(val) {
-            if (!val) return;
-            !this._posVar && (this._posVar = cc.v2(0, 0));
-
-            this._posVar.x = val.x;
-            this._posVar.y = val.y;
-            this._simulator && this._simulator.setPosVar(val.x, val.y, 0);
-        }
-    });
-
-    Object.defineProperty(PSProto, 'startColor', {
-        get: function get() {
-            !this._startColor && (this._startColor = cc.color(255, 255, 255, 255));
-            return this._startColor;
-        },
-        set: function set(val) {
-            if (!val) return;
-            !this._startColor && (this._startColor = cc.color(255, 255, 255, 255));
-
-            this._startColor.r = val.r;
-            this._startColor.g = val.g;
-            this._startColor.b = val.b;
-            this._startColor.a = val.a;
-            this._simulator && this._simulator.setStartColor(val.r, val.g, val.b, val.a);
-        }
-    });
-
-    Object.defineProperty(PSProto, 'startColorVar', {
-        get: function get() {
-            !this._startColorVar && (this._startColorVar = cc.color(0, 0, 0, 0));
-            return this._startColorVar;
-        },
-        set: function set(val) {
-            if (!val) return;
-            !this._startColorVar && (this._startColorVar = cc.color(0, 0, 0, 0));
-
-            this._startColorVar.r = val.r;
-            this._startColorVar.g = val.g;
-            this._startColorVar.b = val.b;
-            this._startColorVar.a = val.a;
-            this._simulator && this._simulator.setStartColorVar(val.r, val.g, val.b, val.a);
-        }
-    });
-
-    Object.defineProperty(PSProto, 'endColor', {
-        get: function get() {
-            !this._endColor && (this._endColor = cc.color(255, 255, 255, 0));
-            return this._endColor;
-        },
-        set: function set(val) {
-            if (!val) return;
-            !this._endColor && (this._endColor = cc.color(255, 255, 255, 0));
-
-            this._endColor.r = val.r;
-            this._endColor.g = val.g;
-            this._endColor.b = val.b;
-            this._endColor.a = val.a;
-            this._simulator && this._simulator.setEndColor(val.r, val.g, val.b, val.a);
-        }
-    });
-
-    Object.defineProperty(PSProto, 'endColorVar', {
-        get: function get() {
-            !this._endColorVar && (this._endColorVar = cc.color(0, 0, 0, 0));
-            return this._endColorVar;
-        },
-        set: function set(val) {
-            if (!val) return;
-            !this._endColorVar && (this._endColorVar = cc.color(0, 0, 0, 0));
-
-            this._endColorVar.r = val.r;
-            this._endColorVar.g = val.g;
-            this._endColorVar.b = val.b;
-            this._endColorVar.a = val.a;
-            this._simulator && this._simulator.setEndColorVar(val.r, val.g, val.b, val.a);
-        }
-    });
-
-    Object.defineProperty(PSProto, 'particleCount', {
-        get: function get() {
-            if (!this._simulator) {
-                return 0;
-            }
-            return this._simulator.getParticleCount();
-        }
-    });
-
-    Object.defineProperty(PSProto, 'active', {
-        get: function get() {
-            if (!this._simulator) {
-                return false;
-            }
-            return this._simulator.active();
-        }
-    });
-
-    PSProto.onLoad = function () {
-        this._simulator.bindNodeProxy(this.node._proxy);
-    };
-
-    // shield in native
-    PSProto.update = null;
-    PSProto.lateUpdate = null;
-
-    PSProto._resetAssembler = function () {
-        this._assembler = new renderer.CustomAssembler();
-        this._assembler.setUseModel(true);
-        this.node._proxy.setAssembler(this._assembler);
-    };
-
-    var _onEnable = PSProto.onEnable;
-    PSProto.onEnable = function () {
-        _onEnable.call(this);
-        if (this._simulator) {
-            this._simulator.onEnable();
-        }
-    };
-
-    var _onDisable = PSProto.onDisable;
-    PSProto.onDisable = function () {
-        _onDisable.call(this);
-        if (this._simulator) {
-            this._simulator.onDisable();
-        }
-    };
-
-    PSProto._onTextureLoaded = function () {
-        this._texture = this._renderSpriteFrame.getTexture();
-        this._simulator.updateUVs(this._renderSpriteFrame.uv);
-        // Reactivate material
-        this._activateMaterial();
-    };
-
-    PSProto._activateMaterial = function () {
-        if (!this._texture || !this._texture.loaded) {
-            this.markForRender(false);
-            if (this._renderSpriteFrame) {
-                this._applySpriteFrame();
-            }
-            return;
-        }
-
-        var material = this.sharedMaterials[0];
-        if (!material) {
-            material = cc.Material.getInstantiatedBuiltinMaterial('2d-sprite', this);
-        } else {
-            material = cc.Material.getInstantiatedMaterial(material, this);
-        }
-
-        material.define('USE_TEXTURE', true);
-        material.define('CC_USE_MODEL', true);
-        material.setProperty('texture', this._texture);
-        this._simulator.setEffect(material.effect._nativeObj);
-        this.setMaterial(0, material);
-        if (this.node && this.node._renderComponent == this) {
-            this.markForRender(true);
-        }
-    };
-
-    var _initWithDictionary = PSProto._initWithDictionary;
-    PSProto._initWithDictionary = function (content) {
-        _initWithDictionary.call(this, content);
-        this._initProperties();
-    };
-
-    var __preload = PSProto.__preload;
-    PSProto.__preload = function () {
-        __preload.call(this);
-        this._initProperties();
-    };
-})();
+jsb.onResize = function (size) {
+  if (size.width === 0 || size.height === 0) return;
+  window.resize(size.width, size.height);
+  cc.view.setCanvasSize(window.innerWidth, window.innerHeight);
+};
 
 },{}],34:[function(require,module,exports){
+/****************************************************************************
+ Copyright (c) 2013-2016 Chukong Technologies Inc.
+ Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
+
+ http://www.cocos.com
+
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated engine source code (the "Software"), a limited,
+  worldwide, royalty-free, non-assignable, revocable and  non-exclusive license
+ to use Cocos Creator solely to develop games on your target platforms. You shall
+  not use Cocos Creator software for developing other software or tools that's
+  used for developing games. You are not granted to publish, distribute,
+  sublicense, and/or sell copies of Cocos Creator.
+
+ The software or tools in this License Agreement are licensed, not sold.
+ Xiamen Yaji Software Co., Ltd. reserves all rights not expressly granted to you.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
+ ****************************************************************************/
+'use strict';
+
+var jsbUtils = require('./jsb-utils');
+
+function downloadScript(item, callback) {
+  require(item.url);
+
+  return null;
+}
+
+var audioDownloader = new jsb.Downloader();
+var audioUrlMap = {}; // key: url, value: { loadingItem, callback }
+
+audioDownloader.setOnFileTaskSuccess(function (task) {
+  var _audioUrlMap$task$req = audioUrlMap[task.requestURL],
+      item = _audioUrlMap$task$req.item,
+      callback = _audioUrlMap$task$req.callback;
+
+  if (!(item && callback)) {
+    return;
+  }
+
+  item.url = task.storagePath;
+  item.rawUrl = task.storagePath;
+  callback(null, item);
+  delete audioUrlMap[task.requestURL];
+});
+audioDownloader.setOnTaskError(function (task, errorCode, errorCodeInternal, errorStr) {
+  var callback = audioUrlMap[task.requestURL].callback;
+  callback && callback(errorStr, null);
+  delete audioUrlMap[task.requestURL];
+});
+
+function downloadAudio(item, callback) {
+  if (/^http/.test(item.url)) {
+    var fileName = jsbUtils.murmurhash2_32_gc(item.url) + cc.path.extname(item.url);
+    var storagePath = jsb.fileUtils.getWritablePath() + fileName; // load from local cache
+
+    if (jsb.fileUtils.isFileExist(storagePath)) {
+      item.url = storagePath;
+      item.rawUrl = storagePath;
+      callback && callback(null, item);
+    } // download remote audio
+    else {
+        audioUrlMap[item.url] = {
+          item: item,
+          callback: callback
+        };
+        audioDownloader.createDownloadFileTask(item.url, storagePath);
+      } // Don't return anything to use async loading.
+
+  } else {
+    return item.url;
+  }
+}
+
+function loadAudio(item, callback) {
+  var loadByDeserializedAsset = item._owner instanceof cc.AudioClip;
+
+  if (loadByDeserializedAsset) {
+    return item.url;
+  } else {
+    var audioClip = new cc.AudioClip(); // obtain user url through nativeUrl
+
+    audioClip._setRawAsset(item.rawUrl, false); // obtain download url through _nativeAsset
+
+
+    audioClip._nativeAsset = item.url;
+    return audioClip;
+  }
+}
+
+function downloadImage(item, callback) {
+  var img = new Image();
+  img.src = item.url;
+
+  img.onload = function (info) {
+    callback(null, img);
+  };
+
+  img.onerror = function (event) {
+    callback(new Error('load image fail:' + img.src), null);
+  }; // Don't return anything to use async loading.
+
+}
+
+function _getFontFamily(fontHandle) {
+  var ttfIndex = fontHandle.lastIndexOf(".ttf");
+  if (ttfIndex === -1) return fontHandle;
+  var slashPos = fontHandle.lastIndexOf("/");
+  var fontFamilyName;
+
+  if (slashPos === -1) {
+    fontFamilyName = fontHandle.substring(0, ttfIndex) + "_LABEL";
+  } else {
+    fontFamilyName = fontHandle.substring(slashPos + 1, ttfIndex) + "_LABEL";
+  }
+
+  if (fontFamilyName.indexOf(' ') !== -1) {
+    fontFamilyName = '"' + fontFamilyName + '"';
+  }
+
+  return fontFamilyName;
+}
+
+function downloadText(item) {
+  var url = item.url;
+  var result = jsb.fileUtils.getStringFromFile(url);
+
+  if (typeof result === 'string' && result) {
+    return result;
+  } else {
+    return new Error('Download text failed: ' + url);
+  }
+}
+
+function downloadBinary(item) {
+  var url = item.url;
+  var result = jsb.fileUtils.getDataFromFile(url);
+
+  if (result) {
+    return result;
+  } else {
+    return new Error('Download binary file failed: ' + url);
+  }
+}
+
+function loadFont(item, callback) {
+  var url = item.url;
+
+  var fontFamilyName = _getFontFamily(url);
+
+  var fontFace = new FontFace(fontFamilyName, "url('" + url + "')");
+  document.fonts.add(fontFace);
+  fontFace.load();
+  fontFace.loaded.then(function () {
+    callback(null, fontFamilyName);
+  }, function () {
+    cc.warnID(4933, fontFamilyName);
+    callback(null, fontFamilyName);
+  });
+}
+
+function loadCompressedTex(item) {
+  return item.content;
+}
+
+cc.loader.addDownloadHandlers({
+  // JS
+  'js': downloadScript,
+  'jsc': downloadScript,
+  // Images
+  'png': downloadImage,
+  'jpg': downloadImage,
+  'bmp': downloadImage,
+  'jpeg': downloadImage,
+  'gif': downloadImage,
+  'ico': downloadImage,
+  'tiff': downloadImage,
+  'webp': downloadImage,
+  'image': downloadImage,
+  'pvr': downloadImage,
+  'pkm': downloadImage,
+  // Audio
+  'mp3': downloadAudio,
+  'ogg': downloadAudio,
+  'wav': downloadAudio,
+  'mp4': downloadAudio,
+  'm4a': downloadAudio,
+  // Text
+  'txt': downloadText,
+  'xml': downloadText,
+  'vsh': downloadText,
+  'fsh': downloadText,
+  'atlas': downloadText,
+  'tmx': downloadText,
+  'tsx': downloadText,
+  'json': downloadText,
+  'ExportJson': downloadText,
+  'plist': downloadText,
+  'fnt': downloadText,
+  'binary': downloadBinary,
+  'bin': downloadBinary,
+  'dbbin': downloadBinary,
+  'skel': downloadBinary,
+  'default': downloadText
+});
+cc.loader.addLoadHandlers({
+  // Font
+  'font': loadFont,
+  'eot': loadFont,
+  'ttf': loadFont,
+  'woff': loadFont,
+  'svg': loadFont,
+  'ttc': loadFont,
+  // Audio
+  'mp3': loadAudio,
+  'ogg': loadAudio,
+  'wav': loadAudio,
+  'mp4': loadAudio,
+  'm4a': loadAudio,
+  // compressed texture
+  'pvr': loadCompressedTex,
+  'pkm': loadCompressedTex
+});
+
+},{"./jsb-utils":41}],35:[function(require,module,exports){
 "use strict";
 
 /****************************************************************************
@@ -2900,7 +3015,281 @@ cc.loader.addLoadHandlers({
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
  ****************************************************************************/
+(function () {
+  if (window.middleware === undefined) return;
+  var ParticleSystem = cc.ParticleSystem;
+  if (ParticleSystem === undefined) return;
+  var PSProto = ParticleSystem.prototype;
 
+  PSProto.initProperties = function () {
+    this._simulator = new middleware.ParticleSimulator();
+    this._previewTimer = null;
+    this._focused = false;
+    this._texture = null;
+    this._renderData = null;
+    this._simulator.__particleSystem__ = this;
+
+    this._simulator.setFinishedCallback(function () {
+      var self = this.__particleSystem__;
+
+      self._finishedSimulation();
+    });
+
+    this._simulator.setStopCallback(function () {
+      var self = this.__particleSystem__;
+      self.stopSystem();
+    });
+
+    this._initProperties();
+  }; // value type properties
+
+
+  var propertiesList = ["positionType", "emissionRate", "totalParticles", "duration", "emitterMode", "life", "lifeVar", "startSize", "startSizeVar", "endSize", "endSizeVar", "startSpin", "startSpinVar", "endSpin", "endSpinVar", "angle", "angleVar", "speed", "speedVar", "radialAccel", "radialAccelVar", "tangentialAccel", "tangentialAccelVar", "rotationIsDir", "startRadius", "startRadiusVar", "endRadius", "endRadiusVar", "rotatePerS", "rotatePerSVar"];
+  propertiesList.forEach(function (getSetName) {
+    var varName = "_" + getSetName;
+    Object.defineProperty(PSProto, getSetName, {
+      get: function get() {
+        this[varName] === undefined && (this[varName] = 0);
+        return this[varName];
+      },
+      set: function set(val) {
+        this[varName] = val;
+        this._simulator && (this._simulator[getSetName] = val);
+      }
+    });
+  }); // object type properties
+
+  var objPropList = ['gravity', 'sourcePos', 'posVar', 'startColor', 'startColorVar', 'endColor', 'endColorVar'];
+  PSProto._initProperties = function () {
+    // init properties
+    for (var key in propertiesList) {
+      var propName = propertiesList[key];
+      this[propName] = this[propName];
+    }
+
+    for (var _key in objPropList) {
+      var _propName = objPropList[_key];
+      this[_propName] = this[_propName];
+    }
+  }, Object.defineProperty(PSProto, 'gravity', {
+    get: function get() {
+      !this._gravity && (this._gravity = cc.v2(0, 0));
+      return this._gravity;
+    },
+    set: function set(val) {
+      if (!val) return;
+      !this._gravity && (this._gravity = cc.v2(0, 0));
+      this.gravity.x = val.x;
+      this.gravity.y = val.y;
+      this._simulator && this._simulator.setGravity(val.x, val.y, 0);
+    }
+  });
+  Object.defineProperty(PSProto, 'sourcePos', {
+    get: function get() {
+      !this._sourcePos && (this._sourcePos = cc.v2(0, 0));
+      return this._sourcePos;
+    },
+    set: function set(val) {
+      if (!val) return;
+      !this._sourcePos && (this._sourcePos = cc.v2(0, 0));
+      this._sourcePos.x = val.x;
+      this._sourcePos.y = val.y;
+      this._simulator && this._simulator.setSourcePos(val.x, val.y, 0);
+    }
+  });
+  Object.defineProperty(PSProto, 'posVar', {
+    get: function get() {
+      !this._posVar && (this._posVar = cc.v2(0, 0));
+      return this._posVar;
+    },
+    set: function set(val) {
+      if (!val) return;
+      !this._posVar && (this._posVar = cc.v2(0, 0));
+      this._posVar.x = val.x;
+      this._posVar.y = val.y;
+      this._simulator && this._simulator.setPosVar(val.x, val.y, 0);
+    }
+  });
+  Object.defineProperty(PSProto, 'startColor', {
+    get: function get() {
+      !this._startColor && (this._startColor = cc.color(255, 255, 255, 255));
+      return this._startColor;
+    },
+    set: function set(val) {
+      if (!val) return;
+      !this._startColor && (this._startColor = cc.color(255, 255, 255, 255));
+      this._startColor.r = val.r;
+      this._startColor.g = val.g;
+      this._startColor.b = val.b;
+      this._startColor.a = val.a;
+      this._simulator && this._simulator.setStartColor(val.r, val.g, val.b, val.a);
+    }
+  });
+  Object.defineProperty(PSProto, 'startColorVar', {
+    get: function get() {
+      !this._startColorVar && (this._startColorVar = cc.color(0, 0, 0, 0));
+      return this._startColorVar;
+    },
+    set: function set(val) {
+      if (!val) return;
+      !this._startColorVar && (this._startColorVar = cc.color(0, 0, 0, 0));
+      this._startColorVar.r = val.r;
+      this._startColorVar.g = val.g;
+      this._startColorVar.b = val.b;
+      this._startColorVar.a = val.a;
+      this._simulator && this._simulator.setStartColorVar(val.r, val.g, val.b, val.a);
+    }
+  });
+  Object.defineProperty(PSProto, 'endColor', {
+    get: function get() {
+      !this._endColor && (this._endColor = cc.color(255, 255, 255, 0));
+      return this._endColor;
+    },
+    set: function set(val) {
+      if (!val) return;
+      !this._endColor && (this._endColor = cc.color(255, 255, 255, 0));
+      this._endColor.r = val.r;
+      this._endColor.g = val.g;
+      this._endColor.b = val.b;
+      this._endColor.a = val.a;
+      this._simulator && this._simulator.setEndColor(val.r, val.g, val.b, val.a);
+    }
+  });
+  Object.defineProperty(PSProto, 'endColorVar', {
+    get: function get() {
+      !this._endColorVar && (this._endColorVar = cc.color(0, 0, 0, 0));
+      return this._endColorVar;
+    },
+    set: function set(val) {
+      if (!val) return;
+      !this._endColorVar && (this._endColorVar = cc.color(0, 0, 0, 0));
+      this._endColorVar.r = val.r;
+      this._endColorVar.g = val.g;
+      this._endColorVar.b = val.b;
+      this._endColorVar.a = val.a;
+      this._simulator && this._simulator.setEndColorVar(val.r, val.g, val.b, val.a);
+    }
+  });
+  Object.defineProperty(PSProto, 'particleCount', {
+    get: function get() {
+      if (!this._simulator) {
+        return 0;
+      }
+
+      return this._simulator.getParticleCount();
+    }
+  });
+  Object.defineProperty(PSProto, 'active', {
+    get: function get() {
+      if (!this._simulator) {
+        return false;
+      }
+
+      return this._simulator.active();
+    }
+  });
+
+  PSProto.onLoad = function () {
+    this._simulator.bindNodeProxy(this.node._proxy);
+  }; // shield in native
+
+
+  PSProto.update = null;
+  PSProto.lateUpdate = null;
+
+  PSProto._resetAssembler = function () {
+    this._assembler = new renderer.CustomAssembler();
+
+    this._assembler.setUseModel(true);
+
+    this.node._proxy.setAssembler(this._assembler);
+  };
+
+  var _onEnable = PSProto.onEnable;
+
+  PSProto.onEnable = function () {
+    _onEnable.call(this);
+
+    if (this._simulator) {
+      this._simulator.onEnable();
+    }
+  };
+
+  var _onDisable = PSProto.onDisable;
+
+  PSProto.onDisable = function () {
+    _onDisable.call(this);
+
+    if (this._simulator) {
+      this._simulator.onDisable();
+    }
+  };
+
+  PSProto._onTextureLoaded = function () {
+    this._simulator.updateUVs(this._renderSpriteFrame.uv);
+
+    this._syncAspect();
+
+    this._simulator.aspectRatio = this._aspectRatio || 1.0;
+
+    this._updateMaterial();
+
+    this.markForRender(true);
+  };
+
+  var _updateMaterial = PSProto._updateMaterial;
+
+  PSProto._updateMaterial = function () {
+    _updateMaterial.call(this);
+
+    var material = this._materials[0];
+    material && this._simulator.setEffect(material.effect._nativeObj);
+  };
+
+  var _initWithDictionary = PSProto._initWithDictionary;
+
+  PSProto._initWithDictionary = function (content) {
+    _initWithDictionary.call(this, content);
+
+    this._initProperties();
+  };
+
+  var __preload = PSProto.__preload;
+
+  PSProto.__preload = function () {
+    __preload.call(this);
+
+    this._initProperties();
+  };
+})();
+
+},{}],36:[function(require,module,exports){
+"use strict";
+
+/****************************************************************************
+ Copyright (c) 2018 Xiamen Yaji Software Co., Ltd.
+
+ http://www.cocos.com
+
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated engine source code (the "Software"), a limited,
+  worldwide, royalty-free, non-assignable, revocable and non-exclusive license
+ to use Cocos Creator solely to develop games on your target platforms. You shall
+  not use Cocos Creator software for developing other software or tools that's
+  used for developing games. You are not granted to publish, distribute,
+  sublicense, and/or sell copies of Cocos Creator.
+
+ The software or tools in this License Agreement are licensed, not sold.
+ Xiamen Yaji Software Co., Ltd. reserves all rights not expressly granted to you.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
+ ****************************************************************************/
 // JS to Native bridges
 if (window.JavascriptJavaBridge && cc.sys.os == cc.sys.OS_ANDROID) {
   jsb.reflection = new JavascriptJavaBridge();
@@ -2909,23 +3298,22 @@ if (window.JavascriptJavaBridge && cc.sys.os == cc.sys.OS_ANDROID) {
   jsb.reflection = new JavaScriptObjCBridge();
 }
 
-},{}],35:[function(require,module,exports){
+},{}],37:[function(require,module,exports){
 "use strict";
 
 (function () {
-    if (!cc.SkinnedMeshRenderer) return;
-
-    var SkinnedMeshAssembler = cc.SkinnedMeshRenderer.__assembler__.prototype;
-    cc.js.mixin(SkinnedMeshAssembler, {
-        updateRenderData: function updateRenderData(comp) {
-            comp.calcJointMatrix();
-            comp.node._renderFlag |= cc.RenderFlow.FLAG_UPDATE_RENDER_DATA;
-        }
-    });
+  if (!cc.SkinnedMeshRenderer) return;
+  var SkinnedMeshAssembler = cc.SkinnedMeshRenderer.__assembler__.prototype;
+  cc.js.mixin(SkinnedMeshAssembler, {
+    updateRenderData: function updateRenderData(comp) {
+      comp.calcJointMatrix();
+      comp.node._renderFlag |= cc.RenderFlow.FLAG_UPDATE_RENDER_DATA;
+    }
+  });
 })();
 
-},{}],36:[function(require,module,exports){
-'use strict';
+},{}],38:[function(require,module,exports){
+"use strict";
 
 /****************************************************************************
  Copyright (c) 2018 Xiamen Yaji Software Co., Ltd.
@@ -2951,729 +3339,862 @@ if (window.JavascriptJavaBridge && cc.sys.os == cc.sys.OS_ANDROID) {
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
  ****************************************************************************/
-
 (function () {
-    if (window.sp === undefined || window.spine === undefined || window.middleware === undefined) return;
+  if (window.sp === undefined || window.spine === undefined || window.middleware === undefined) return;
+  sp.VertexEffectDelegate = spine.VertexEffectDelegate;
+  jsb.generateGetSet(spine); // spine global time scale
 
-    sp.VertexEffectDelegate = spine.VertexEffectDelegate;
-    jsb.generateGetSet(spine);
+  Object.defineProperty(sp, 'timeScale', {
+    get: function get() {
+      return this._timeScale;
+    },
+    set: function set(value) {
+      this._timeScale = value;
+      spine.SkeletonAnimation.setGlobalTimeScale(value);
+    },
+    configurable: true
+  });
 
-    // spine global time scale
-    Object.defineProperty(sp, 'timeScale', {
-        get: function get() {
-            return this._timeScale;
-        },
-        set: function set(value) {
-            this._timeScale = value;
-            spine.SkeletonAnimation.setGlobalTimeScale(value);
-        },
+  var _slotColor = cc.color(0, 0, 255, 255);
 
-        configurable: true
+  var _boneColor = cc.color(255, 0, 0, 255);
+
+  var _meshColor = cc.color(255, 255, 0, 255);
+
+  var _originColor = cc.color(0, 255, 0, 255);
+
+  var skeletonDataProto = sp.SkeletonData.prototype;
+  var _gTextureIdx = 1;
+  var _textureKeyMap = {};
+
+  var _textureMap = new WeakMap();
+
+  var skeletonDataMgr = spine.SkeletonDataMgr.getInstance();
+  spine.skeletonDataMgr = skeletonDataMgr;
+  skeletonDataMgr.setDestroyCallback(function (textureIndex) {
+    if (!textureIndex) return;
+    var texKey = _textureKeyMap[textureIndex];
+
+    if (texKey && _textureMap.has(texKey)) {
+      _textureMap["delete"](texKey);
+
+      delete _textureKeyMap[textureIndex];
+    }
+  });
+  var skeletonCacheMgr = spine.SkeletonCacheMgr.getInstance();
+  spine.skeletonCacheMgr = skeletonCacheMgr;
+
+  skeletonDataProto.destroy = function () {
+    this.reset();
+    skeletonCacheMgr.removeSkeletonCache(this._uuid);
+    cc.Asset.prototype.destroy.call(this);
+  };
+
+  skeletonDataProto.reset = function () {
+    if (this._skeletonCache) {
+      spine.disposeSkeletonData(this._uuid);
+      this._jsbTextures = null;
+      this._skeletonCache = null;
+    }
+
+    this._atlasCache = null;
+  };
+
+  skeletonDataProto.getRuntimeData = function () {
+    if (!this._skeletonCache) {
+      this.init();
+    }
+
+    return this._skeletonCache;
+  };
+
+  skeletonDataProto.init = function () {
+    if (this._skeletonCache) return;
+    var uuid = this._uuid;
+
+    if (!uuid) {
+      cc.errorID(7504);
+      return;
+    }
+
+    var skeletonCache = spine.retainSkeletonData(uuid);
+
+    if (skeletonCache) {
+      this._skeletonCache = skeletonCache;
+      return;
+    }
+
+    var atlasText = this.atlasText;
+
+    if (!atlasText) {
+      cc.errorID(7508, this.name);
+      return;
+    }
+
+    var textures = this.textures;
+    var textureNames = this.textureNames;
+
+    if (!(textures && textures.length > 0 && textureNames && textureNames.length > 0)) {
+      cc.errorID(7507, this.name);
+      return;
+    }
+
+    var jsbTextures = {};
+
+    for (var i = 0; i < textures.length; ++i) {
+      var texture = textures[i];
+      var textureIdx = this.recordTexture(texture);
+      var spTex = new middleware.Texture2D();
+      spTex.setRealTextureIndex(textureIdx);
+      spTex.setPixelsWide(texture.width);
+      spTex.setPixelsHigh(texture.height);
+      spTex.setTexParamCallback(function (texIdx, minFilter, magFilter, wrapS, warpT) {
+        var tex = this.getTextureByIndex(texIdx);
+        tex.setFilters(minFilter, magFilter);
+        tex.setWrapMode(wrapS, warpT);
+      }.bind(this));
+      spTex.setNativeTexture(texture.getImpl());
+      jsbTextures[textureNames[i]] = spTex;
+    }
+
+    this._jsbTextures = jsbTextures;
+    var filePath = null;
+
+    if (this.skeletonJsonStr) {
+      filePath = this.skeletonJsonStr;
+    } else {
+      filePath = cc.loader.md5Pipe ? cc.loader.md5Pipe.transformURL(this.nativeUrl) : this.nativeUrl;
+    }
+
+    this._skeletonCache = spine.initSkeletonData(uuid, filePath, atlasText, jsbTextures, this.scale);
+  };
+
+  skeletonDataProto.recordTexture = function (texture) {
+    var index = _gTextureIdx;
+    var texKey = _textureKeyMap[index] = {
+      key: index
+    };
+
+    _textureMap.set(texKey, texture);
+
+    _gTextureIdx++;
+    return index;
+  };
+
+  skeletonDataProto.getTextureByIndex = function (textureIdx) {
+    var texKey = _textureKeyMap[textureIdx];
+    if (!texKey) return;
+    return _textureMap.get(texKey);
+  };
+
+  var renderCompProto = cc.RenderComponent.prototype;
+  var animation = spine.SkeletonAnimation.prototype; // The methods are added to be compatibility with old versions.
+
+  animation.setCompleteListener = function (listener) {
+    this._compeleteListener = listener;
+    this.setCompleteListenerNative(function (trackEntry) {
+      var loopCount = Math.floor(trackEntry.trackTime / trackEntry.animationEnd);
+      this._compeleteListener && this._compeleteListener(trackEntry, loopCount);
     });
+  }; // The methods are added to be compatibility with old versions.
 
-    var _slotColor = cc.color(0, 0, 255, 255);
-    var _boneColor = cc.color(255, 0, 0, 255);
-    var _meshColor = cc.color(255, 255, 0, 255);
-    var _originColor = cc.color(0, 255, 0, 255);
 
-    var skeletonDataProto = sp.SkeletonData.prototype;
-    var _gTextureIdx = 1;
-    var _textureKeyMap = {};
-    var _textureMap = new WeakMap();
-
-    var skeletonDataMgr = spine.SkeletonDataMgr.getInstance();
-    spine.skeletonDataMgr = skeletonDataMgr;
-    skeletonDataMgr.setDestroyCallback(function (textureIndex) {
-        if (!textureIndex) return;
-        var texKey = _textureKeyMap[textureIndex];
-        if (texKey && _textureMap.has(texKey)) {
-            _textureMap.delete(texKey);
-            delete _textureKeyMap[textureIndex];
-        }
+  animation.setTrackCompleteListener = function (trackEntry, listener) {
+    this._trackCompeleteListener = listener;
+    this.setTrackCompleteListenerNative(trackEntry, function (trackEntryNative) {
+      var loopCount = Math.floor(trackEntryNative.trackTime / trackEntryNative.animationEnd);
+      this._trackCompeleteListener && this._trackCompeleteListener(trackEntryNative, loopCount);
     });
+  }; // Temporary solution before upgrade the Spine API
 
-    var skeletonCacheMgr = spine.SkeletonCacheMgr.getInstance();
-    spine.skeletonCacheMgr = skeletonCacheMgr;
-    skeletonDataProto.destroy = function () {
-        if (this._skeletonCache) {
-            spine.disposeSkeletonData(this._uuid);
-            this._jsbTextures = null;
-            this._skeletonCache = null;
-        }
-        skeletonCacheMgr.removeSkeletonCache(this._uuid);
-        cc.Asset.prototype.destroy.call(this);
-    };
 
-    skeletonDataProto.getRuntimeData = function () {
-        if (!this._skeletonCache) {
-            this.init();
-        }
-        return this._skeletonCache;
-    };
-
-    skeletonDataProto.init = function () {
-        if (this._skeletonCache) return;
-
-        var uuid = this._uuid;
-        if (!uuid) {
-            cc.errorID(7504);
-            return;
-        }
-
-        var skeletonCache = spine.retainSkeletonData(uuid);
-        if (skeletonCache) {
-            this._skeletonCache = skeletonCache;
-            return;
-        }
-
-        var atlasText = this.atlasText;
-        if (!atlasText) {
-            cc.errorID(7508, this.name);
-            return;
-        }
-
-        var textures = this.textures;
-        var textureNames = this.textureNames;
-        if (!(textures && textures.length > 0 && textureNames && textureNames.length > 0)) {
-            cc.errorID(7507, this.name);
-            return;
-        }
-
-        var jsbTextures = {};
-        for (var i = 0; i < textures.length; ++i) {
-            var texture = textures[i];
-            var textureIdx = this.recordTexture(texture);
-            var spTex = new middleware.Texture2D();
-            spTex.setRealTextureIndex(textureIdx);
-            spTex.setPixelsWide(texture.width);
-            spTex.setPixelsHigh(texture.height);
-            spTex.setTexParamCallback(function (texIdx, minFilter, magFilter, wrapS, warpT) {
-                var tex = this.getTextureByIndex(texIdx);
-                tex.setFilters(minFilter, magFilter);
-                tex.setWrapMode(wrapS, warpT);
-            }.bind(this));
-            spTex.setNativeTexture(texture.getImpl());
-            jsbTextures[textureNames[i]] = spTex;
-        }
-        this._jsbTextures = jsbTextures;
-        this._skeletonCache = spine.initSkeletonData(uuid, this.skeletonJsonStr, atlasText, jsbTextures, this.scale);
-    };
-
-    skeletonDataProto.recordTexture = function (texture) {
-        var index = _gTextureIdx;
-        var texKey = _textureKeyMap[index] = { key: index };
-        _textureMap.set(texKey, texture);
-        _gTextureIdx++;
-        return index;
-    };
-
-    skeletonDataProto.getTextureByIndex = function (textureIdx) {
-        var texKey = _textureKeyMap[textureIdx];
-        if (!texKey) return;
-        return _textureMap.get(texKey);
-    };
-
-    var renderCompProto = cc.RenderComponent.prototype;
-
-    var animation = spine.SkeletonAnimation.prototype;
-    // The methods are added to be compatibility with old versions.
-    animation.setCompleteListener = function (listener) {
-        this._compeleteListener = listener;
-        this.setCompleteListenerNative(function (trackEntry) {
-            var loopCount = Math.floor(trackEntry.trackTime / trackEntry.animationEnd);
-            this._compeleteListener && this._compeleteListener(trackEntry, loopCount);
-        });
-    };
-
-    // Temporary solution before upgrade the Spine API
-    animation.setAnimationListener = function (target, callback) {
-        this._target = target;
-        this._callback = callback;
-
-        this.setStartListener(function (trackEntry) {
-            if (this._target && this._callback) {
-                this._callback.call(this._target, this, trackEntry, sp.AnimationEventType.START, null, 0);
-            }
-        });
-
-        this.setInterruptListener(function (trackEntry) {
-            if (this._target && this._callback) {
-                this._callback.call(this._target, this, trackEntry, sp.AnimationEventType.INTERRUPT, null, 0);
-            }
-        });
-
-        this.setEndListener(function (trackEntry) {
-            if (this._target && this._callback) {
-                this._callback.call(this._target, this, trackEntry, sp.AnimationEventType.END, null, 0);
-            }
-        });
-
-        this.setDisposeListener(function (trackEntry) {
-            if (this._target && this._callback) {
-                this._callback.call(this._target, this, trackEntry, sp.AnimationEventType.DISPOSE, null, 0);
-            }
-        });
-
-        this.setCompleteListener(function (trackEntry, loopCount) {
-            if (this._target && this._callback) {
-                this._callback.call(this._target, this, trackEntry, sp.AnimationEventType.COMPLETE, null, loopCount);
-            }
-        });
-
-        this.setEventListener(function (trackEntry, event) {
-            if (this._target && this._callback) {
-                this._callback.call(this._target, this, trackEntry, sp.AnimationEventType.EVENT, event, 0);
-            }
-        });
-    };
-
-    sp.Skeleton._assembler = null;
-    var skeleton = sp.Skeleton.prototype;
-    var AnimationCacheMode = sp.Skeleton.AnimationCacheMode;
-    Object.defineProperty(skeleton, 'paused', {
-        get: function get() {
-            return this._paused || false;
-        },
-        set: function set(value) {
-            this._paused = value;
-            if (this._nativeSkeleton) {
-                this._nativeSkeleton.paused(value);
-            }
-        }
+  animation.setAnimationListener = function (target, callback) {
+    this._target = target;
+    this._callback = callback;
+    this.setStartListener(function (trackEntry) {
+      if (this._target && this._callback) {
+        this._callback.call(this._target, this, trackEntry, sp.AnimationEventType.START, null, 0);
+      }
     });
-
-    Object.defineProperty(skeleton, "premultipliedAlpha", {
-        get: function get() {
-            if (this._premultipliedAlpha === undefined) {
-                return true;
-            }
-            return this._premultipliedAlpha;
-        },
-        set: function set(value) {
-            this._premultipliedAlpha = value;
-            if (this._nativeSkeleton) {
-                this._nativeSkeleton.setOpacityModifyRGB(this._premultipliedAlpha);
-            }
-        }
+    this.setInterruptListener(function (trackEntry) {
+      if (this._target && this._callback) {
+        this._callback.call(this._target, this, trackEntry, sp.AnimationEventType.INTERRUPT, null, 0);
+      }
     });
-
-    Object.defineProperty(skeleton, "timeScale", {
-        get: function get() {
-            if (this._timeScale === undefined) return 1.0;
-            return this._timeScale;
-        },
-        set: function set(value) {
-            this._timeScale = value;
-            if (this._nativeSkeleton) {
-                this._nativeSkeleton.setTimeScale(this._timeScale);
-            }
-        }
+    this.setEndListener(function (trackEntry) {
+      if (this._target && this._callback) {
+        this._callback.call(this._target, this, trackEntry, sp.AnimationEventType.END, null, 0);
+      }
     });
+    this.setDisposeListener(function (trackEntry) {
+      if (this._target && this._callback) {
+        this._callback.call(this._target, this, trackEntry, sp.AnimationEventType.DISPOSE, null, 0);
+      }
+    });
+    this.setCompleteListener(function (trackEntry, loopCount) {
+      if (this._target && this._callback) {
+        this._callback.call(this._target, this, trackEntry, sp.AnimationEventType.COMPLETE, null, loopCount);
+      }
+    });
+    this.setEventListener(function (trackEntry, event) {
+      if (this._target && this._callback) {
+        this._callback.call(this._target, this, trackEntry, sp.AnimationEventType.EVENT, event, 0);
+      }
+    });
+  };
 
-    var _updateDebugDraw = skeleton._updateDebugDraw;
-    skeleton._updateDebugDraw = function () {
-        _updateDebugDraw.call(this);
-        if (this._nativeSkeleton && !this.isAnimationCached()) {
-            this._nativeSkeleton.setDebugMeshEnabled(this.debugMesh);
-            this._nativeSkeleton.setDebugSlotsEnabled(this.debugSlots);
-            this._nativeSkeleton.setDebugBonesEnabled(this.debugBones);
-        }
-    };
+  sp.Skeleton._assembler = null;
+  var skeleton = sp.Skeleton.prototype;
+  var AnimationCacheMode = sp.Skeleton.AnimationCacheMode;
+  Object.defineProperty(skeleton, 'paused', {
+    get: function get() {
+      return this._paused || false;
+    },
+    set: function set(value) {
+      this._paused = value;
 
-    var _updateUseTint = skeleton._updateUseTint;
-    skeleton._updateUseTint = function () {
-        _updateUseTint.call(this);
-        if (this._nativeSkeleton && !this.isAnimationCached()) {
-            this._nativeSkeleton.setUseTint(this.useTint);
-        }
-        this._assembler && this._assembler.clearEffect();
-    };
+      if (this._nativeSkeleton) {
+        this._nativeSkeleton.paused(value);
+      }
+    }
+  });
+  Object.defineProperty(skeleton, "premultipliedAlpha", {
+    get: function get() {
+      if (this._premultipliedAlpha === undefined) {
+        return true;
+      }
 
-    var _updateBatch = skeleton._updateBatch;
-    skeleton._updateBatch = function () {
-        _updateBatch.call(this);
-        if (this._nativeSkeleton) {
-            this._nativeSkeleton.setBatchEnabled(this.enableBatch);
-        }
-        this._assembler && this._assembler.clearEffect();
-    };
+      return this._premultipliedAlpha;
+    },
+    set: function set(value) {
+      this._premultipliedAlpha = value;
 
-    var _onLoad = skeleton.onLoad;
-    skeleton.onLoad = function () {
-        if (_onLoad) {
-            _onLoad.call(this);
-        }
-    };
+      if (this._nativeSkeleton) {
+        this._nativeSkeleton.setOpacityModifyRGB(this._premultipliedAlpha);
+      }
+    }
+  });
+  Object.defineProperty(skeleton, "timeScale", {
+    get: function get() {
+      if (this._timeScale === undefined) return 1.0;
+      return this._timeScale;
+    },
+    set: function set(value) {
+      this._timeScale = value;
 
-    skeleton._resetAssembler = function () {
-        this._assembler = new renderer.CustomAssembler();
-        this.node._proxy.setAssembler(this._assembler);
-    };
+      if (this._nativeSkeleton) {
+        this._nativeSkeleton.setTimeScale(this._timeScale);
+      }
+    }
+  });
+  var _updateDebugDraw = skeleton._updateDebugDraw;
 
-    var _setMaterial = skeleton.setMaterial;
-    skeleton.setMaterial = function (index, material) {
-        _setMaterial.call(this, index, material);
-        this._assembler && this._assembler.clearEffect();
-        if (this._nativeSkeleton) {
-            var nativeEffect = material.effect._nativeObj;
-            this._nativeSkeleton.setEffect(nativeEffect);
-        }
-    };
+  skeleton._updateDebugDraw = function () {
+    _updateDebugDraw.call(this);
 
-    skeleton.setSkeletonData = function (skeletonData) {
-        null != skeletonData.width && null != skeletonData.height && this.node.setContentSize(skeletonData.width, skeletonData.height);
+    if (this._nativeSkeleton && !this.isAnimationCached()) {
+      this._nativeSkeleton.setDebugMeshEnabled(this.debugMesh);
 
-        var uuid = skeletonData._uuid;
-        if (!uuid) {
-            cc.errorID(7504);
+      this._nativeSkeleton.setDebugSlotsEnabled(this.debugSlots);
+
+      this._nativeSkeleton.setDebugBonesEnabled(this.debugBones);
+    }
+  };
+
+  var _updateUseTint = skeleton._updateUseTint;
+
+  skeleton._updateUseTint = function () {
+    _updateUseTint.call(this);
+
+    if (this._nativeSkeleton) {
+      this._nativeSkeleton.setUseTint(this.useTint);
+    }
+
+    this._assembler && this._assembler.clearEffect();
+  };
+
+  var _updateBatch = skeleton._updateBatch;
+
+  skeleton._updateBatch = function () {
+    _updateBatch.call(this);
+
+    if (this._nativeSkeleton) {
+      this._nativeSkeleton.setBatchEnabled(this.enableBatch);
+    }
+
+    this._assembler && this._assembler.clearEffect();
+  };
+
+  var _onLoad = skeleton.onLoad;
+
+  skeleton.onLoad = function () {
+    if (_onLoad) {
+      _onLoad.call(this);
+    }
+  };
+
+  skeleton._resetAssembler = function () {
+    this._assembler = new renderer.CustomAssembler();
+
+    this.node._proxy.setAssembler(this._assembler);
+  };
+
+  var _updateMaterial = skeleton._updateMaterial;
+  var _materialHashMap = {};
+  var _materialId = 1;
+
+  skeleton._updateMaterial = function () {
+    _updateMaterial.call(this);
+
+    this._assembler && this._assembler.clearEffect();
+    var baseMaterial = this.getMaterial(0);
+
+    if (this._nativeSkeleton && baseMaterial) {
+      var originHash = baseMaterial.effect.getHash();
+      var id = _materialHashMap[originHash] || _materialId++;
+      _materialHashMap[originHash] = id;
+      baseMaterial.effect.updateHash(id);
+      var nativeEffect = baseMaterial.effect._nativeObj;
+
+      this._nativeSkeleton.setEffect(nativeEffect);
+    }
+  };
+
+  skeleton.setSkeletonData = function (skeletonData) {
+    null != skeletonData.width && null != skeletonData.height && this.node.setContentSize(skeletonData.width, skeletonData.height);
+    var uuid = skeletonData._uuid;
+
+    if (!uuid) {
+      cc.errorID(7504);
+      return;
+    }
+
+    var texValues = skeletonData.textures;
+    var texKeys = skeletonData.textureNames;
+
+    if (!(texValues && texValues.length > 0 && texKeys && texKeys.length > 0)) {
+      cc.errorID(7507, skeletonData.name);
+      return;
+    }
+
+    if (this._nativeSkeleton) {
+      this._nativeSkeleton.stopSchedule();
+
+      this._nativeSkeleton._comp = null;
+      this._nativeSkeleton = null;
+    }
+
+    var nativeSkeleton = null;
+
+    if (this.isAnimationCached()) {
+      nativeSkeleton = new spine.SkeletonCacheAnimation(uuid, this._cacheMode == AnimationCacheMode.SHARED_CACHE);
+    } else {
+      nativeSkeleton = new spine.SkeletonAnimation();
+
+      try {
+        spine.initSkeletonRenderer(nativeSkeleton, uuid);
+      } catch (e) {
+        cc._throw(e);
+
+        return;
+      }
+
+      nativeSkeleton.setDebugSlotsEnabled(this.debugSlots);
+      nativeSkeleton.setDebugMeshEnabled(this.debugMesh);
+      nativeSkeleton.setDebugBonesEnabled(this.debugBones);
+    }
+
+    this._nativeSkeleton = nativeSkeleton;
+    nativeSkeleton._comp = this;
+    nativeSkeleton.setUseTint(this.useTint);
+    nativeSkeleton.setOpacityModifyRGB(this.premultipliedAlpha);
+    nativeSkeleton.setTimeScale(this.timeScale);
+    nativeSkeleton.setBatchEnabled(this.enableBatch);
+    nativeSkeleton.bindNodeProxy(this.node._proxy);
+    nativeSkeleton.setColor(this.node.color);
+    this._skeleton = nativeSkeleton.getSkeleton(); // init skeleton listener
+
+    this._startListener && this.setStartListener(this._startListener);
+    this._endListener && this.setEndListener(this._endListener);
+    this._completeListener && this.setCompleteListener(this._completeListener);
+    this._eventListener && this.setEventListener(this._eventListener);
+    this._interruptListener && this.setInterruptListener(this._interruptListener);
+    this._disposeListener && this.setDisposeListener(this._disposeListener);
+
+    this._updateMaterial();
+
+    this.markForRender(true);
+  };
+
+  skeleton._updateColor = function () {
+    if (this._nativeSkeleton) {
+      this._nativeSkeleton.setColor(this.node.color);
+    }
+  };
+
+  skeleton.setAnimationStateData = function (stateData) {
+    if (this._nativeSkeleton && !this.isAnimationCached()) {
+      this._stateData = stateData;
+      return this._nativeSkeleton.setAnimationStateData(stateData);
+    }
+  };
+
+  skeleton.onEnable = function () {
+    renderCompProto.onEnable.call(this);
+
+    if (this._nativeSkeleton) {
+      this._nativeSkeleton.onEnable();
+    }
+  };
+
+  skeleton.onDisable = function () {
+    renderCompProto.onDisable.call(this);
+
+    if (this._nativeSkeleton) {
+      this._nativeSkeleton.onDisable();
+    }
+  };
+
+  skeleton.setVertexEffectDelegate = function (effectDelegate) {
+    if (this._nativeSkeleton && !this.isAnimationCached()) {
+      this._nativeSkeleton.setVertexEffectDelegate(effectDelegate);
+    }
+  };
+
+  skeleton.update = function () {
+    var nativeSkeleton = this._nativeSkeleton;
+    if (!nativeSkeleton) return;
+    var node = this.node;
+    if (!node) return;
+
+    if (!this.isAnimationCached() && (this.debugBones || this.debugSlots || this.debugMesh) && this._debugRenderer) {
+      var graphics = this._debugRenderer;
+      graphics.clear();
+      graphics.lineWidth = 2;
+      var debugData = this._debugData || nativeSkeleton.getDebugData();
+      if (!debugData) return;
+      var debugIdx = 0,
+          debugType = 0,
+          debugLen = 0;
+
+      while (true) {
+        debugType = debugData[debugIdx++];
+        if (debugType == 0) break;
+        debugLen = debugData[debugIdx++];
+
+        switch (debugType) {
+          case 1:
+            // slots
+            graphics.strokeColor = _slotColor;
+
+            for (var i = 0; i < debugLen; i += 8) {
+              graphics.moveTo(debugData[debugIdx++], debugData[debugIdx++]);
+              graphics.lineTo(debugData[debugIdx++], debugData[debugIdx++]);
+              graphics.lineTo(debugData[debugIdx++], debugData[debugIdx++]);
+              graphics.lineTo(debugData[debugIdx++], debugData[debugIdx++]);
+              graphics.close();
+              graphics.stroke();
+            }
+
+            break;
+
+          case 2:
+            // mesh
+            graphics.strokeColor = _meshColor;
+
+            for (var _i = 0; _i < debugLen; _i += 6) {
+              graphics.moveTo(debugData[debugIdx++], debugData[debugIdx++]);
+              graphics.lineTo(debugData[debugIdx++], debugData[debugIdx++]);
+              graphics.lineTo(debugData[debugIdx++], debugData[debugIdx++]);
+              graphics.close();
+              graphics.stroke();
+            }
+
+            break;
+
+          case 3:
+            // bones
+            graphics.strokeColor = _boneColor;
+            graphics.fillColor = _slotColor; // Root bone color is same as slot color.
+
+            for (var _i2 = 0; _i2 < debugLen; _i2 += 4) {
+              var bx = debugData[debugIdx++];
+              var by = debugData[debugIdx++];
+              var x = debugData[debugIdx++];
+              var y = debugData[debugIdx++]; // Bone lengths.
+
+              graphics.moveTo(bx, by);
+              graphics.lineTo(x, y);
+              graphics.stroke(); // Bone origins.
+
+              graphics.circle(bx, by, Math.PI * 1.5);
+              graphics.fill();
+
+              if (_i2 === 0) {
+                graphics.fillColor = _originColor;
+              }
+            }
+
+            break;
+
+          default:
             return;
         }
+      }
+    }
+  };
 
-        var texValues = skeletonData.textures;
-        var texKeys = skeletonData.textureNames;
-        if (!(texValues && texValues.length > 0 && texKeys && texKeys.length > 0)) {
-            cc.errorID(7507, skeletonData.name);
-            return;
-        }
+  skeleton.updateWorldTransform = function () {
+    if (this._nativeSkeleton && !this.isAnimationCached()) {
+      this._nativeSkeleton.updateWorldTransform();
+    }
+  };
 
-        if (this._nativeSkeleton) {
-            this._nativeSkeleton.stopSchedule();
-            this._nativeSkeleton._comp = null;
-            this._nativeSkeleton = null;
-        }
+  skeleton.setToSetupPose = function () {
+    if (this._nativeSkeleton) {
+      this._nativeSkeleton.setToSetupPose();
+    }
+  };
 
-        var nativeSkeleton = null;
-        if (this.isAnimationCached()) {
-            nativeSkeleton = new spine.SkeletonCacheAnimation(uuid, this._cacheMode == AnimationCacheMode.SHARED_CACHE);
-        } else {
-            nativeSkeleton = new spine.SkeletonAnimation();
-            try {
-                spine.initSkeletonRenderer(nativeSkeleton, uuid);
-            } catch (e) {
-                cc._throw(e);
-                return;
-            }
-            nativeSkeleton.setDebugSlotsEnabled(this.debugSlots);
-            nativeSkeleton.setDebugMeshEnabled(this.debugMesh);
-            nativeSkeleton.setDebugBonesEnabled(this.debugBones);
-            nativeSkeleton.setUseTint(this.useTint);
-        }
+  skeleton.setBonesToSetupPose = function () {
+    if (this._nativeSkeleton) {
+      this._nativeSkeleton.setBonesToSetupPose();
+    }
+  };
 
-        this._nativeSkeleton = nativeSkeleton;
-        nativeSkeleton._comp = this;
+  skeleton.setSlotsToSetupPose = function () {
+    if (this._nativeSkeleton) {
+      this._nativeSkeleton.setSlotsToSetupPose();
+    }
+  };
 
-        nativeSkeleton.setOpacityModifyRGB(this.premultipliedAlpha);
-        nativeSkeleton.setTimeScale(this.timeScale);
-        nativeSkeleton.setBatchEnabled(this.enableBatch);
-        nativeSkeleton.bindNodeProxy(this.node._proxy);
-        nativeSkeleton.setColor(this.node.color);
+  skeleton.setSlotsRange = function (startSlotIndex, endSlotIndex) {
+    if (this._nativeSkeleton && !this.isAnimationCached()) {
+      this._nativeSkeleton.setSlotsRange(startSlotIndex, endSlotIndex);
+    }
+  };
 
-        this._skeleton = nativeSkeleton.getSkeleton();
+  skeleton.updateAnimationCache = function (animName) {
+    if (!this.isAnimationCached()) return;
 
-        // init skeleton listener
-        this._startListener && this.setStartListener(this._startListener);
-        this._endListener && this.setEndListener(this._endListener);
-        this._completeListener && this.setCompleteListener(this._completeListener);
-        this._eventListener && this.setEventListener(this._eventListener);
-        this._interruptListener && this.setInterruptListener(this._interruptListener);
-        this._disposeListener && this.setDisposeListener(this._disposeListener);
+    if (this._nativeSkeleton) {
+      if (animName) {
+        this._nativeSkeleton.updateAnimationCache(animName);
+      } else {
+        this._nativeSkeleton.updateAllAnimationCache();
+      }
+    }
+  };
 
-        this._activateMaterial();
-    };
+  skeleton.invalidAnimationCache = function () {
+    if (!this.isAnimationCached()) return;
 
-    skeleton._updateColor = function () {
-        if (this._nativeSkeleton) {
-            this._nativeSkeleton.setColor(this.node.color);
-        }
-    };
+    if (this._nativeSkeleton) {
+      this._nativeSkeleton.updateAllAnimationCache();
+    }
+  };
 
-    skeleton.setAnimationStateData = function (stateData) {
-        if (this._nativeSkeleton && !this.isAnimationCached()) {
-            this._stateData = stateData;
-            return this._nativeSkeleton.setAnimationStateData(stateData);
-        }
-    };
+  skeleton.findBone = function (boneName) {
+    if (this._nativeSkeleton) return this._nativeSkeleton.findBone(boneName);
+    return null;
+  };
 
-    skeleton._prepareToRender = function (material) {
-        var texValues = this.skeletonData.textures;
-        material.setProperty('texture', texValues[0]);
-        this.setMaterial(0, material);
-        this.markForUpdateRenderData(false);
-        if (this.node && this.node._renderComponent == this) {
-            this.markForRender(true);
-        }
-    };
+  skeleton.findSlot = function (slotName) {
+    if (this._nativeSkeleton) return this._nativeSkeleton.findSlot(slotName);
+    return null;
+  };
 
-    skeleton.onEnable = function () {
-        renderCompProto.onEnable.call(this);
-        if (this._nativeSkeleton) {
-            this._nativeSkeleton.onEnable();
-        }
-        this._activateMaterial();
-    };
+  skeleton.setSkin = function (skinName) {
+    if (this._nativeSkeleton) return this._nativeSkeleton.setSkin(skinName);
+    return null;
+  };
 
-    skeleton.onDisable = function () {
-        renderCompProto.onDisable.call(this);
-        if (this._nativeSkeleton) {
-            this._nativeSkeleton.onDisable();
-        }
-    };
+  skeleton.getAttachment = function (slotName, attachmentName) {
+    if (this._nativeSkeleton) return this._nativeSkeleton.getAttachment(slotName, attachmentName);
+    return null;
+  };
 
-    skeleton.setVertexEffectDelegate = function (effectDelegate) {
-        if (this._nativeSkeleton && !this.isAnimationCached()) {
-            this._nativeSkeleton.setVertexEffectDelegate(effectDelegate);
-        }
-    };
+  skeleton.setAttachment = function (slotName, attachmentName) {
+    this._nativeSkeleton && this._nativeSkeleton.setAttachment(slotName, attachmentName);
+  };
 
-    skeleton.update = function () {
-        var nativeSkeleton = this._nativeSkeleton;
-        if (!nativeSkeleton) return;
+  skeleton.getTextureAtlas = function (regionAttachment) {
+    cc.warn("sp.Skeleton getTextureAtlas not support in native");
+    return null;
+  };
 
-        var node = this.node;
-        if (!node) return;
+  skeleton.setMix = function (fromAnimation, toAnimation, duration) {
+    if (this._nativeSkeleton && !this.isAnimationCached()) {
+      this._nativeSkeleton.setMix(fromAnimation, toAnimation, duration);
+    }
+  };
 
-        if (!this.isAnimationCached() && (this.debugBones || this.debugSlots || this.debugMesh) && this._debugRenderer) {
+  skeleton.setAnimation = function (trackIndex, name, loop) {
+    if (this._nativeSkeleton) {
+      if (this.isAnimationCached()) {
+        return this._nativeSkeleton.setAnimation(name, loop);
+      } else {
+        return this._nativeSkeleton.setAnimation(trackIndex, name, loop);
+      }
+    }
 
-            var graphics = this._debugRenderer;
-            graphics.clear();
-            graphics.lineWidth = 2;
+    return null;
+  };
 
-            var debugData = this._debugData || nativeSkeleton.getDebugData();
-            if (!debugData) return;
-            var debugIdx = 0,
-                debugType = 0,
-                debugLen = 0;
+  skeleton.addAnimation = function (trackIndex, name, loop, delay) {
+    if (this._nativeSkeleton) {
+      delay = delay || 0;
 
-            while (true) {
-                debugType = debugData[debugIdx++];
-                if (debugType == 0) break;
-                debugLen = debugData[debugIdx++];
+      if (this.isAnimationCached()) {
+        return this._nativeSkeleton.addAnimation(name, loop, delay);
+      } else {
+        return this._nativeSkeleton.addAnimation(trackIndex, name, loop, delay);
+      }
+    }
 
-                switch (debugType) {
-                    case 1:
-                        // slots
-                        graphics.strokeColor = _slotColor;
-                        for (var i = 0; i < debugLen; i += 8) {
-                            graphics.moveTo(debugData[debugIdx++], debugData[debugIdx++]);
-                            graphics.lineTo(debugData[debugIdx++], debugData[debugIdx++]);
-                            graphics.lineTo(debugData[debugIdx++], debugData[debugIdx++]);
-                            graphics.lineTo(debugData[debugIdx++], debugData[debugIdx++]);
-                            graphics.close();
-                            graphics.stroke();
-                        }
-                        break;
-                    case 2:
-                        // mesh
-                        graphics.strokeColor = _meshColor;
-                        for (var _i = 0; _i < debugLen; _i += 6) {
-                            graphics.moveTo(debugData[debugIdx++], debugData[debugIdx++]);
-                            graphics.lineTo(debugData[debugIdx++], debugData[debugIdx++]);
-                            graphics.lineTo(debugData[debugIdx++], debugData[debugIdx++]);
-                            graphics.close();
-                            graphics.stroke();
-                        }
-                        break;
-                    case 3:
-                        // bones
-                        graphics.strokeColor = _boneColor;
-                        graphics.fillColor = _slotColor; // Root bone color is same as slot color.
-                        for (var _i2 = 0; _i2 < debugLen; _i2 += 4) {
-                            var bx = debugData[debugIdx++];
-                            var by = debugData[debugIdx++];
-                            var x = debugData[debugIdx++];
-                            var y = debugData[debugIdx++];
+    return null;
+  };
 
-                            // Bone lengths.
-                            graphics.moveTo(bx, by);
-                            graphics.lineTo(x, y);
-                            graphics.stroke();
+  skeleton.findAnimation = function (name) {
+    if (this._nativeSkeleton) return this._nativeSkeleton.findAnimation(name);
+    return null;
+  };
 
-                            // Bone origins.
-                            graphics.circle(bx, by, Math.PI * 1.5);
-                            graphics.fill();
-                            if (_i2 === 0) {
-                                graphics.fillColor = _originColor;
-                            }
-                        }
-                        break;
-                    default:
-                        return;
-                }
-            }
-        }
-    };
+  skeleton.getCurrent = function (trackIndex) {
+    if (this._nativeSkeleton && !this.isAnimationCached()) {
+      return this._nativeSkeleton.getCurrent(trackIndex);
+    }
 
-    skeleton.updateWorldTransform = function () {
-        if (this._nativeSkeleton && !this.isAnimationCached()) {
-            this._nativeSkeleton.updateWorldTransform();
-        }
-    };
+    return null;
+  };
 
-    skeleton.setToSetupPose = function () {
-        if (this._nativeSkeleton && !this.isAnimationCached()) {
-            this._nativeSkeleton.setToSetupPose();
-        }
-    };
+  skeleton.clearTracks = function () {
+    if (this._nativeSkeleton && !this.isAnimationCached()) {
+      this._nativeSkeleton.clearTracks();
+    }
+  };
 
-    skeleton.setBonesToSetupPose = function () {
-        if (this._nativeSkeleton && !this.isAnimationCached()) {
-            this._nativeSkeleton.setBonesToSetupPose();
-        }
-    };
+  skeleton.clearTrack = function (trackIndex) {
+    if (this._nativeSkeleton && !this.isAnimationCached()) {
+      this._nativeSkeleton.clearTrack(trackIndex);
+    }
+  };
 
-    skeleton.setSlotsToSetupPose = function () {
-        if (this._nativeSkeleton && !this.isAnimationCached()) {
-            this._nativeSkeleton.setSlotsToSetupPose();
-        }
-    };
+  skeleton.setStartListener = function (listener) {
+    this._startListener = listener;
 
-    skeleton.setSlotsRange = function (startSlotIndex, endSlotIndex) {
-        if (this._nativeSkeleton && !this.isAnimationCached()) {
-            this._nativeSkeleton.setSlotsRange(startSlotIndex, endSlotIndex);
-        }
-    };
+    if (this._nativeSkeleton) {
+      if (this.isAnimationCached()) {
+        this._nativeSkeleton.setStartListener(function (animationName) {
+          var self = this._comp;
+          self._startEntry.animation.name = animationName;
+          self._startListener && self._startListener(self._startEntry);
+        });
+      } else {
+        this._nativeSkeleton.setStartListener(listener);
+      }
+    }
+  };
 
-    skeleton.updateAnimationCache = function (animName) {
-        if (!this.isAnimationCached()) return;
-        if (this._nativeSkeleton) {
-            if (animName) {
-                this._nativeSkeleton.updateAnimationCache(animName);
-            } else {
-                this._nativeSkeleton.updateAllAnimationCache();
-            }
-        }
-    };
+  skeleton.setInterruptListener = function (listener) {
+    this._interruptListener = listener;
 
-    skeleton.invalidAnimationCache = function () {
-        if (!this.isAnimationCached()) return;
-        if (this._nativeSkeleton) {
-            this._nativeSkeleton.updateAllAnimationCache();
-        }
-    };
+    if (this._nativeSkeleton && !this.isAnimationCached()) {
+      this._nativeSkeleton.setInterruptListener(listener);
+    }
+  };
 
-    skeleton.findBone = function (boneName) {
-        if (this._nativeSkeleton) return this._nativeSkeleton.findBone(boneName);
-        return null;
-    };
+  skeleton.setEndListener = function (listener) {
+    this._endListener = listener;
 
-    skeleton.findSlot = function (slotName) {
-        if (this._nativeSkeleton) return this._nativeSkeleton.findSlot(slotName);
-        return null;
-    };
+    if (this._nativeSkeleton) {
+      if (this.isAnimationCached()) {
+        this._nativeSkeleton.setEndListener(function (animationName) {
+          var self = this._comp;
+          self._endEntry.animation.name = animationName;
+          self._endListener && self._endListener(self._endEntry);
+        });
+      } else {
+        this._nativeSkeleton.setEndListener(listener);
+      }
+    }
+  };
 
-    skeleton.setSkin = function (skinName) {
-        if (this._nativeSkeleton) return this._nativeSkeleton.setSkin(skinName);
-        return null;
-    };
+  skeleton.setDisposeListener = function (listener) {
+    this._disposeListener = listener;
 
-    skeleton.getAttachment = function (slotName, attachmentName) {
-        if (this._nativeSkeleton) return this._nativeSkeleton.getAttachment(slotName, attachmentName);
-        return null;
-    };
+    if (this._nativeSkeleton && !this.isAnimationCached()) {
+      this._nativeSkeleton.setDisposeListener(listener);
+    }
+  };
 
-    skeleton.setAttachment = function (slotName, attachmentName) {
-        this._nativeSkeleton && this._nativeSkeleton.setAttachment(slotName, attachmentName);
-    };
+  skeleton.setCompleteListener = function (listener) {
+    this._completeListener = listener;
 
-    skeleton.getTextureAtlas = function (regionAttachment) {
-        cc.warn("sp.Skeleton getTextureAtlas not support in native");
-        return null;
-    };
+    if (this._nativeSkeleton) {
+      if (this.isAnimationCached()) {
+        this._nativeSkeleton.setCompleteListener(function (animationName) {
+          var self = this._comp;
+          self._endEntry.animation.name = animationName;
+          self._completeListener && self._completeListener(self._endEntry);
+        });
+      } else {
+        this._nativeSkeleton.setCompleteListener(listener);
+      }
+    }
+  };
 
-    skeleton.setMix = function (fromAnimation, toAnimation, duration) {
-        if (this._nativeSkeleton && !this.isAnimationCached()) {
-            this._nativeSkeleton.setMix(fromAnimation, toAnimation, duration);
-        }
-    };
+  skeleton.setEventListener = function (listener) {
+    this._eventListener = listener;
 
-    skeleton.setAnimation = function (trackIndex, name, loop) {
-        if (this._nativeSkeleton) {
-            if (this.isAnimationCached()) {
-                return this._nativeSkeleton.setAnimation(name, loop);
-            } else {
-                return this._nativeSkeleton.setAnimation(trackIndex, name, loop);
-            }
-        }
-        return null;
-    };
+    if (this._nativeSkeleton && !this.isAnimationCached()) {
+      this._nativeSkeleton.setEventListener(listener);
+    }
+  };
 
-    skeleton.addAnimation = function (trackIndex, name, loop, delay) {
-        if (this._nativeSkeleton) {
-            delay = delay || 0;
-            if (this.isAnimationCached()) {
-                return this._nativeSkeleton.addAnimation(name, loop, delay);
-            } else {
-                return this._nativeSkeleton.addAnimation(trackIndex, name, loop, delay);
-            }
-        }
-        return null;
-    };
+  skeleton.setTrackStartListener = function (entry, listener) {
+    if (this._nativeSkeleton && !this.isAnimationCached()) {
+      this._nativeSkeleton.setTrackStartListener(entry, listener);
+    }
+  };
 
-    skeleton.findAnimation = function (name) {
-        if (this._nativeSkeleton) return this._nativeSkeleton.findAnimation(name);
-        return null;
-    };
+  skeleton.setTrackInterruptListener = function (entry, listener) {
+    if (this._nativeSkeleton && !this.isAnimationCached()) {
+      this._nativeSkeleton.setTrackInterruptListener(entry, listener);
+    }
+  };
 
-    skeleton.getCurrent = function (trackIndex) {
-        if (this._nativeSkeleton && !this.isAnimationCached()) {
-            return this._nativeSkeleton.getCurrent(trackIndex);
-        }
-        return null;
-    };
+  skeleton.setTrackEndListener = function (entry, listener) {
+    if (this._nativeSkeleton && !this.isAnimationCached()) {
+      this._nativeSkeleton.setTrackEndListener(entry, listener);
+    }
+  };
 
-    skeleton.clearTracks = function () {
-        if (this._nativeSkeleton && !this.isAnimationCached()) {
-            this._nativeSkeleton.clearTracks();
-        }
-    };
+  skeleton.setTrackDisposeListener = function (entry, listener) {
+    if (this._nativeSkeleton && !this.isAnimationCached()) {
+      this._nativeSkeleton.setTrackDisposeListener(entry, listener);
+    }
+  };
 
-    skeleton.clearTrack = function (trackIndex) {
-        if (this._nativeSkeleton && !this.isAnimationCached()) {
-            this._nativeSkeleton.clearTrack(trackIndex);
-        }
-    };
+  skeleton.setTrackCompleteListener = function (entry, listener) {
+    if (this._nativeSkeleton && !this.isAnimationCached()) {
+      this._nativeSkeleton.setTrackCompleteListener(entry, listener);
+    }
+  };
 
-    skeleton.setStartListener = function (listener) {
-        this._startListener = listener;
-        if (this._nativeSkeleton) {
-            if (this.isAnimationCached()) {
-                this._nativeSkeleton.setStartListener(function (animationName) {
-                    var self = this._comp;
-                    self._startEntry.animation.name = animationName;
-                    self._startListener && self._startListener(self._startEntry);
-                });
-            } else {
-                this._nativeSkeleton.setStartListener(listener);
-            }
-        }
-    };
+  skeleton.setTrackEventListener = function (entry, listener) {
+    if (this._nativeSkeleton && !this.isAnimationCached()) {
+      this._nativeSkeleton.setTrackEventListener(entry, listener);
+    }
+  };
 
-    skeleton.setInterruptListener = function (listener) {
-        this._interruptListener = listener;
-        if (this._nativeSkeleton && !this.isAnimationCached()) {
-            this._nativeSkeleton.setInterruptListener(listener);
-        }
-    };
+  skeleton.getState = function () {
+    if (this._nativeSkeleton && !this.isAnimationCached()) {
+      return this._nativeSkeleton.getState();
+    }
+  };
 
-    skeleton.setEndListener = function (listener) {
-        this._endListener = listener;
-        if (this._nativeSkeleton) {
-            if (this.isAnimationCached()) {
-                this._nativeSkeleton.setEndListener(function (animationName) {
-                    var self = this._comp;
-                    self._endEntry.animation.name = animationName;
-                    self._endListener && self._endListener(self._endEntry);
-                });
-            } else {
-                this._nativeSkeleton.setEndListener(listener);
-            }
-        }
-    };
+  skeleton._ensureListener = function () {
+    cc.warn("sp.Skeleton _ensureListener not need in native");
+  };
 
-    skeleton.setDisposeListener = function (listener) {
-        this._disposeListener = listener;
-        if (this._nativeSkeleton && !this.isAnimationCached()) {
-            this._nativeSkeleton.setDisposeListener(listener);
-        }
-    };
+  skeleton._updateSkeletonData = function () {
+    if (this.skeletonData) {
+      this.skeletonData.init();
+      this.setSkeletonData(this.skeletonData);
+      this.attachUtil.init(this);
 
-    skeleton.setCompleteListener = function (listener) {
-        this._completeListener = listener;
-        if (this._nativeSkeleton) {
-            if (this.isAnimationCached()) {
-                this._nativeSkeleton.setCompleteListener(function (animationName) {
-                    var self = this._comp;
-                    self._endEntry.animation.name = animationName;
-                    self._completeListener && self._completeListener(self._endEntry);
-                });
-            } else {
-                this._nativeSkeleton.setCompleteListener(listener);
-            }
-        }
-    };
+      this.attachUtil._associateAttachedNode();
 
-    skeleton.setEventListener = function (listener) {
-        this._eventListener = listener;
-        if (this._nativeSkeleton && !this.isAnimationCached()) {
-            this._nativeSkeleton.setEventListener(listener);
-        }
-    };
+      this._preCacheMode = this._cacheMode;
+      this.defaultSkin && this._nativeSkeleton.setSkin(this.defaultSkin);
+      this.animation = this.defaultAnimation;
+    } else {
+      if (this._nativeSkeleton) {
+        this._nativeSkeleton.stopSchedule();
 
-    skeleton.setTrackStartListener = function (entry, listener) {
-        if (this._nativeSkeleton && !this.isAnimationCached()) {
-            this._nativeSkeleton.setTrackStartListener(entry, listener);
-        }
-    };
+        this._nativeSkeleton._comp = null;
+        this._nativeSkeleton = null;
+      }
+    }
+  };
 
-    skeleton.setTrackInterruptListener = function (entry, listener) {
-        if (this._nativeSkeleton && !this.isAnimationCached()) {
-            this._nativeSkeleton.setTrackInterruptListener(entry, listener);
-        }
-    };
+  var _onDestroy = skeleton.onDestroy;
 
-    skeleton.setTrackEndListener = function (entry, listener) {
-        if (this._nativeSkeleton && !this.isAnimationCached()) {
-            this._nativeSkeleton.setTrackEndListener(entry, listener);
-        }
-    };
+  skeleton.onDestroy = function () {
+    _onDestroy.call(this);
 
-    skeleton.setTrackDisposeListener = function (entry, listener) {
-        if (this._nativeSkeleton && !this.isAnimationCached()) {
-            this._nativeSkeleton.setTrackDisposeListener(entry, listener);
-        }
-    };
+    if (this._nativeSkeleton) {
+      this._nativeSkeleton.stopSchedule();
 
-    skeleton.setTrackCompleteListener = function (entry, listener) {
-        if (this._nativeSkeleton && !this.isAnimationCached()) {
-            this._nativeSkeleton.setTrackCompleteListener(entry, listener);
-        }
-    };
+      this._nativeSkeleton._comp = null;
+      this._nativeSkeleton = null;
+    }
 
-    skeleton.setTrackEventListener = function (entry, listener) {
-        if (this._nativeSkeleton && !this.isAnimationCached()) {
-            this._nativeSkeleton.setTrackEventListener(entry, listener);
-        }
-    };
+    this._stateData = null;
+    this._materialCache = null;
+  }; ////////////////////////////////////////////////////////////
+  // adapt attach util
+  ////////////////////////////////////////////////////////////
 
-    skeleton.getState = function () {
-        if (this._nativeSkeleton && !this.isAnimationCached()) {
-            return this._nativeSkeleton.getState();
-        }
-    };
 
-    skeleton._ensureListener = function () {
-        cc.warn("sp.Skeleton _ensureListener not need in native");
-    };
+  var attachUtilProto = sp.AttachUtil.prototype;
+  var _attachUtilInit = attachUtilProto.init;
 
-    skeleton._updateSkeletonData = function () {
-        if (this.skeletonData) {
-            this.skeletonData.init();
-            this.setSkeletonData(this.skeletonData);
-            this.defaultSkin && this._nativeSkeleton.setSkin(this.defaultSkin);
-            this.animation = this.defaultAnimation;
-        } else {
-            if (this._nativeSkeleton) {
-                this._nativeSkeleton.stopSchedule();
-                this._nativeSkeleton._comp = null;
-                this._nativeSkeleton = null;
-            }
-        }
-    };
+  attachUtilProto.init = function (skeletonComp) {
+    _attachUtilInit.call(this, skeletonComp);
 
-    var _onDestroy = skeleton.onDestroy;
-    skeleton.onDestroy = function () {
-        _onDestroy.call(this);
-        if (this._nativeSkeleton) {
-            this._nativeSkeleton.stopSchedule();
-            this._nativeSkeleton._comp = null;
-            this._nativeSkeleton = null;
-        }
-        this._stateData = null;
-        this._materialCache = null;
-    };
+    this._nativeSkeleton = skeletonComp._nativeSkeleton;
+    this._attachUtilNative = null;
+  };
+
+  var _generateAllAttachedNodes = attachUtilProto.generateAllAttachedNodes;
+
+  attachUtilProto.generateAllAttachedNodes = function () {
+    var res = _generateAllAttachedNodes.call(this);
+
+    this._associateAttachedNode();
+
+    return res;
+  };
+
+  var _generateAttachedNodes = attachUtilProto.generateAttachedNodes;
+
+  attachUtilProto.generateAttachedNodes = function (boneName) {
+    var res = _generateAttachedNodes.call(this, boneName);
+
+    this._associateAttachedNode();
+
+    return res;
+  };
+
+  var _associateAttachedNode = attachUtilProto._associateAttachedNode;
+
+  attachUtilProto._associateAttachedNode = function () {
+    if (!this._inited) return;
+
+    var rootNode = this._skeletonNode.getChildByName('ATTACHED_NODE_TREE');
+
+    if (!rootNode || !rootNode.isValid) return; // associate js
+
+    _associateAttachedNode.call(this); // associate native
+
+
+    if (!this._attachUtilNative) {
+      if (this._skeletonComp.isAnimationCached()) {
+        this._attachUtilNative = new spine.CacheModeAttachUtil();
+      } else {
+        this._attachUtilNative = new spine.RealTimeAttachUtil();
+      }
+
+      this._nativeSkeleton.setAttachUtil(this._attachUtilNative);
+    }
+
+    this._attachUtilNative.associateAttachedNode(this._skeleton, this._skeletonNode._proxy);
+  };
 })();
 
-},{}],37:[function(require,module,exports){
+},{}],39:[function(require,module,exports){
 /****************************************************************************
  Copyright (c) 2013-2016 Chukong Technologies Inc.
  Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
@@ -3702,7 +4223,6 @@ if (window.JavascriptJavaBridge && cc.sys.os == cc.sys.OS_ANDROID) {
 'use strict';
 
 var sys = cc.sys;
-
 sys.getNetworkType = jsb.Device.getNetworkType;
 sys.getBatteryLevel = jsb.Device.getBatteryLevel;
 sys.garbageCollect = jsb.garbageCollect;
@@ -3712,24 +4232,28 @@ sys.isObjectValid = __isObjectValid;
 sys.getSafeAreaRect = function () {
   // x(top), y(left), z(bottom), w(right)
   var edge = jsb.Device.getSafeAreaEdge();
-  var screenSize = cc.view.getFrameSize();
+  var screenSize = cc.view.getFrameSize(); // Get leftBottom and rightTop point in UI coordinates
 
-  // Get leftBottom and rightTop point in UI coordinates
   var leftBottom = new cc.Vec2(edge.y, screenSize.height - edge.z);
-  var rightTop = new cc.Vec2(screenSize.width - edge.w, edge.x);
+  var rightTop = new cc.Vec2(screenSize.width - edge.w, edge.x); // Returns the real location in view.
 
-  // Returns the real location in view.
-  var relatedPos = { left: 0, top: 0, width: screenSize.width, height: screenSize.height };
+  var relatedPos = {
+    left: 0,
+    top: 0,
+    width: screenSize.width,
+    height: screenSize.height
+  };
   cc.view.convertToLocationInView(leftBottom.x, leftBottom.y, relatedPos, leftBottom);
-  cc.view.convertToLocationInView(rightTop.x, rightTop.y, relatedPos, rightTop);
-  // convert view point to design resolution size
+  cc.view.convertToLocationInView(rightTop.x, rightTop.y, relatedPos, rightTop); // convert view point to design resolution size
+
   cc.view._convertPointWithScale(leftBottom);
+
   cc.view._convertPointWithScale(rightTop);
 
   return cc.rect(leftBottom.x, leftBottom.y, rightTop.x - leftBottom.x, rightTop.y - leftBottom.y);
 };
 
-},{}],38:[function(require,module,exports){
+},{}],40:[function(require,module,exports){
 "use strict";
 
 /****************************************************************************
@@ -3756,160 +4280,239 @@ sys.getSafeAreaRect = function () {
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
  ****************************************************************************/
-
 (function () {
-    if (!cc.TiledMap) return;
+  if (!cc.TiledMap) return;
+  var RenderFlow = cc.RenderFlow; // tiled layer
 
-    var RenderFlow = cc.RenderFlow;
+  var TiledLayer = cc.TiledLayer.prototype;
+  var _addUserNode = TiledLayer.addUserNode;
 
-    // tiled layer
-    var TiledLayer = cc.TiledLayer.prototype;
+  TiledLayer.addUserNode = function (node) {
+    var result = _addUserNode.call(this, node);
 
-    var _addUserNode = TiledLayer.addUserNode;
-    TiledLayer.addUserNode = function (node) {
-        var result = _addUserNode.call(this, node);
-        if (result) {
-            var proxy = node._proxy;
-            proxy && proxy.disableVisit();
-        }
-    };
+    if (result) {
+      var proxy = node._proxy;
+      proxy && proxy.enableVisit(false);
+    }
+  };
 
-    var _removeUserNode = TiledLayer.removeUserNode;
-    TiledLayer.removeUserNode = function (node) {
-        var result = _removeUserNode.call(this, node);
-        if (result) {
-            var proxy = node._proxy;
-            proxy && proxy.enableVisit();
-        }
-    };
+  var _removeUserNode = TiledLayer.removeUserNode;
 
-    // tiledmap buffer
-    var TiledMapBuffer = cc.TiledMapBuffer.prototype;
-    TiledMapBuffer._updateOffset = function () {
-        var offsetInfo = this._offsetInfo;
-        offsetInfo.vertexOffset = this.vertexOffset;
-        offsetInfo.indiceOffset = this.indiceOffset;
-        offsetInfo.byteOffset = this.byteOffset;
-    };
+  TiledLayer.removeUserNode = function (node) {
+    var result = _removeUserNode.call(this, node);
 
-    // tiledmap render data list
-    var TiledMapRenderDataList = cc.TiledMapRenderDataList.prototype;
-    TiledMapRenderDataList._pushRenderData = function () {
-        var renderData = {};
-        renderData.ia = {};
-        renderData.nodesRenderList = [];
-        this._dataList.push(renderData);
-    };
-
-    TiledMapRenderDataList.reset = function () {
-        this._offset = 0;
-        var assembler = this._nativeAssembler;
-        assembler._effect.length = 0;
-        assembler.reset();
-    };
-
-    TiledMapRenderDataList.setNativeAssembler = function (assembler) {
-        this._nativeAssembler = assembler;
-    };
-
-    TiledMapRenderDataList.popRenderData = function (buffer) {
-        if (this._offset >= this._dataList.length) {
-            this._pushRenderData();
-        }
-        var renderData = this._dataList[this._offset];
-
-        renderData.nodesRenderList.length = 0;
-        this._nativeAssembler.clearNodes(this._offset);
-
-        var ia = renderData.ia;
-        ia._meshIndex = buffer.getCurMeshIndex();
-        ia._start = buffer.indiceOffset;
-        ia._count = 0;
-        ia._verticesStart = buffer.vertexOffset;
-        ia._index = this._offset;
-        this._offset++;
-        return renderData;
-    };
-
-    TiledMapRenderDataList.pushNodesList = function (renderData, nodesList) {
-        var nodesRenderList = renderData.nodesRenderList;
-        nodesRenderList.push(nodesList);
-
-        var nativeNodes = [];
-        for (var j = 0; j < nodesRenderList.length; j++) {
-            var _nodesList = nodesRenderList[j];
-            if (!_nodesList) continue;
-            for (var idx = 0; idx < _nodesList.length; idx++) {
-                var dataComp = _nodesList[idx];
-                if (!dataComp) continue;
-                nativeNodes.push(dataComp.node._id);
-            }
-        }
-        this._nativeAssembler.updateNodes(renderData.ia._index, nativeNodes);
-    };
-
-    var ModelBatcherDelegate = cc.Class({
-        ctor: function ctor() {
-            this._nativeAssembler = null;
-        },
-        setNativeAssembler: function setNativeAssembler(assembler) {
-            this._nativeAssembler = assembler;
-        },
-        setBuffer: function setBuffer(buffer) {
-            this._buffer = buffer;
-        },
-        _flushIA: function _flushIA(ia) {
-            var iaIndex = ia._index;
-            var meshIndex = ia._meshIndex;
-            this._nativeAssembler.updateMeshIndex(iaIndex, meshIndex);
-            var verticesStart = ia._verticesStart;
-            var verticesOffset = this._buffer.vertexOffset;
-            var vertexCount = verticesOffset - verticesStart;
-            this._nativeAssembler.updateVerticesRange(iaIndex, verticesStart, vertexCount);
-            this._nativeAssembler.updateIndicesRange(iaIndex, ia._start, ia._count);
-            this._nativeAssembler.updateMaterial(iaIndex, this.material);
-        },
-        _flush: function _flush() {}
-    });
-
-    var TiledMapAssembler = cc.TiledLayer.__assembler__.prototype;
-    var _fillBuffers = TiledMapAssembler.fillBuffers;
-    cc.js.mixin(TiledMapAssembler, {
-        _extendNative: function _extendNative() {
-            renderer.TiledMapAssembler.prototype.ctor.call(this);
-        },
+    if (result) {
+      var proxy = node._proxy;
+      proxy && proxy.enableVisit(true);
+    }
+  }; // override _activateMaterial to upload hash value to native
 
 
-        // override _updateRenderData function avoid base class cover material
-        _updateRenderData: function _updateRenderData() {
-            if (!this._renderComp || !this._renderComp.isValid) return;
-            this.updateRenderData(this._renderComp);
-        },
-        updateRenderData: function updateRenderData(comp) {
-            if (!comp._modelBatcherDelegate) {
-                var materials = this._renderComp.sharedMaterials;
-                for (var i = 0; i < materials.length; i++) {
-                    var m = materials[i];
-                    if (m) m.getHash();
-                }
+  var _activateMaterial = TiledLayer._activateMaterial;
 
-                comp._buffer = new cc.TiledMapBuffer(null, cc.gfx.VertexFormat.XY_UV_Color);
-                comp._renderDataList = new cc.TiledMapRenderDataList();
-                comp._modelBatcherDelegate = new ModelBatcherDelegate();
+  TiledLayer._activateMaterial = function () {
+    _activateMaterial.call(this);
 
-                comp._buffer.setNativeAssembler(this);
-                comp._renderDataList.setNativeAssembler(this);
-                comp._modelBatcherDelegate.setBuffer(comp._buffer);
-                comp._modelBatcherDelegate.setNativeAssembler(this);
-            }
+    var materials = this._materials;
 
-            _fillBuffers.call(this, comp, comp._modelBatcherDelegate);
-            comp.node._renderFlag |= RenderFlow.FLAG_UPDATE_RENDER_DATA;
-        }
-    }, renderer.TiledMapAssembler.prototype);
+    for (var i = 0; i < materials.length; i++) {
+      var m = materials[i];
+      if (m) m.getHash();
+    }
+  }; // tiledmap buffer
+
+
+  var TiledMapBuffer = cc.TiledMapBuffer.prototype;
+
+  TiledMapBuffer._updateOffset = function () {
+    var offsetInfo = this._offsetInfo;
+    offsetInfo.vertexOffset = this.vertexOffset;
+    offsetInfo.indiceOffset = this.indiceOffset;
+    offsetInfo.byteOffset = this.byteOffset;
+  }; // tiledmap render data list
+
+
+  var TiledMapRenderDataList = cc.TiledMapRenderDataList.prototype;
+
+  TiledMapRenderDataList._pushRenderData = function () {
+    var renderData = {};
+    renderData.ia = {};
+    renderData.nodesRenderList = [];
+
+    this._dataList.push(renderData);
+  };
+
+  TiledMapRenderDataList.reset = function () {
+    this._offset = 0;
+    var assembler = this._nativeAssembler;
+    assembler._effect.length = 0;
+    assembler.reset();
+  };
+
+  TiledMapRenderDataList.setNativeAssembler = function (assembler) {
+    this._nativeAssembler = assembler;
+  };
+
+  TiledMapRenderDataList.popRenderData = function (buffer) {
+    if (this._offset >= this._dataList.length) {
+      this._pushRenderData();
+    }
+
+    var renderData = this._dataList[this._offset];
+    renderData.nodesRenderList.length = 0;
+
+    this._nativeAssembler.clearNodes(this._offset);
+
+    var ia = renderData.ia;
+    ia._meshIndex = buffer.getCurMeshIndex();
+    ia._start = buffer.indiceOffset;
+    ia._count = 0;
+    ia._verticesStart = buffer.vertexOffset;
+    ia._index = this._offset;
+    this._offset++;
+    return renderData;
+  };
+
+  TiledMapRenderDataList.pushNodesList = function (renderData, nodesList) {
+    var nodesRenderList = renderData.nodesRenderList;
+    nodesRenderList.push(nodesList);
+    var nativeNodes = [];
+
+    for (var j = 0; j < nodesRenderList.length; j++) {
+      var _nodesList = nodesRenderList[j];
+      if (!_nodesList) continue;
+
+      for (var idx = 0; idx < _nodesList.length; idx++) {
+        var dataComp = _nodesList[idx];
+        if (!dataComp) continue;
+        nativeNodes.push(dataComp.node._id);
+      }
+    }
+
+    this._nativeAssembler.updateNodes(renderData.ia._index, nativeNodes);
+  };
+
+  var ModelBatcherDelegate = cc.Class({
+    ctor: function ctor() {
+      this._nativeAssembler = null;
+    },
+    setNativeAssembler: function setNativeAssembler(assembler) {
+      this._nativeAssembler = assembler;
+    },
+    setBuffer: function setBuffer(buffer) {
+      this._buffer = buffer;
+    },
+    _flushIA: function _flushIA(ia) {
+      var iaIndex = ia._index;
+      var meshIndex = ia._meshIndex;
+
+      this._nativeAssembler.updateMeshIndex(iaIndex, meshIndex);
+
+      var verticesStart = ia._verticesStart;
+      var verticesOffset = this._buffer.vertexOffset;
+      var vertexCount = verticesOffset - verticesStart;
+
+      this._nativeAssembler.updateVerticesRange(iaIndex, verticesStart, vertexCount);
+
+      this._nativeAssembler.updateIndicesRange(iaIndex, ia._start, ia._count);
+
+      this._nativeAssembler.updateMaterial(iaIndex, this.material);
+    },
+    _flush: function _flush() {}
+  });
+  var TiledMapAssembler = cc.TiledLayer.__assembler__.prototype;
+  var _fillBuffers = TiledMapAssembler.fillBuffers;
+  cc.js.mixin(TiledMapAssembler, {
+    _extendNative: function _extendNative() {
+      renderer.TiledMapAssembler.prototype.ctor.call(this);
+    },
+    // override _updateRenderData function avoid base class cover material
+    _updateRenderData: function _updateRenderData() {
+      if (!this._renderComp || !this._renderComp.isValid) return;
+      this.updateRenderData(this._renderComp);
+    },
+    updateRenderData: function updateRenderData(comp) {
+      if (!comp._modelBatcherDelegate) {
+        comp._buffer = new cc.TiledMapBuffer(null, cc.gfx.VertexFormat.XY_UV_Color);
+        comp._renderDataList = new cc.TiledMapRenderDataList();
+        comp._modelBatcherDelegate = new ModelBatcherDelegate();
+
+        comp._buffer.setNativeAssembler(this);
+
+        comp._renderDataList.setNativeAssembler(this);
+
+        comp._modelBatcherDelegate.setBuffer(comp._buffer);
+
+        comp._modelBatcherDelegate.setNativeAssembler(this);
+      }
+
+      _fillBuffers.call(this, comp, comp._modelBatcherDelegate);
+
+      comp.node._renderFlag |= RenderFlow.FLAG_UPDATE_RENDER_DATA;
+    }
+  }, renderer.TiledMapAssembler.prototype);
 })();
 
-},{}],39:[function(require,module,exports){
+},{}],41:[function(require,module,exports){
+"use strict";
+
+var jsbUtils = {
+  /****************************************************************************
+  Copyright (c) 2011 Gary Court
+  
+  http://github.com/garycourt/murmurhash-js
+    Permission is hereby granted, free of charge, to any person obtaining a copy 
+  of this software and associated documentation files (the "Software"), to deal 
+  in the Software without restriction, including without limitation the rights 
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell 
+  copies of the Software, and to permit persons to whom the Software is furnished 
+  to do so, subject to the following conditions:
+    The above copyright notice and this permission notice shall be included in all 
+  copies or substantial portions of the Software.
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+  ****************************************************************************/
+  murmurhash2_32_gc: function murmurhash2_32_gc(str, seed) {
+    var l = str.length,
+        h = seed ^ l,
+        i = 0,
+        k;
+
+    while (l >= 4) {
+      k = str.charCodeAt(i) & 0xff | (str.charCodeAt(++i) & 0xff) << 8 | (str.charCodeAt(++i) & 0xff) << 16 | (str.charCodeAt(++i) & 0xff) << 24;
+      k = (k & 0xffff) * 0x5bd1e995 + (((k >>> 16) * 0x5bd1e995 & 0xffff) << 16);
+      k ^= k >>> 24;
+      k = (k & 0xffff) * 0x5bd1e995 + (((k >>> 16) * 0x5bd1e995 & 0xffff) << 16);
+      h = (h & 0xffff) * 0x5bd1e995 + (((h >>> 16) * 0x5bd1e995 & 0xffff) << 16) ^ k;
+      l -= 4;
+      ++i;
+    }
+
+    switch (l) {
+      case 3:
+        h ^= (str.charCodeAt(i + 2) & 0xff) << 16;
+
+      case 2:
+        h ^= (str.charCodeAt(i + 1) & 0xff) << 8;
+
+      case 1:
+        h ^= str.charCodeAt(i) & 0xff;
+        h = (h & 0xffff) * 0x5bd1e995 + (((h >>> 16) * 0x5bd1e995 & 0xffff) << 16);
+    }
+
+    h ^= h >>> 13;
+    h = (h & 0xffff) * 0x5bd1e995 + (((h >>> 16) * 0x5bd1e995 & 0xffff) << 16);
+    h ^= h >>> 15;
+    return h >>> 0;
+  }
+};
+module.exports = jsbUtils;
+
+},{}],42:[function(require,module,exports){
 "use strict";
 
 /****************************************************************************
@@ -3936,393 +4539,400 @@ sys.getSafeAreaRect = function () {
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
  ****************************************************************************/
-
 (function () {
-    if (!(cc && cc.VideoPlayer && cc.VideoPlayer.Impl)) {
-        return;
+  if (!(cc && cc.VideoPlayer && cc.VideoPlayer.Impl)) {
+    return;
+  }
+
+  var vec3 = cc.Vec3;
+
+  var _worldMat = new cc.Mat4();
+
+  var _topLeft = new vec3();
+
+  var _bottomRight = new vec3();
+
+  var _impl = cc.VideoPlayer.Impl;
+  var _p = cc.VideoPlayer.Impl.prototype;
+
+  _p._bindEvent = function () {
+    var video = this._video,
+        self = this;
+
+    if (!video) {
+      return;
+    } //binding event
+
+
+    var cbs = this.__eventListeners;
+
+    cbs.loadedmetadata = function () {
+      self._loadedmeta = true;
+
+      self._dispatchEvent(_impl.EventType.META_LOADED);
+    };
+
+    cbs.ended = function () {
+      if (self._video !== video) return;
+      self._playing = false;
+
+      self._dispatchEvent(_impl.EventType.COMPLETED);
+    };
+
+    cbs.play = function () {
+      if (self._video !== video) return;
+      self._playing = true;
+
+      self._dispatchEvent(_impl.EventType.PLAYING);
+    };
+
+    cbs.pause = function () {
+      if (self._ignorePause || self._video !== video) return;
+      self._playing = false;
+
+      self._dispatchEvent(_impl.EventType.PAUSED);
+    };
+
+    cbs.click = function () {
+      self._dispatchEvent(_impl.EventType.CLICKED);
+    };
+
+    cbs.stoped = function () {
+      self._dispatchEvent(_impl.EventType.STOPPED);
+
+      self._ignorePause = false;
+    };
+
+    video.addEventListener("loadedmetadata", cbs.loadedmetadata);
+    video.addEventListener("ended", cbs.ended);
+    video.addEventListener("play", cbs.play);
+    video.addEventListener("pause", cbs.pause);
+    video.addEventListener("click", cbs.click);
+    video.addEventListener("stoped", cbs.stoped);
+
+    function onCanPlay() {
+      if (this._loaded) return;
+      this._loaded = true;
+
+      this._dispatchEvent(_impl.EventType.READY_TO_PLAY);
+
+      this._updateVisibility();
     }
 
-    var math = cc.vmath;
-    var _worldMat = math.mat4.create();
-    var _cameraMat = math.mat4.create();
+    cbs.onCanPlay = onCanPlay.bind(this);
+    video.addEventListener('canplay', cbs.onCanPlay);
+    video.addEventListener('canplaythrough', cbs.onCanPlay);
+    video.addEventListener('suspend', cbs.onCanPlay);
+  };
 
-    var _impl = cc.VideoPlayer.Impl;
-    var _p = cc.VideoPlayer.Impl.prototype;
+  _p._updateVisibility = function () {
+    if (!this._video) return;
+    var video = this._video;
 
-    _p._bindEvent = function () {
-        var video = this._video,
-            self = this;
+    if (this._visible) {
+      this._video.setVisible(true);
+    } else {
+      this._video.setVisible(false);
 
-        if (!video) {
-            return;
-        }
+      video.pause();
+      this._playing = false;
+    }
+  };
 
-        //binding event
-        var cbs = this.__eventListeners;
-        cbs.loadedmetadata = function () {
-            self._loadedmeta = true;
-            self._dispatchEvent(_impl.EventType.META_LOADED);
-        };
-        cbs.ended = function () {
-            if (self._video !== video) return;
-            self._playing = false;
-            self._dispatchEvent(_impl.EventType.COMPLETED);
-        };
-        cbs.play = function () {
-            if (self._video !== video) return;
-            self._playing = true;
-            self._dispatchEvent(_impl.EventType.PLAYING);
-        };
-        cbs.pause = function () {
-            if (self._ignorePause || self._video !== video) return;
-            self._playing = false;
-            self._dispatchEvent(_impl.EventType.PAUSED);
-        };
-        cbs.click = function () {
-            self._dispatchEvent(_impl.EventType.CLICKED);
-        };
-        cbs.stoped = function () {
-            self._dispatchEvent(_impl.EventType.STOPPED);
-            self._ignorePause = false;
-        };
+  _p._updateSize = function (width, height) {};
 
-        video.addEventListener("loadedmetadata", cbs.loadedmetadata);
-        video.addEventListener("ended", cbs.ended);
-        video.addEventListener("play", cbs.play);
-        video.addEventListener("pause", cbs.pause);
-        video.addEventListener("click", cbs.click);
-        video.addEventListener("stoped", cbs.stoped);
+  _p.createDomElementIfNeeded = function () {
+    if (!jsb.VideoPlayer) {
+      cc.warn('VideoPlayer is not supported.');
+      return null;
+    }
 
-        function onCanPlay() {
-            if (this._loaded) return;
+    if (!this._video) {
+      this._video = new jsb.VideoPlayer();
+    }
+  };
 
-            this._loaded = true;
-            this._dispatchEvent(_impl.EventType.READY_TO_PLAY);
-            this._updateVisibility();
-        }
+  _p.removeDom = function () {
+    var video = this._video;
 
-        cbs.onCanPlay = onCanPlay.bind(this);
-        video.addEventListener('canplay', cbs.onCanPlay);
-        video.addEventListener('canplaythrough', cbs.onCanPlay);
-        video.addEventListener('suspend', cbs.onCanPlay);
-    };
+    if (video) {
+      video.stop();
+      video.setVisible(false);
+      var cbs = this.__eventListeners;
+      cbs.loadedmetadata = null;
+      cbs.ended = null;
+      cbs.play = null;
+      cbs.pause = null;
+      cbs.click = null;
+      cbs.onCanPlay = null;
+      video.destroy();
+    }
 
-    _p._updateVisibility = function () {
-        if (!this._video) return;
-        var video = this._video;
-        if (this._visible) {
-            this._video.setVisible(true);
-        } else {
-            this._video.setVisible(false);
-            video.pause();
-            this._playing = false;
-        }
-    };
+    this._video = null;
+    this._url = "";
+  };
 
-    _p._updateSize = function (width, height) {};
+  _p.setURL = function (path) {
+    var source, extname;
 
-    _p.createDomElementIfNeeded = function () {
-        if (!jsb.VideoPlayer) {
-            cc.warn('VideoPlayer is not supported.');
-            return null;
-        }
+    if (this._url === path) {
+      return;
+    }
 
-        if (!this._video) {
-            this._video = new jsb.VideoPlayer();
-        }
-    };
+    this.removeDom();
+    this._url = path;
+    this.createDomElementIfNeeded();
 
-    _p.removeDom = function () {
-        var video = this._video;
-        if (video) {
-            video.stop();
-            video.setVisible(false);
+    this._bindEvent();
 
-            var cbs = this.__eventListeners;
+    var video = this._video;
 
-            cbs.loadedmetadata = null;
-            cbs.ended = null;
-            cbs.play = null;
-            cbs.pause = null;
-            cbs.click = null;
-            cbs.onCanPlay = null;
+    if (!video) {
+      return;
+    }
 
-            video.destroy();
-        }
+    video.setVisible(this._visible);
+    this._loaded = false;
+    this._played = false;
+    this._playing = false;
+    this._loadedmeta = false;
+    video.setURL(this._url);
+    this._forceUpdate = true;
+  };
 
-        this._video = null;
-        this._url = "";
-    };
+  _p.getURL = function () {
+    return this._url;
+  };
 
-    _p.setURL = function (path) {
-        var source = void 0,
-            extname = void 0;
+  _p.play = function () {
+    var video = this._video;
+    if (!video || !this._visible || this._playing) return;
+    video.play();
+    this._playing = true;
+  };
 
-        if (this._url === path) {
-            return;
-        }
+  _p.setStayOnBottom = function (enabled) {};
 
-        this.removeDom();
+  _p.pause = function () {
+    var video = this._video;
+    if (!this._playing || !video) return;
+    video.pause();
+    this._playing = false;
+  };
 
-        this._url = path;
-        this.createDomElementIfNeeded();
-        this._bindEvent();
+  _p.resume = function () {
+    var video = this._video;
+    if (this._playing || !video) return;
+    video.resume();
+    this._playing = true;
+  };
 
-        var video = this._video;
-        if (!video) {
-            return;
-        }
+  _p.stop = function () {
+    var video = this._video;
+    if (!video || !this._visible) return;
+    this._ignorePause = true;
+    video.stop();
+    this._playing = false;
+  };
 
-        video.setVisible(this._visible);
+  _p.setVolume = function (volume) {};
 
-        this._loaded = false;
-        this._played = false;
-        this._playing = false;
-        this._loadedmeta = false;
+  _p.seekTo = function (time) {
+    var video = this._video;
+    if (!video) return;
 
-        video.setURL(this._url);
-        this._forceUpdate = true;
-    };
+    if (this._loaded) {
+      video.seekTo(time);
+    } else {
+      var cb = function cb() {
+        video.seekTo(time);
+      };
 
-    _p.getURL = function () {
-        return this._url;
-    };
+      video.addEventListener(_impl._polyfill.event, cb);
+    }
 
-    _p.play = function () {
-        var video = this._video;
-        if (!video || !this._visible || this._playing) return;
-
+    if (_impl._polyfill.autoplayAfterOperation && this.isPlaying()) {
+      setTimeout(function () {
         video.play();
-        this._playing = true;
-    };
+      }, 20);
+    }
+  };
 
-    _p.pause = function () {
-        var video = this._video;
-        if (!this._playing || !video) return;
+  _p.isPlaying = function () {
+    return this._playing;
+  };
 
-        video.pause();
-        this._playing = false;
-    };
+  _p.duration = function () {
+    var video = this._video;
+    var duration = -1;
+    if (!video) return duration;
+    duration = video.duration();
 
-    _p.resume = function () {
-        var video = this._video;
-        if (this._playing || !video) return;
+    if (duration <= 0) {
+      cc.logID(7702);
+    }
 
-        video.resume();
-        this._playing = true;
-    };
+    return duration;
+  };
 
-    _p.stop = function () {
-        var video = this._video;
-        if (!video || !this._visible) return;
-        this._ignorePause = true;
+  _p.currentTime = function () {
+    var video = this._video;
+    if (!video) return -1;
+    return video.currentTime();
+  };
 
-        video.stop();
-        this._playing = false;
-    };
+  _p.setKeepAspectRatioEnabled = function (isEnabled) {
+    if (!this._video) {
+      return false;
+    }
 
-    _p.setVolume = function (volume) {};
+    return this._video.setKeepAspectRatioEnabled(isEnabled);
+  };
 
-    _p.seekTo = function (time) {
-        var video = this._video;
-        if (!video) return;
+  _p.isKeepAspectRatioEnabled = function () {
+    if (!this._video) {
+      return false;
+    }
 
-        if (this._loaded) {
-            video.seekTo(time);
-        } else {
-            var cb = function cb() {
-                video.seekTo(time);
-            };
-            video.addEventListener(_impl._polyfill.event, cb);
-        }
-        if (_impl._polyfill.autoplayAfterOperation && this.isPlaying()) {
-            setTimeout(function () {
-                video.play();
-            }, 20);
-        }
-    };
+    return this._video.isKeepAspectRatioEnabled();
+  };
 
-    _p.isPlaying = function () {
-        return this._playing;
-    };
+  _p.isFullScreenEnabled = function () {
+    return this._fullScreenEnabled;
+  };
 
-    _p.duration = function () {
-        var video = this._video;
-        var duration = -1;
-        if (!video) return duration;
+  _p.setEventListener = function (event, callback) {
+    this._EventList[event] = callback;
+  };
 
-        duration = video.duration();
-        if (duration <= 0) {
-            cc.logID(7702);
-        }
+  _p.removeEventListener = function (event) {
+    this._EventList[event] = null;
+  };
 
-        return duration;
-    };
+  _p._dispatchEvent = function (event) {
+    var callback = this._EventList[event];
+    if (callback) callback.call(this, this, this._video.src);
+  };
 
-    _p.currentTime = function () {
-        var video = this._video;
-        if (!video) return -1;
+  _p.onPlayEvent = function () {
+    var callback = this._EventList[_impl.EventType.PLAYING];
+    callback.call(this, this, this._video.src);
+  };
 
-        return video.currentTime();
-    };
+  _p.enable = function () {
+    var list = _impl.elements;
+    if (list.indexOf(this) === -1) list.push(this);
+    this.setVisible(true);
+  };
 
-    _p.setKeepAspectRatioEnabled = function (isEnabled) {
-        if (!this._video) {
-            return false;
-        }
-        return this._video.setKeepAspectRatioEnabled(isEnabled);
-    };
+  _p.disable = function () {
+    var list = _impl.elements;
+    var index = list.indexOf(this);
+    if (index !== -1) list.splice(index, 1);
+    this.setVisible(false);
+  };
 
-    _p.isKeepAspectRatioEnabled = function () {
-        if (!this._video) {
-            return false;
-        }
-        return this._video.isKeepAspectRatioEnabled();
-    };
+  _p.destroy = function () {
+    this.disable();
+    this.removeDom();
+  };
 
-    _p.isFullScreenEnabled = function () {
-        return this._fullScreenEnabled;
-    };
+  _p.setVisible = function (visible) {
+    if (this._visible !== visible) {
+      this._visible = !!visible;
 
-    _p.setEventListener = function (event, callback) {
-        this._EventList[event] = callback;
-    };
+      this._updateVisibility();
+    }
+  };
 
-    _p.removeEventListener = function (event) {
-        this._EventList[event] = null;
-    };
+  _p.setFullScreenEnabled = function (enable) {
+    var video = this._video;
 
-    _p._dispatchEvent = function (event) {
-        var callback = this._EventList[event];
-        if (callback) callback.call(this, this, this._video.src);
-    };
+    if (!video) {
+      return;
+    }
 
-    _p.onPlayEvent = function () {
-        var callback = this._EventList[_impl.EventType.PLAYING];
-        callback.call(this, this, this._video.src);
-    };
+    this._fullScreenEnabled = enable;
+    video.setFullScreenEnabled(enable);
+  };
 
-    _p.enable = function () {
-        var list = _impl.elements;
-        if (list.indexOf(this) === -1) list.push(this);
-        this.setVisible(true);
-    };
+  _p.updateMatrix = function (node) {
+    if (!this._video || !this._visible) return;
+    node.getWorldMatrix(_worldMat);
 
-    _p.disable = function () {
-        var list = _impl.elements;
-        var index = list.indexOf(this);
-        if (index !== -1) list.splice(index, 1);
-        this.setVisible(false);
-    };
+    if (!this._forceUpdate && this._m00 === _worldMat.m[0] && this._m01 === _worldMat.m[1] && this._m04 === _worldMat.m[4] && this._m05 === _worldMat.m[5] && this._m12 === _worldMat.m[12] && this._m13 === _worldMat.m[13] && this._w === node._contentSize.width && this._h === node._contentSize.height) {
+      return;
+    } // update matrix cache
 
-    _p.destroy = function () {
-        this.disable();
-        this.removeDom();
-    };
 
-    _p.setVisible = function (visible) {
-        if (this._visible !== visible) {
-            this._visible = !!visible;
-            this._updateVisibility();
-        }
-    };
+    this._m00 = _worldMat.m[0];
+    this._m01 = _worldMat.m[1];
+    this._m04 = _worldMat.m[4];
+    this._m05 = _worldMat.m[5];
+    this._m12 = _worldMat.m[12];
+    this._m13 = _worldMat.m[13];
+    this._w = node._contentSize.width;
+    this._h = node._contentSize.height;
 
-    _p.setFullScreenEnabled = function (enable) {
-        var video = this._video;
-        if (!video) {
-            return;
-        }
-        this._fullScreenEnabled = enable;
-        video.setFullScreenEnabled(enable);
-    };
+    var camera = cc.Camera.findCamera(node)._camera;
 
-    _p.updateMatrix = function (node) {
-        if (!this._video || !this._visible) return;
+    var canvas_width = cc.game.canvas.width;
+    var canvas_height = cc.game.canvas.height;
+    var ap = node._anchorPoint; // Vectors in node space
 
-        node.getWorldMatrix(_worldMat);
-        if (!this._forceUpdate && this._m00 === _worldMat.m[0] && this._m01 === _worldMat.m[1] && this._m04 === _worldMat.m[4] && this._m05 === _worldMat.m[5] && this._m12 === _worldMat.m[12] && this._m13 === _worldMat.m[13] && this._w === node._contentSize.width && this._h === node._contentSize.height) {
-            return;
-        }
+    vec3.set(_topLeft, -ap.x * this._w, (1.0 - ap.y) * this._h, 0);
+    vec3.set(_bottomRight, (1 - ap.x) * this._w, -ap.y * this._h, 0); // Convert to world space
 
-        // update matrix cache
-        this._m00 = _worldMat.m[0];
-        this._m01 = _worldMat.m[1];
-        this._m04 = _worldMat.m[4];
-        this._m05 = _worldMat.m[5];
-        this._m12 = _worldMat.m[12];
-        this._m13 = _worldMat.m[13];
-        this._w = node._contentSize.width;
-        this._h = node._contentSize.height;
+    vec3.transformMat4(_topLeft, _topLeft, _worldMat);
+    vec3.transformMat4(_bottomRight, _bottomRight, _worldMat); // Convert to Screen space
 
-        var camera = cc.Camera.findCamera(node);
-        camera.getWorldToScreenMatrix2D(_cameraMat);
-        math.mat4.mul(_cameraMat, _cameraMat, _worldMat);
+    camera.worldToScreen(_topLeft, _topLeft, canvas_width, canvas_height);
+    camera.worldToScreen(_bottomRight, _bottomRight, canvas_width, canvas_height);
+    var finalWidth = _bottomRight.x - _topLeft.x;
+    var finalHeight = _topLeft.y - _bottomRight.y;
 
-        var viewScaleX = cc.view._scaleX,
-            viewScaleY = cc.view._scaleY;
-        var dpr = cc.view._devicePixelRatio;
-        viewScaleX /= dpr;
-        viewScaleY /= dpr;
+    this._video.setFrame(_topLeft.x, canvas_height - _topLeft.y, finalWidth, finalHeight);
+  };
 
-        var finalScaleX = _cameraMat.m[0] * viewScaleX,
-            finalScaleY = _cameraMat.m[5] * viewScaleY;
+  _impl.EventType = {
+    PLAYING: 0,
+    PAUSED: 1,
+    STOPPED: 2,
+    COMPLETED: 3,
+    META_LOADED: 4,
+    CLICKED: 5,
+    READY_TO_PLAY: 6
+  }; // video 队列，所有 vidoe 在 onEnter 的时候都会插入这个队列
 
-        var finalWidth = this._w * finalScaleX,
-            finalHeight = this._h * finalScaleY;
+  _impl.elements = []; // video 在 game_hide 事件中被自动暂停的队列，用于回复的时候重新开始播放
 
-        var appx = finalWidth * node._anchorPoint.x;
-        var appy = finalHeight * node._anchorPoint.y;
+  _impl.pauseElements = [];
+  cc.game.on(cc.game.EVENT_HIDE, function () {
+    var list = _impl.elements;
 
-        var viewport = cc.view._viewportRect;
-        var offsetX = viewport.x / dpr,
-            offsetY = viewport.y / dpr;
+    for (var element, i = 0; i < list.length; i++) {
+      element = list[i];
 
-        var tx = _cameraMat.m[12] * viewScaleX - appx + offsetX,
-            ty = _cameraMat.m[13] * viewScaleY - appy + offsetY;
+      if (element.isPlaying()) {
+        element.pause();
 
-        var height = cc.view.getFrameSize().height;
-        this._video.setFrame(tx, height - finalHeight - ty, finalWidth, finalHeight);
-        this._forceUpdate = false;
-    };
+        _impl.pauseElements.push(element);
+      }
+    }
+  });
+  cc.game.on(cc.game.EVENT_SHOW, function () {
+    var list = _impl.pauseElements;
+    var element = list.pop();
 
-    _impl.EventType = {
-        PLAYING: 0,
-        PAUSED: 1,
-        STOPPED: 2,
-        COMPLETED: 3,
-        META_LOADED: 4,
-        CLICKED: 5,
-        READY_TO_PLAY: 6
-    };
-
-    // video 队列，所有 vidoe 在 onEnter 的时候都会插入这个队列
-    _impl.elements = [];
-    // video 在 game_hide 事件中被自动暂停的队列，用于回复的时候重新开始播放
-    _impl.pauseElements = [];
-
-    cc.game.on(cc.game.EVENT_HIDE, function () {
-        var list = _impl.elements;
-        for (var element, i = 0; i < list.length; i++) {
-            element = list[i];
-            if (element.isPlaying()) {
-                element.pause();
-                _impl.pauseElements.push(element);
-            }
-        }
-    });
-
-    cc.game.on(cc.game.EVENT_SHOW, function () {
-        var list = _impl.pauseElements;
-        var element = list.pop();
-        while (element) {
-            element.play();
-            element = list.pop();
-        }
-    });
+    while (element) {
+      element.play();
+      element = list.pop();
+    }
+  });
 })();
 
-},{}],40:[function(require,module,exports){
-'use strict';
+},{}],43:[function(require,module,exports){
+"use strict";
 
 /****************************************************************************
  Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
@@ -4348,519 +4958,325 @@ sys.getSafeAreaRect = function () {
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
  ****************************************************************************/
-
 (function () {
-    if (!(cc && cc.WebView && cc.WebView.Impl)) {
-        return;
+  if (!(cc && cc.WebView && cc.WebView.Impl)) {
+    return;
+  }
+
+  var vec3 = cc.Vec3;
+
+  var _worldMat = new cc.Mat4();
+
+  var _topLeft = new vec3();
+
+  var _bottomRight = new vec3();
+
+  cc.WebView.Impl = cc.Class({
+    "extends": cc.WebView.Impl,
+    ctor: function ctor() {
+      // keep webview data
+      this.jsCallback = null;
+      this.interfaceSchema = null;
+    }
+  });
+  var _impl = cc.WebView.Impl;
+  var _p = cc.WebView.Impl.prototype;
+
+  _p._updateVisibility = function () {
+    if (!this._iframe) return;
+
+    this._iframe.setVisible(this._visible);
+  };
+
+  _p._updateSize = function (w, h) {};
+
+  _p._initEvent = function () {
+    var iframe = this._iframe;
+
+    if (iframe) {
+      var cbs = this.__eventListeners,
+          self = this;
+
+      cbs.load = function () {
+        self._dispatchEvent(_impl.EventType.LOADED);
+      };
+
+      cbs.error = function () {
+        self._dispatchEvent(_impl.EventType.ERROR);
+      }; // native event callback
+
+
+      this._iframe.setOnDidFinishLoading(cbs.load);
+
+      this._iframe.setOnDidFailLoading(cbs.error);
+    }
+  };
+
+  _p._initExtraSetting = function () {
+    this.jsCallback && this.setOnJSCallback(this.jsCallback);
+    this.interfaceSchema && this.setJavascriptInterfaceScheme(this.interfaceSchema); // remove obj
+
+    this.jsCallback = null;
+    this.interfaceSchema = null;
+  };
+
+  _p._setOpacity = function (opacity) {
+    var iframe = this._iframe;
+
+    if (iframe && iframe.style) {
+      iframe.style.opacity = opacity / 255; // TODO, add impl to Native
+    }
+  };
+
+  _p.createDomElementIfNeeded = function (w, h) {
+    if (!jsb.WebView) {
+      cc.warn('WebView only supports mobile platform.');
+      return;
     }
 
-    var math = cc.vmath;
-    var _worldMat = math.mat4.create();
-    var _cameraMat = math.mat4.create();
+    if (!this._iframe) {
+      this._iframe = jsb.WebView.create();
 
-    cc.WebView.Impl = cc.Class({
-        extends: cc.WebView.Impl,
-        ctor: function ctor() {
-            // keep webview data
-            this.jsCallback = null;
-            this.interfaceSchema = null;
-        }
-    });
-    var _impl = cc.WebView.Impl;
-    var _p = cc.WebView.Impl.prototype;
+      this._initEvent();
 
-    _p._updateVisibility = function () {
-        if (!this._iframe) return;
-        this._iframe.setVisible(this._visible);
-    };
-    _p._updateSize = function (w, h) {};
-    _p._initEvent = function () {
-        var iframe = this._iframe;
-        if (iframe) {
-            var cbs = this.__eventListeners,
-                self = this;
-            cbs.load = function () {
-                self._dispatchEvent(_impl.EventType.LOADED);
-            };
-            cbs.error = function () {
-                self._dispatchEvent(_impl.EventType.ERROR);
-            };
-            // native event callback
-            this._iframe.setOnDidFinishLoading(cbs.load);
-            this._iframe.setOnDidFailLoading(cbs.error);
-        }
-    };
-    _p._initExtraSetting = function () {
-        this.jsCallback && this.setOnJSCallback(this.jsCallback);
-        this.interfaceSchema && this.setJavascriptInterfaceScheme(this.interfaceSchema);
-        // remove obj
-        this.jsCallback = null;
-        this.interfaceSchema = null;
-    };
-    _p._setOpacity = function (opacity) {
-        var iframe = this._iframe;
-        if (iframe && iframe.style) {
-            iframe.style.opacity = opacity / 255;
-            // TODO, add impl to Native
-        }
-    };
-    _p.createDomElementIfNeeded = function (w, h) {
-        if (!jsb.WebView) {
-            cc.warn('WebView only supports mobile platform.');
-            return;
-        }
-        if (!this._iframe) {
-            this._iframe = jsb.WebView.create();
-            this._initEvent();
-            this._initExtraSetting();
-        }
-    };
-    _p.removeDom = function () {
-        var iframe = this._iframe;
-        if (iframe) {
-            var cbs = this.__eventListeners;
-            cbs.load = null;
-            cbs.error = null;
-            iframe.destroy();
-            this._iframe = null;
-        }
-    };
+      this._initExtraSetting();
+    }
+  };
 
-    _p.setOnJSCallback = function (callback) {
-        var iframe = this._iframe;
-        if (iframe) {
-            iframe.setOnJSCallback(callback);
-        } else {
-            this.jsCallback = callback;
-        }
-    };
-    _p.setJavascriptInterfaceScheme = function (scheme) {
-        var iframe = this._iframe;
-        if (iframe) {
-            iframe.setJavascriptInterfaceScheme(scheme);
-        } else {
-            this.interfaceSchema = scheme;
-        }
-    };
-    _p.loadData = function (data, MIMEType, encoding, baseURL) {
-        var iframe = this._iframe;
-        if (iframe) {
-            iframe.loadData(data, MIMEType, encoding, baseURL);
-        }
-    };
-    _p.loadHTMLString = function (string, baseURL) {
-        var iframe = this._iframe;
-        if (iframe) {
-            iframe.loadHTMLString(string, baseURL);
-        }
-    };
-    /**
-     * Load an URL
-     * @param {String} url
-     */
-    _p.loadURL = function (url) {
-        var iframe = this._iframe;
-        if (iframe) {
-            iframe.src = url;
-            iframe.loadURL(url);
-            this._dispatchEvent(_impl.EventType.LOADING);
-        }
-    };
-    /**
-     * Stop loading
-     */
-    _p.stopLoading = function () {
-        cc.logID(7800);
-    };
-    /**
-     * Reload the WebView
-     */
-    _p.reload = function () {
-        var iframe = this._iframe;
-        if (iframe) {
-            iframe.reload();
-        }
-    };
-    /**
-     * Determine whether to go back
-     */
-    _p.canGoBack = function () {
-        var iframe = this._iframe;
-        if (iframe) {
-            return iframe.canGoBack();
-        }
-    };
-    /**
-     * Determine whether to go forward
-     */
-    _p.canGoForward = function () {
-        var iframe = this._iframe;
-        if (iframe) {
-            return iframe.canGoForward();
-        }
-    };
-    /**
-     * go back
-     */
-    _p.goBack = function () {
-        var iframe = this._iframe;
-        if (iframe) {
-            return iframe.goBack();
-        }
-    };
-    /**
-     * go forward
-     */
-    _p.goForward = function () {
-        var iframe = this._iframe;
-        if (iframe) {
-            return iframe.goForward();
-        }
-    };
-    /**
-     * In the webview execution within a period of js string
-     * @param {String} str
-     */
-    _p.evaluateJS = function (str) {
-        var iframe = this._iframe;
-        if (iframe) {
-            return iframe.evaluateJS(str);
-        }
-    };
-    /**
-     * Limited scale
-     */
-    _p.setScalesPageToFit = function () {
-        var iframe = this._iframe;
-        if (iframe) {
-            return iframe.setScalesPageToFit();
-        }
-    };
-    /**
-     * The binding event
-     * @param {_impl.EventType} event
-     * @param {Function} callback
-     */
-    _p.setEventListener = function (event, callback) {
-        this._EventList[event] = callback;
-    };
-    /**
-     * Delete events
-     * @param {_impl.EventType} event
-     */
-    _p.removeEventListener = function (event) {
-        this._EventList[event] = null;
-    };
-    _p._dispatchEvent = function (event) {
-        var callback = this._EventList[event];
-        if (callback) callback.call(this, this, this._iframe.src);
-    };
-    _p._createRenderCmd = function () {
-        return new _impl.RenderCmd(this);
-    };
-    _p.destroy = function () {
-        this.removeDom();
-    };
-    _p.setVisible = function (visible) {
-        if (this._visible !== visible) {
-            this._visible = !!visible;
-            this._updateVisibility();
-        }
-    };
-    _p.updateMatrix = function (node) {
-        if (!this._iframe || !this._visible) return;
-        node.getWorldMatrix(_worldMat);
-        if (this._m00 === _worldMat.m[0] && this._m01 === _worldMat.m[1] && this._m04 === _worldMat.m[4] && this._m05 === _worldMat.m[5] && this._m12 === _worldMat.m[12] && this._m13 === _worldMat.m[13] && this._w === node._contentSize.width && this._h === node._contentSize.height) {
-            return;
-        }
-        // update matrix cache
-        this._m00 = _worldMat.m[0];
-        this._m01 = _worldMat.m[1];
-        this._m04 = _worldMat.m[4];
-        this._m05 = _worldMat.m[5];
-        this._m12 = _worldMat.m[12];
-        this._m13 = _worldMat.m[13];
-        this._w = node._contentSize.width;
-        this._h = node._contentSize.height;
+  _p.removeDom = function () {
+    var iframe = this._iframe;
 
-        var camera = cc.Camera.findCamera(node);
-        camera.getWorldToScreenMatrix2D(_cameraMat);
-        math.mat4.mul(_cameraMat, _cameraMat, _worldMat);
+    if (iframe) {
+      var cbs = this.__eventListeners;
+      cbs.load = null;
+      cbs.error = null;
+      iframe.destroy();
+      this._iframe = null;
+    }
+  };
 
-        var viewScaleX = cc.view._scaleX,
-            viewScaleY = cc.view._scaleY;
-        var dpr = cc.view._devicePixelRatio;
-        viewScaleX /= dpr;
-        viewScaleY /= dpr;
+  _p.setOnJSCallback = function (callback) {
+    var iframe = this._iframe;
 
-        var finalScaleX = _cameraMat.m[0] * viewScaleX,
-            finalScaleY = _cameraMat.m[5] * viewScaleY;
+    if (iframe) {
+      iframe.setOnJSCallback(callback);
+    } else {
+      this.jsCallback = callback;
+    }
+  };
 
-        var finalWidth = this._w * finalScaleX,
-            finalHeight = this._h * finalScaleY;
+  _p.setJavascriptInterfaceScheme = function (scheme) {
+    var iframe = this._iframe;
 
-        var appx = finalWidth * node._anchorPoint.x;
-        var appy = finalHeight * node._anchorPoint.y;
+    if (iframe) {
+      iframe.setJavascriptInterfaceScheme(scheme);
+    } else {
+      this.interfaceSchema = scheme;
+    }
+  };
 
-        var viewport = cc.view._viewportRect;
-        var offsetX = viewport.x / dpr,
-            offsetY = viewport.y / dpr;
+  _p.loadData = function (data, MIMEType, encoding, baseURL) {
+    var iframe = this._iframe;
 
-        var tx = _cameraMat.m[12] * viewScaleX - appx + offsetX,
-            ty = _cameraMat.m[13] * viewScaleY - appy + offsetY;
+    if (iframe) {
+      iframe.loadData(data, MIMEType, encoding, baseURL);
+    }
+  };
 
-        var height = cc.view.getFrameSize().height;
-        // set webview rect
-        this._iframe.setFrame(tx, height - finalHeight - ty, finalWidth, finalHeight);
-    };
-})();
+  _p.loadHTMLString = function (string, baseURL) {
+    var iframe = this._iframe;
 
-},{}],41:[function(require,module,exports){
-"use strict";
+    if (iframe) {
+      iframe.loadHTMLString(string, baseURL);
+    }
+  };
+  /**
+   * Load an URL
+   * @param {String} url
+   */
 
-/****************************************************************************
- Copyright (c) 2018 Xiamen Yaji Software Co., Ltd.
 
- http://www.cocos.com
+  _p.loadURL = function (url) {
+    var iframe = this._iframe;
 
- Permission is hereby granted, free of charge, to any person obtaining a copy
- of this software and associated engine source code (the "Software"), a limited,
-  worldwide, royalty-free, non-assignable, revocable and non-exclusive license
- to use Cocos Creator solely to develop games on your target platforms. You shall
-  not use Cocos Creator software for developing other software or tools that's
-  used for developing games. You are not granted to publish, distribute,
-  sublicense, and/or sell copies of Cocos Creator.
+    if (iframe) {
+      iframe.src = url;
+      iframe.loadURL(url);
 
- The software or tools in this License Agreement are licensed, not sold.
- Xiamen Yaji Software Co., Ltd. reserves all rights not expressly granted to you.
+      this._dispatchEvent(_impl.EventType.LOADING);
+    }
+  };
+  /**
+   * Stop loading
+   */
 
- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- THE SOFTWARE.
- ****************************************************************************/
 
-var nativeCameraProto = renderer.Camera.prototype;
-var _setNode = nativeCameraProto.setNode;
-cc.js.mixin(nativeCameraProto, {
-  setNode: function setNode(node) {
-    this._persistentNode = node;
-    _setNode.call(this, node);
-  }
-});
+  _p.stopLoading = function () {
+    cc.logID(7800);
+  };
+  /**
+   * Reload the WebView
+   */
 
-},{}],42:[function(require,module,exports){
-"use strict";
 
-/****************************************************************************
- Copyright (c) 2018 Xiamen Yaji Software Co., Ltd.
+  _p.reload = function () {
+    var iframe = this._iframe;
 
- http://www.cocos.com
+    if (iframe) {
+      iframe.reload();
+    }
+  };
+  /**
+   * Determine whether to go back
+   */
 
- Permission is hereby granted, free of charge, to any person obtaining a copy
- of this software and associated engine source code (the "Software"), a limited,
-  worldwide, royalty-free, non-assignable, revocable and non-exclusive license
- to use Cocos Creator solely to develop games on your target platforms. You shall
-  not use Cocos Creator software for developing other software or tools that's
-  used for developing games. You are not granted to publish, distribute,
-  sublicense, and/or sell copies of Cocos Creator.
 
- The software or tools in this License Agreement are licensed, not sold.
- Xiamen Yaji Software Co., Ltd. reserves all rights not expressly granted to you.
+  _p.canGoBack = function () {
+    var iframe = this._iframe;
 
- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- THE SOFTWARE.
- ****************************************************************************/
+    if (iframe) {
+      return iframe.canGoBack();
+    }
+  };
+  /**
+   * Determine whether to go forward
+   */
 
-var nativeLightProto = renderer.Light.prototype;
-var _setNode = nativeLightProto.setNode;
-cc.js.mixin(nativeLightProto, {
-  setNode: function setNode(node) {
-    this._node = node;
-    _setNode.call(this, node);
-  }
-});
 
-},{}],43:[function(require,module,exports){
-"use strict";
+  _p.canGoForward = function () {
+    var iframe = this._iframe;
 
-/****************************************************************************
- Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
+    if (iframe) {
+      return iframe.canGoForward();
+    }
+  };
+  /**
+   * go back
+   */
 
- https://www.cocos.com/
 
- Permission is hereby granted, free of charge, to any person obtaining a copy
- of this software and associated engine source code (the "Software"), a limited,
- worldwide, royalty-free, non-assignable, revocable and non-exclusive license
- to use Cocos Creator solely to develop games on your target platforms. You shall
- not use Cocos Creator software for developing other software or tools that's
- used for developing games. You are not granted to publish, distribute,
- sublicense, and/or sell copies of Cocos Creator.
+  _p.goBack = function () {
+    var iframe = this._iframe;
 
- The software or tools in this License Agreement are licensed, not sold.
- Xiamen Yaji Software Co., Ltd. reserves all rights not expressly granted to you.
+    if (iframe) {
+      return iframe.goBack();
+    }
+  };
+  /**
+   * go forward
+   */
 
- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- THE SOFTWARE.
- ****************************************************************************/
-(function () {
-    if (!cc.MeshBuffer) return;
-    var MeshBuffer = cc.MeshBuffer.prototype;
 
-    MeshBuffer.init = function (batcher, vertexFormat) {
-        this.byteOffset = 0;
-        this.indiceOffset = 0;
-        this.vertexOffset = 0;
+  _p.goForward = function () {
+    var iframe = this._iframe;
 
-        this._vertexFormat = vertexFormat;
-        this._vertexBytes = this._vertexFormat._bytes;
+    if (iframe) {
+      return iframe.goForward();
+    }
+  };
+  /**
+   * In the webview execution within a period of js string
+   * @param {String} str
+   */
 
-        this._vDatas = [];
-        this._uintVDatas = [];
-        this._iDatas = [];
-        this._arrOffset = 0;
 
-        this._vData = null;
-        this._uintVData = null;
-        this._iData = null;
+  _p.evaluateJS = function (str) {
+    var iframe = this._iframe;
 
-        this._initVDataCount = 256 * vertexFormat._bytes; // actually 256 * 4 * (vertexFormat._bytes / 4)
-        this._initIDataCount = 256 * 6;
+    if (iframe) {
+      return iframe.evaluateJS(str);
+    }
+  };
+  /**
+   * Limited scale
+   */
 
-        this._offsetInfo = {
-            byteOffset: 0,
-            vertexOffset: 0,
-            indiceOffset: 0
-        };
 
-        this._renderDataList = new renderer.RenderDataList();
-        this._reallocBuffer();
-    };
+  _p.setScalesPageToFit = function () {
+    var iframe = this._iframe;
 
-    MeshBuffer.setNativeAssembler = function (assembler) {
-        if (assembler !== this._nativeAssembler) {
-            this._nativeAssembler = assembler;
-            assembler.setRenderDataList(this._renderDataList);
-        }
-    };
+    if (iframe) {
+      return iframe.setScalesPageToFit();
+    }
+  };
+  /**
+   * The binding event
+   * @param {_impl.EventType} event
+   * @param {Function} callback
+   */
 
-    MeshBuffer._updateVIDatas = function () {
-        var offset = this._arrOffset;
-        this._vDatas[offset] = this._vData;
-        this._uintVDatas[offset] = this._uintVData;
-        this._iDatas[offset] = this._iData;
-        this._renderDataList.updateMesh(offset, this._vData, this._iData);
-    };
 
-    MeshBuffer.getNativeAssembler = function () {
-        return this._nativeAssembler;
-    };
+  _p.setEventListener = function (event, callback) {
+    this._EventList[event] = callback;
+  };
+  /**
+   * Delete events
+   * @param {_impl.EventType} event
+   */
 
-    MeshBuffer.getCurMeshIndex = function () {
-        return this._arrOffset;
-    };
 
-    MeshBuffer.uploadData = function () {};
+  _p.removeEventListener = function (event) {
+    this._EventList[event] = null;
+  };
 
-    MeshBuffer.switchBuffer = function () {
-        var offset = ++this._arrOffset;
+  _p._dispatchEvent = function (event) {
+    var callback = this._EventList[event];
+    if (callback) callback.call(this, this, this._iframe.src);
+  };
 
-        this.byteOffset = 0;
-        this.vertexOffset = 0;
-        this.indiceOffset = 0;
+  _p._createRenderCmd = function () {
+    return new _impl.RenderCmd(this);
+  };
 
-        if (offset < this._vDatas.length) {
-            this._vData = this._vDatas[offset];
-            this._uintVData = this._uintVDatas[offset];
-            this._iData = this._iDatas[offset];
-        } else {
-            this._reallocBuffer();
-        }
-    };
+  _p.destroy = function () {
+    this.removeDom();
+  };
 
-    MeshBuffer.checkAndSwitchBuffer = function (vertexCount) {
-        if (this.vertexOffset + vertexCount > 65535) {
-            this.switchBuffer();
-        }
-    };
+  _p.setVisible = function (visible) {
+    if (this._visible !== visible) {
+      this._visible = !!visible;
 
-    MeshBuffer.used = function (vertexCount, indiceCount) {
-        if (!this._nativeAssembler) return;
-        this._nativeAssembler.updateVerticesRange(this._arrOffset, 0, vertexCount);
-        this._nativeAssembler.updateIndicesRange(this._arrOffset, 0, indiceCount);
-    };
+      this._updateVisibility();
+    }
+  };
 
-    MeshBuffer.request = function (vertexCount, indiceCount) {
-        this.requestStatic(vertexCount, indiceCount);
-        return this._offsetInfo;
-    };
+  _p.updateMatrix = function (node) {
+    if (!this._iframe || !this._visible) return;
+    node.getWorldMatrix(_worldMat);
 
-    MeshBuffer._reallocBuffer = function () {
-        this._reallocVData(true);
-        this._reallocIData(true);
-        this._updateVIDatas();
-    };
+    if (this._m00 === _worldMat.m[0] && this._m01 === _worldMat.m[1] && this._m04 === _worldMat.m[4] && this._m05 === _worldMat.m[5] && this._m12 === _worldMat.m[12] && this._m13 === _worldMat.m[13] && this._w === node._contentSize.width && this._h === node._contentSize.height) {
+      return;
+    } // update matrix cache
 
-    MeshBuffer._reallocVData = function (copyOldData) {
-        var oldVData = void 0;
-        if (this._vData) {
-            oldVData = new Uint8Array(this._vData.buffer);
-        }
 
-        this._vData = new Float32Array(this._initVDataCount);
-        this._uintVData = new Uint32Array(this._vData.buffer);
+    this._m00 = _worldMat.m[0];
+    this._m01 = _worldMat.m[1];
+    this._m04 = _worldMat.m[4];
+    this._m05 = _worldMat.m[5];
+    this._m12 = _worldMat.m[12];
+    this._m13 = _worldMat.m[13];
+    this._w = node._contentSize.width;
+    this._h = node._contentSize.height;
 
-        var newData = new Uint8Array(this._uintVData.buffer);
+    var camera = cc.Camera.findCamera(node)._camera;
 
-        if (oldVData && copyOldData) {
-            for (var i = 0, l = oldVData.length; i < l; i++) {
-                newData[i] = oldVData[i];
-            }
-        }
-    };
+    var canvas_width = cc.game.canvas.width;
+    var canvas_height = cc.game.canvas.height;
+    var ap = node._anchorPoint; // Vectors in node space
 
-    MeshBuffer._reallocIData = function (copyOldData) {
-        var oldIData = this._iData;
+    vec3.set(_topLeft, -ap.x * this._w, (1.0 - ap.y) * this._h, 0);
+    vec3.set(_bottomRight, (1 - ap.x) * this._w, -ap.y * this._h, 0); // Convert to world space
 
-        this._iData = new Uint16Array(this._initIDataCount);
+    vec3.transformMat4(_topLeft, _topLeft, _worldMat);
+    vec3.transformMat4(_bottomRight, _bottomRight, _worldMat); // Convert to screen space
 
-        if (oldIData && copyOldData) {
-            var iData = this._iData;
-            for (var i = 0, l = oldIData.length; i < l; i++) {
-                iData[i] = oldIData[i];
-            }
-        }
-    };
+    camera.worldToScreen(_topLeft, _topLeft, canvas_width, canvas_height);
+    camera.worldToScreen(_bottomRight, _bottomRight, canvas_width, canvas_height);
+    var finalWidth = _bottomRight.x - _topLeft.x;
+    var finalHeight = _topLeft.y - _bottomRight.y;
 
-    MeshBuffer.reset = function () {
-        this._arrOffset = 0;
-        this._vData = this._vDatas[0];
-        this._uintVData = this._uintVDatas[0];
-        this._iData = this._iDatas[0];
-
-        this.byteOffset = 0;
-        this.indiceOffset = 0;
-        this.vertexOffset = 0;
-
-        this.used(0, 0);
-    };
-
-    MeshBuffer.destroy = function () {
-        this.reset();
-    };
+    this._iframe.setFrame(_topLeft.x, canvas_height - _topLeft.y, finalWidth, finalHeight);
+  };
 })();
 
 },{}],44:[function(require,module,exports){
@@ -4890,101 +5306,19 @@ cc.js.mixin(nativeLightProto, {
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
  ****************************************************************************/
+var nativeCameraProto = renderer.Camera.prototype;
+var _setNode = nativeCameraProto.setNode;
+cc.js.mixin(nativeCameraProto, {
+  setNode: function setNode(node) {
+    this._persistentNode = node;
 
-var RenderFlow = cc.RenderFlow;
-
-cc.js.mixin(renderer.NodeProxy.prototype, {
-    _ctor: function _ctor() {
-        this._owner = null;
-    },
-    init: function init(owner) {
-        this._owner = owner;
-
-        var spaceInfo = owner._spaceInfo;
-        this._owner._dirtyPtr = spaceInfo.dirty;
-
-        this._dirtyPtr = spaceInfo.dirty;
-        this._parentPtr = spaceInfo.parent;
-        this._zOrderPtr = spaceInfo.zOrder;
-        this._cullingMaskPtr = spaceInfo.cullingMask;
-        this._opacityPtr = spaceInfo.opacity;
-        this._is3DPtr = spaceInfo.is3D;
-        this._skewPtr = spaceInfo.skew;
-        this._isVisitingTraversal = false;
-
-        owner._proxy = this;
-        this.updateOpacity();
-        this.update3DNode();
-        this.updateZOrder();
-        this.updateCullingMask();
-        this.updateSkew();
-        owner.on(cc.Node.EventType.SIBLING_ORDER_CHANGED, this.updateZOrder, this);
-    },
-    initNative: function initNative() {
-        this.setName(this._owner._name);
-        this.updateParent();
-        this.updateOpacity();
-        this.update3DNode();
-        this.updateZOrder();
-        this.updateSkew();
-        this.updateCullingMask();
-    },
-    destroy: function destroy() {
-        this.destroyImmediately();
-
-        this._owner.off(cc.Node.EventType.SIBLING_ORDER_CHANGED, this.updateZOrder, this);
-        this._owner._proxy = null;
-        this._owner = null;
-    },
-    updateParent: function updateParent() {
-        var parent = this._owner._parent;
-        if (parent) {
-            var parentSpaceInfo = parent._spaceInfo;
-            this._parentPtr[0] = parentSpaceInfo.unitID;
-            this._parentPtr[1] = parentSpaceInfo.index;
-
-            var parentDirtyPtr = parentSpaceInfo.dirty;
-            parentDirtyPtr[0] |= RenderFlow.FLAG_REORDER_CHILDREN;
-            this._dirtyPtr[0] |= RenderFlow.FLAG_OPACITY;
-        } else {
-            this._parentPtr[0] = 0xffffffff;
-            this._parentPtr[1] = 0xffffffff;
-        }
-        this.notifyUpdateParent();
-    },
-    updateZOrder: function updateZOrder() {
-        this._zOrderPtr[0] = this._owner._localZOrder;
-        var parent = this._owner._parent;
-        if (parent && parent._proxy) {
-            parent._proxy._dirtyPtr[0] |= RenderFlow.FLAG_REORDER_CHILDREN;
-        }
-    },
-    updateCullingMask: function updateCullingMask() {
-        this._cullingMaskPtr[0] = this._owner._cullingMask;
-    },
-    updateOpacity: function updateOpacity() {
-        this._opacityPtr[0] = this._owner.opacity;
-        this._dirtyPtr[0] |= RenderFlow.FLAG_OPACITY;
-    },
-    update3DNode: function update3DNode() {
-        this._is3DPtr[0] = this._owner.is3DNode ? 0x1 : 0x0;
-        this._dirtyPtr[0] |= RenderFlow.FLAG_LOCAL_TRANSFORM;
-    },
-    updateSkew: function updateSkew() {
-        var skewPtr = this._skewPtr;
-        var owner = this._owner;
-        var skx = owner._skewX;
-        var sky = owner._skewY;
-        skewPtr[0] = skx;
-        skewPtr[1] = sky;
-        if (!this._isVisitingTraversal && (skx !== 0 || sky !== 0)) {
-            this.switchTraverseToVisit();
-            this._isVisitingTraversal = true;
-        }
-    }
+    _setNode.call(this, node);
+  }
 });
 
 },{}],45:[function(require,module,exports){
+"use strict";
+
 /****************************************************************************
  Copyright (c) 2018 Xiamen Yaji Software Co., Ltd.
 
@@ -5009,44 +5343,15 @@ cc.js.mixin(renderer.NodeProxy.prototype, {
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
  ****************************************************************************/
+var nativeLightProto = renderer.Light.prototype;
+var _setNode = nativeLightProto.setNode;
+cc.js.mixin(nativeLightProto, {
+  setNode: function setNode(node) {
+    this._node = node;
 
-'use strict';
-
-var RenderFlow = cc.RenderFlow;
-var LOCAL_TRANSFORM = RenderFlow.FLAG_LOCAL_TRANSFORM;
-var COLOR = RenderFlow.FLAG_COLOR;
-var UPDATE_RENDER_DATA = RenderFlow.FLAG_UPDATE_RENDER_DATA;
-
-var POSITION_ON = 1 << 0;
-
-cc.Node.prototype.setLocalDirty = function (flag) {
-    this._localMatDirty |= flag;
-    this._worldMatDirty = true;
-    this._dirtyPtr[0] |= RenderFlow.FLAG_TRANSFORM;
-};
-
-cc.js.getset(cc.Node.prototype, "_renderFlag", function () {
-    return this._dirtyPtr[0];
-}, function (flag) {
-    this._dirtyPtr[0] = flag;
-    if (flag & UPDATE_RENDER_DATA || flag & COLOR) {
-        cc.RenderFlow.register(this);
-    }
+    _setNode.call(this, node);
+  }
 });
-
-cc.PrivateNode.prototype._posDirty = function (sendEvent) {
-    var parent = this.parent;
-    if (parent) {
-        // Position correction for transform calculation
-        this._trs[0] = this._originPos.x - (parent._anchorPoint.x - 0.5) * parent._contentSize.width;
-        this._trs[1] = this._originPos.y - (parent._anchorPoint.y - 0.5) * parent._contentSize.height;
-    }
-
-    this.setLocalDirty(cc.Node._LocalDirtyFlag.POSITION);
-    if (sendEvent === true && this._eventMask & POSITION_ON) {
-        this.emit(cc.Node.EventType.POSITION_CHANGED);
-    }
-};
 
 },{}],46:[function(require,module,exports){
 "use strict";
@@ -5076,68 +5381,151 @@ cc.PrivateNode.prototype._posDirty = function (sendEvent) {
  THE SOFTWARE.
  ****************************************************************************/
 (function () {
-    if (!cc.QuadBuffer) return;
-    var QuadBuffer = cc.QuadBuffer.prototype;
+  if (!cc.MeshBuffer) return;
+  var MeshBuffer = cc.MeshBuffer.prototype;
 
-    QuadBuffer._fillQuadBuffer = function () {
-        var count = this._initIDataCount / 6;
-        var buffer = this._iData;
-        for (var i = 0, idx = 0; i < count; i++) {
-            var vertextID = i * 4;
-            buffer[idx++] = vertextID;
-            buffer[idx++] = vertextID + 1;
-            buffer[idx++] = vertextID + 2;
-            buffer[idx++] = vertextID + 1;
-            buffer[idx++] = vertextID + 3;
-            buffer[idx++] = vertextID + 2;
-        }
+  MeshBuffer.init = function (batcher, vertexFormat) {
+    this.byteOffset = 0;
+    this.indiceOffset = 0;
+    this.vertexOffset = 0;
+    this._vertexFormat = vertexFormat;
+    this._vertexBytes = this._vertexFormat._bytes;
+    this._vDatas = [];
+    this._uintVDatas = [];
+    this._iDatas = [];
+    this._arrOffset = 0;
+    this._vData = null;
+    this._uintVData = null;
+    this._iData = null;
+    this._initVDataCount = 256 * vertexFormat._bytes; // actually 256 * 4 * (vertexFormat._bytes / 4)
+
+    this._initIDataCount = 256 * 6;
+    this._offsetInfo = {
+      byteOffset: 0,
+      vertexOffset: 0,
+      indiceOffset: 0
     };
+    this._renderDataList = new renderer.RenderDataList();
 
-    QuadBuffer._reallocBuffer = function () {
-        this._reallocVData(true);
-        this._reallocIData();
-        this._fillQuadBuffer();
-        this._updateVIDatas();
-    };
+    this._reallocBuffer();
+  };
 
-    QuadBuffer.uploadData = function () {};
+  MeshBuffer.setNativeAssembler = function (assembler) {
+    if (assembler !== this._nativeAssembler) {
+      this._nativeAssembler = assembler;
+      assembler.setRenderDataList(this._renderDataList);
+    }
+  };
 
-    QuadBuffer.switchBuffer = function () {
-        cc.MeshBuffer.prototype.switchBuffer.call(this);
-    };
+  MeshBuffer._updateVIDatas = function () {
+    var offset = this._arrOffset;
+    this._vDatas[offset] = this._vData;
+    this._uintVDatas[offset] = this._uintVData;
+    this._iDatas[offset] = this._iData;
+
+    this._renderDataList.updateMesh(offset, this._vData, this._iData);
+  };
+
+  MeshBuffer.getNativeAssembler = function () {
+    return this._nativeAssembler;
+  };
+
+  MeshBuffer.getCurMeshIndex = function () {
+    return this._arrOffset;
+  };
+
+  MeshBuffer.uploadData = function () {};
+
+  MeshBuffer.switchBuffer = function () {
+    var offset = ++this._arrOffset;
+    this.byteOffset = 0;
+    this.vertexOffset = 0;
+    this.indiceOffset = 0;
+
+    if (offset < this._vDatas.length) {
+      this._vData = this._vDatas[offset];
+      this._uintVData = this._uintVDatas[offset];
+      this._iData = this._iDatas[offset];
+    } else {
+      this._reallocBuffer();
+    }
+  };
+
+  MeshBuffer.checkAndSwitchBuffer = function (vertexCount) {
+    if (this.vertexOffset + vertexCount > 65535) {
+      this.switchBuffer();
+    }
+  };
+
+  MeshBuffer.used = function (vertexCount, indiceCount) {
+    if (!this._nativeAssembler) return;
+
+    this._nativeAssembler.updateVerticesRange(this._arrOffset, 0, vertexCount);
+
+    this._nativeAssembler.updateIndicesRange(this._arrOffset, 0, indiceCount);
+  };
+
+  MeshBuffer.request = function (vertexCount, indiceCount) {
+    this.requestStatic(vertexCount, indiceCount);
+    return this._offsetInfo;
+  };
+
+  MeshBuffer._reallocBuffer = function () {
+    this._reallocVData(true);
+
+    this._reallocIData(true);
+
+    this._updateVIDatas();
+  };
+
+  MeshBuffer._reallocVData = function (copyOldData) {
+    var oldVData;
+
+    if (this._vData) {
+      oldVData = new Uint8Array(this._vData.buffer);
+    }
+
+    this._vData = new Float32Array(this._initVDataCount);
+    this._uintVData = new Uint32Array(this._vData.buffer);
+    var newData = new Uint8Array(this._uintVData.buffer);
+
+    if (oldVData && copyOldData) {
+      for (var i = 0, l = oldVData.length; i < l; i++) {
+        newData[i] = oldVData[i];
+      }
+    }
+  };
+
+  MeshBuffer._reallocIData = function (copyOldData) {
+    var oldIData = this._iData;
+    this._iData = new Uint16Array(this._initIDataCount);
+
+    if (oldIData && copyOldData) {
+      var iData = this._iData;
+
+      for (var i = 0, l = oldIData.length; i < l; i++) {
+        iData[i] = oldIData[i];
+      }
+    }
+  };
+
+  MeshBuffer.reset = function () {
+    this._arrOffset = 0;
+    this._vData = this._vDatas[0];
+    this._uintVData = this._uintVDatas[0];
+    this._iData = this._iDatas[0];
+    this.byteOffset = 0;
+    this.indiceOffset = 0;
+    this.vertexOffset = 0;
+    this.used(0, 0);
+  };
+
+  MeshBuffer.destroy = function () {
+    this.reset();
+  };
 })();
 
 },{}],47:[function(require,module,exports){
-"use strict";
-
-var proto = cc.RenderData.prototype;
-cc.RenderData.prototype.init = function (assembler) {
-    this._renderDataList = new renderer.RenderDataList();
-    assembler.setRenderDataList(this._renderDataList);
-    this._nativeAssembler = assembler;
-};
-
-var originClear = proto.clear;
-proto.clear = function () {
-    originClear.call(this);
-    this._renderDataList.clear();
-};
-
-var originUpdateMesh = proto.updateMesh;
-proto.updateMesh = function (meshIndex, vertices, indices) {
-    originUpdateMesh.call(this, meshIndex, vertices, indices);
-
-    if (vertices && indices) {
-        this._renderDataList.updateMesh(meshIndex, vertices, indices);
-    }
-};
-
-proto.updateMeshRange = function (verticesCount, indicesCount) {
-    this._nativeAssembler.updateVerticesRange(0, 0, verticesCount);
-    this._nativeAssembler.updateIndicesRange(0, 0, indicesCount);
-};
-
-},{}],48:[function(require,module,exports){
 "use strict";
 
 /****************************************************************************
@@ -5164,67 +5552,346 @@ proto.updateMeshRange = function (verticesCount, indicesCount) {
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
  ****************************************************************************/
+var RenderFlow = cc.RenderFlow;
+cc.js.mixin(renderer.NodeProxy.prototype, {
+  _ctor: function _ctor() {
+    this._owner = null;
+  },
+  init: function init(owner) {
+    this._owner = owner;
+    var spaceInfo = owner._spaceInfo;
+    this._owner._dirtyPtr = spaceInfo.dirty;
+    this._dirtyPtr = spaceInfo.dirty;
+    this._parentPtr = spaceInfo.parent;
+    this._zOrderPtr = spaceInfo.zOrder;
+    this._cullingMaskPtr = spaceInfo.cullingMask;
+    this._opacityPtr = spaceInfo.opacity;
+    this._is3DPtr = spaceInfo.is3D;
+    this._skewPtr = spaceInfo.skew;
+    this._isVisitingTraversal = false;
+    owner._proxy = this;
+    this.updateOpacity();
+    this.update3DNode();
+    this.updateZOrder();
+    this.updateCullingMask();
+    this.updateSkew();
+    owner.on(cc.Node.EventType.SIBLING_ORDER_CHANGED, this.updateZOrder, this);
+  },
+  initNative: function initNative() {
+    this.setName(this._owner._name);
+    this.updateParent();
+    this.updateOpacity();
+    this.update3DNode();
+    this.updateZOrder();
+    this.updateSkew();
+    this.updateCullingMask();
+  },
+  destroy: function destroy() {
+    this.destroyImmediately();
+
+    this._owner.off(cc.Node.EventType.SIBLING_ORDER_CHANGED, this.updateZOrder, this);
+
+    this._owner._proxy = null;
+    this._owner = null;
+  },
+  updateParent: function updateParent() {
+    var parent = this._owner._parent;
+
+    if (parent) {
+      var parentSpaceInfo = parent._spaceInfo;
+      this._parentPtr[0] = parentSpaceInfo.unitID;
+      this._parentPtr[1] = parentSpaceInfo.index;
+      var parentDirtyPtr = parentSpaceInfo.dirty;
+      parentDirtyPtr[0] |= RenderFlow.FLAG_REORDER_CHILDREN;
+      this._dirtyPtr[0] |= RenderFlow.FLAG_OPACITY;
+    } else {
+      this._parentPtr[0] = 0xffffffff;
+      this._parentPtr[1] = 0xffffffff;
+    }
+
+    this.notifyUpdateParent();
+  },
+  updateZOrder: function updateZOrder() {
+    this._zOrderPtr[0] = this._owner._localZOrder;
+    var parent = this._owner._parent;
+
+    if (parent && parent._proxy) {
+      parent._proxy._dirtyPtr[0] |= RenderFlow.FLAG_REORDER_CHILDREN;
+    }
+  },
+  updateCullingMask: function updateCullingMask() {
+    this._cullingMaskPtr[0] = this._owner._cullingMask;
+  },
+  updateOpacity: function updateOpacity() {
+    this._opacityPtr[0] = this._owner.opacity;
+    this._dirtyPtr[0] |= RenderFlow.FLAG_OPACITY;
+  },
+  update3DNode: function update3DNode() {
+    this._is3DPtr[0] = this._owner.is3DNode ? 0x1 : 0x0;
+    this._dirtyPtr[0] |= RenderFlow.FLAG_LOCAL_TRANSFORM;
+  },
+  updateSkew: function updateSkew() {
+    var skewPtr = this._skewPtr;
+    var owner = this._owner;
+    var skx = owner._skewX;
+    var sky = owner._skewY;
+    skewPtr[0] = skx;
+    skewPtr[1] = sky;
+
+    if (!this._isVisitingTraversal && (skx !== 0 || sky !== 0)) {
+      this.switchTraverseToVisit();
+      this._isVisitingTraversal = true;
+    }
+  }
+});
+
+},{}],48:[function(require,module,exports){
+/****************************************************************************
+ Copyright (c) 2018 Xiamen Yaji Software Co., Ltd.
+
+ http://www.cocos.com
+
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated engine source code (the "Software"), a limited,
+  worldwide, royalty-free, non-assignable, revocable and non-exclusive license
+ to use Cocos Creator solely to develop games on your target platforms. You shall
+  not use Cocos Creator software for developing other software or tools that's
+  used for developing games. You are not granted to publish, distribute,
+  sublicense, and/or sell copies of Cocos Creator.
+
+ The software or tools in this License Agreement are licensed, not sold.
+ Xiamen Yaji Software Co., Ltd. reserves all rights not expressly granted to you.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
+ ****************************************************************************/
+'use strict';
 
 var RenderFlow = cc.RenderFlow;
+var LOCAL_TRANSFORM = RenderFlow.FLAG_LOCAL_TRANSFORM;
+var COLOR = RenderFlow.FLAG_COLOR;
+var UPDATE_RENDER_DATA = RenderFlow.FLAG_UPDATE_RENDER_DATA;
+var POSITION_ON = 1 << 0;
 
+cc.Node.prototype.setLocalDirty = function (flag) {
+  this._localMatDirty |= flag;
+  this._worldMatDirty = true;
+  this._dirtyPtr[0] |= RenderFlow.FLAG_TRANSFORM;
+};
+
+cc.js.getset(cc.Node.prototype, "_renderFlag", function () {
+  return this._dirtyPtr[0];
+}, function (flag) {
+  this._dirtyPtr[0] = flag;
+
+  if (flag & UPDATE_RENDER_DATA || flag & COLOR) {
+    cc.RenderFlow.register(this);
+  }
+});
+
+cc.PrivateNode.prototype._posDirty = function (sendEvent) {
+  var parent = this.parent;
+
+  if (parent) {
+    // Position correction for transform calculation
+    this._trs[0] = this._originPos.x - (parent._anchorPoint.x - 0.5) * parent._contentSize.width;
+    this._trs[1] = this._originPos.y - (parent._anchorPoint.y - 0.5) * parent._contentSize.height;
+  }
+
+  this.setLocalDirty(cc.Node._LocalDirtyFlag.POSITION);
+
+  if (sendEvent === true && this._eventMask & POSITION_ON) {
+    this.emit(cc.Node.EventType.POSITION_CHANGED);
+  }
+};
+
+},{}],49:[function(require,module,exports){
+"use strict";
+
+/****************************************************************************
+ Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
+
+ https://www.cocos.com/
+
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated engine source code (the "Software"), a limited,
+ worldwide, royalty-free, non-assignable, revocable and non-exclusive license
+ to use Cocos Creator solely to develop games on your target platforms. You shall
+ not use Cocos Creator software for developing other software or tools that's
+ used for developing games. You are not granted to publish, distribute,
+ sublicense, and/or sell copies of Cocos Creator.
+
+ The software or tools in this License Agreement are licensed, not sold.
+ Xiamen Yaji Software Co., Ltd. reserves all rights not expressly granted to you.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
+ ****************************************************************************/
+(function () {
+  if (!cc.QuadBuffer) return;
+  var QuadBuffer = cc.QuadBuffer.prototype;
+
+  QuadBuffer._fillQuadBuffer = function () {
+    var count = this._initIDataCount / 6;
+    var buffer = this._iData;
+
+    for (var i = 0, idx = 0; i < count; i++) {
+      var vertextID = i * 4;
+      buffer[idx++] = vertextID;
+      buffer[idx++] = vertextID + 1;
+      buffer[idx++] = vertextID + 2;
+      buffer[idx++] = vertextID + 1;
+      buffer[idx++] = vertextID + 3;
+      buffer[idx++] = vertextID + 2;
+    }
+  };
+
+  QuadBuffer._reallocBuffer = function () {
+    this._reallocVData(true);
+
+    this._reallocIData();
+
+    this._fillQuadBuffer();
+
+    this._updateVIDatas();
+  };
+
+  QuadBuffer.uploadData = function () {};
+
+  QuadBuffer.switchBuffer = function () {
+    cc.MeshBuffer.prototype.switchBuffer.call(this);
+  };
+})();
+
+},{}],50:[function(require,module,exports){
+"use strict";
+
+var proto = cc.RenderData.prototype;
+
+cc.RenderData.prototype.init = function (assembler) {
+  this._renderDataList = new renderer.RenderDataList();
+  assembler.setRenderDataList(this._renderDataList);
+  this._nativeAssembler = assembler;
+};
+
+var originClear = proto.clear;
+
+proto.clear = function () {
+  originClear.call(this);
+
+  this._renderDataList.clear();
+};
+
+var originUpdateMesh = proto.updateMesh;
+
+proto.updateMesh = function (meshIndex, vertices, indices) {
+  originUpdateMesh.call(this, meshIndex, vertices, indices);
+
+  if (vertices && indices) {
+    this._renderDataList.updateMesh(meshIndex, vertices, indices);
+  }
+};
+
+proto.updateMeshRange = function (verticesCount, indicesCount) {
+  this._nativeAssembler.updateVerticesRange(0, 0, verticesCount);
+
+  this._nativeAssembler.updateIndicesRange(0, 0, indicesCount);
+};
+
+},{}],51:[function(require,module,exports){
+"use strict";
+
+/****************************************************************************
+ Copyright (c) 2018 Xiamen Yaji Software Co., Ltd.
+
+ http://www.cocos.com
+
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated engine source code (the "Software"), a limited,
+  worldwide, royalty-free, non-assignable, revocable and non-exclusive license
+ to use Cocos Creator solely to develop games on your target platforms. You shall
+  not use Cocos Creator software for developing other software or tools that's
+  used for developing games. You are not granted to publish, distribute,
+  sublicense, and/or sell copies of Cocos Creator.
+
+ The software or tools in this License Agreement are licensed, not sold.
+ Xiamen Yaji Software Co., Ltd. reserves all rights not expressly granted to you.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
+ ****************************************************************************/
+var RenderFlow = cc.RenderFlow;
 RenderFlow.FLAG_REORDER_CHILDREN = 1 << 29;
 RenderFlow.FLAG_WORLD_TRANSFORM_CHANGED = 1 << 30;
 RenderFlow.FLAG_OPACITY_CHANGED = 1 << 31;
-
 var _dirtyTargets = [];
 var _dirtyWaiting = [];
 var _rendering = false;
-
 var director = cc.director;
+
 RenderFlow.render = function (scene) {
-    _rendering = true;
+  _rendering = true;
+  RenderFlow.validateRenderers();
 
-    for (var i = 0, l = _dirtyTargets.length; i < l; i++) {
-        var node = _dirtyTargets[i];
-        node._inRenderList = false;
+  for (var i = 0, l = _dirtyTargets.length; i < l; i++) {
+    var node = _dirtyTargets[i];
+    node._inJsbDirtyList = false;
+    var comp = node._renderComponent;
+    if (!comp) continue;
+    var assembler = comp._assembler;
+    if (!assembler) continue;
+    var flag = node._dirtyPtr[0];
 
-        var comp = node._renderComponent;
-        if (!comp) continue;
-        var assembler = comp._assembler;
-        if (!assembler) continue;
-
-        var flag = node._dirtyPtr[0];
-
-        if (flag & RenderFlow.FLAG_UPDATE_RENDER_DATA) {
-            node._dirtyPtr[0] &= ~RenderFlow.FLAG_UPDATE_RENDER_DATA;
-            assembler._updateRenderData && assembler._updateRenderData();
-        }
-        if (flag & RenderFlow.FLAG_COLOR) {
-            node._dirtyPtr[0] &= ~RenderFlow.FLAG_COLOR;
-            comp._updateColor && comp._updateColor();
-        }
+    if (flag & RenderFlow.FLAG_UPDATE_RENDER_DATA) {
+      node._dirtyPtr[0] &= ~RenderFlow.FLAG_UPDATE_RENDER_DATA;
+      assembler._updateRenderData && assembler._updateRenderData();
     }
 
-    _dirtyTargets.length = 0;
+    if (flag & RenderFlow.FLAG_COLOR) {
+      node._dirtyPtr[0] &= ~RenderFlow.FLAG_COLOR;
+      comp._updateColor && comp._updateColor();
+    }
+  }
 
-    this._nativeFlow.render(scene._proxy, director._deltaTime);
+  _dirtyTargets.length = 0;
 
-    _dirtyTargets = _dirtyWaiting.slice(0);
-    _dirtyWaiting.length = 0;
+  this._nativeFlow.render(scene._proxy, director._deltaTime);
 
-    _rendering = false;
+  _dirtyTargets = _dirtyWaiting.slice(0);
+  _dirtyWaiting.length = 0;
+  _rendering = false;
 };
 
 RenderFlow.init = function (nativeFlow) {
-    cc.EventTarget.call(this);
-    this._nativeFlow = nativeFlow;
+  cc.EventTarget.call(this);
+  this._nativeFlow = nativeFlow;
 };
 
 RenderFlow.register = function (target) {
-    if (target._inRenderList) return;
+  if (target._inJsbDirtyList) return;
 
-    if (_rendering) {
-        _dirtyWaiting.push(target);
-    } else {
-        _dirtyTargets.push(target);
-    }
+  if (_rendering) {
+    _dirtyWaiting.push(target);
+  } else {
+    _dirtyTargets.push(target);
+  }
 
-    target._inRenderList = true;
+  target._inJsbDirtyList = true;
 };
 
-},{}]},{},[24]);
+},{}]},{},[26]);

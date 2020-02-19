@@ -24,7 +24,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>CocosCreatorSample</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.companyname.CocosCreatorSample</string>
+	<string>org.cocos2d.MGMX4CocosJS</string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>UILaunchStoryboardName</key>
