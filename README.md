@@ -16,7 +16,7 @@ CocosCreator             | `CocosCreator` | ![NuGet](https://img.shields.io/stat
 
 ### Environment ###
 
-- CocosCreator v2.2.x
+- CocosCreator v2.x
 - Visual Studio 2017+
 
 ### Build your Cocos Creator Project ###
