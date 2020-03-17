@@ -24,7 +24,7 @@ namespace NativeLibrary
     {
         [Static]
         [Export("statusBarOrientationChanged")]
-        bool StatusBarOrientationChanged();
+        void StatusBarOrientationChanged();
 
         [Static]
         [Export("applicationWillResignActive")]
