@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
+    <Compile Include="Renderer\CocosViewRenderer.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -65,6 +66,9 @@
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\**" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Tabbar.xml" />
@@ -88,6 +92,10 @@
     <Folder Include="Resources\drawable\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\binding\CocosCreator.Forms\CocosCreator.Forms.csproj">
+      <Project>{c1ba847f-7ea2-4f7d-afda-d4e31fca444a}</Project>
+      <Name>CocosCreator.Forms</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\binding\CocosCreatorBinding.Android\CocosCreatorBinding.Android.csproj">
       <Project>{67979eae-ff40-44c6-8c26-f36a26dd066b}</Project>
       <Name>CocosCreatorBinding.Android</Name>
@@ -96,6 +104,9 @@
       <Project>{821C58BF-37B6-4893-8859-39D55D21E898}</Project>
       <Name>CocosCreatorFormsSample</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\values\strings.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
