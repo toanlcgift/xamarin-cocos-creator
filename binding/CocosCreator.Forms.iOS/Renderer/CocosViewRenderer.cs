@@ -12,7 +12,7 @@ namespace CocosCreator.Forms.iOS.Renderer
     {
         public CocosViewRenderer()
         {
-            AppController.InitGame("");
+            AppController.InitGame("123456789");
         }
 
         protected override void OnElementChanged(ElementChangedEventArgs<CocosView> e)
