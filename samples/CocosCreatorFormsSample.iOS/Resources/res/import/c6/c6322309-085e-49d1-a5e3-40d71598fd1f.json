@@ -1,0 +1,1 @@
+{"__type__":"cc.AnimationClip","_name":"step_4","_duration":1,"curveData":{"props":{"position":[{"frame":0,"value":[-360,-230],"curve":"quintOut"},{"frame":1,"value":[-360,150]}]}},"events":[{"frame":1,"func":"onNextAnimation","params":[1]}]}
