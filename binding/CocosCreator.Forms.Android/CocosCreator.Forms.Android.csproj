@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Renderer\CocosViewRenderer.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -65,11 +66,11 @@
     <Folder Include="Resources\drawable\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\binding\CocosCreator.Forms\CocosCreator.Forms.csproj">
+    <ProjectReference Include="..\CocosCreator.Forms\CocosCreator.Forms.csproj">
       <Project>{c1ba847f-7ea2-4f7d-afda-d4e31fca444a}</Project>
       <Name>CocosCreator.Forms</Name>
     </ProjectReference>
-    <ProjectReference Include="..\binding\CocosCreatorBinding.Android\CocosCreatorBinding.Android.csproj">
+    <ProjectReference Include="..\CocosCreatorBinding.Android\CocosCreatorBinding.Android.csproj">
       <Project>{67979eae-ff40-44c6-8c26-f36a26dd066b}</Project>
       <Name>CocosCreatorBinding.Android</Name>
     </ProjectReference>

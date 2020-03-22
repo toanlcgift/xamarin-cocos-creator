@@ -58,7 +58,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
-    <Compile Include="Renderer\CocosViewRenderer.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -92,6 +91,10 @@
     <Folder Include="Resources\drawable\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\binding\CocosCreator.Forms.Android\CocosCreator.Forms.Android.csproj">
+      <Project>{8AF23A2B-5E18-4656-BABA-DE5A4C1646A4}</Project>
+      <Name>CocosCreator.Forms.Android</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\binding\CocosCreator.Forms\CocosCreator.Forms.csproj">
       <Project>{c1ba847f-7ea2-4f7d-afda-d4e31fca444a}</Project>
       <Name>CocosCreator.Forms</Name>
