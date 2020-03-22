@@ -12,7 +12,7 @@ using Android.Widget;
 
 namespace Org.Cocos2dx.Lib
 {
-    public partial class Cocos2dxForms
+    public abstract partial class Cocos2dxForms
     {
     }
 }

@@ -25,7 +25,7 @@ namespace CocosCreatorFormsSample.Droid
             
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
-            new CocosViewRenderer(savedInstanceState, this, this.ApplicationContext);
+            new CocosViewRenderer(this,savedInstanceState);
 
             LoadApplication(new App());
         }
