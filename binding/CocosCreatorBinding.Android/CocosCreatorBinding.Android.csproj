@@ -171,8 +171,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Additions\AppActivity.cs" />
-    <Compile Include="Additions\Cocos2dxActivity.cs" />
+    <Compile Include="Additions\Cocos2dxForms.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -13,7 +13,7 @@ namespace CocosCreator.Forms.Android
 {
     public class CocosViewRenderer : ViewRenderer<CocosView, FrameLayout>
     {
-        public static Cocos2dxActivity Cocos2DxActivity;
+        public static Cocos2dxForms Cocos2dxForms;
         public CocosViewRenderer(Context context) : base(context)
         {
             
@@ -21,14 +21,14 @@ namespace CocosCreator.Forms.Android
         public CocosViewRenderer(Bundle savedInstanceState, Activity activity, Context context) : base(context)
         {
             Java.Lang.JavaSystem.LoadLibrary("cocos2djs");
-            Cocos2DxActivity = new Cocos2dxActivity();
-            Cocos2DxActivity.OnCreate(savedInstanceState, activity, context);
+            Cocos2dxForms = new Cocos2dxForms();
+            Cocos2dxForms.OnCreate(savedInstanceState, activity, context);
         }
 
         protected override void OnElementChanged(ElementChangedEventArgs<CocosView> e)
         {
             base.OnElementChanged(e);
-            SetNativeControl(Cocos2DxActivity.MFrameLayout);
+            SetNativeControl(Cocos2dxForms.MFrameLayout);
         }
     }
 }

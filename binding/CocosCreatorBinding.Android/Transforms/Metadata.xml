@@ -1,11 +1,11 @@
 ﻿<metadata>
-  <add-node path="/api/package[@name='org.cocos2dx.lib']/class[@name='Cocos2dxActivity']">
+  <add-node path="/api/package[@name='org.cocos2dx.lib']/class[@name='Cocos2dxForms']">
     <method name="compareTo" return="int" abstract="false" native="false" synchronized="false" static="false" final="false" deprecated="not deprecated" visibility="public">
       <parameter name="p0" type="java.lang.Object" />
     </method>
   </add-node>
 
-  <add-node path="/api/package[@name='org.cocos2dx.lib']/class[@name='Cocos2dxActivity.Cocos2dxEGLConfigChooser.ConfigValue']">
+  <add-node path="/api/package[@name='org.cocos2dx.lib']/class[@name='Cocos2dxForms.Cocos2dxEGLConfigChooser.ConfigValue']">
     <method name="compareTo" return="int" abstract="false" native="false" synchronized="false" static="false" final="false" deprecated="not deprecated" visibility="public">
       <parameter name="p0" type="java.lang.Object" />
     </method>

@@ -10,9 +10,9 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 
-namespace Org.Cocos2dx.Javascript
+namespace Org.Cocos2dx.Lib
 {
-    public partial class AppActivity
+    public partial class Cocos2dxForms
     {
     }
 }
