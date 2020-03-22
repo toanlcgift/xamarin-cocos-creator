@@ -7,9 +7,9 @@ using Foundation;
 using UIKit;
 using NativeLibrary;
 
-namespace CocosCreatorFormsSample.iOS
+namespace CocosCreator.Forms.iOS
 {
-    public class GameViewController : RootViewController
+    internal class NativeCall : NativeOcClass
     {
         public override bool CallNativeWithReturnBool(string title, string content)
         {
@@ -18,6 +18,7 @@ namespace CocosCreatorFormsSample.iOS
 
         public override string CallNativeWithReturnString(string title, string content)
         {
+            //AppController.EvalScript("cc.TestNativeCallJS()");
             return base.CallNativeWithReturnString(title, content);
         }
     }

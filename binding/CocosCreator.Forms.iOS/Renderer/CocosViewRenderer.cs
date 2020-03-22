@@ -10,9 +10,15 @@ namespace CocosCreator.Forms.iOS.Renderer
 {
     public class CocosViewRenderer : ViewRenderer<CocosView, UIView>
     {
+        static NativeCall nativeCall;
         public CocosViewRenderer()
         {
             AppController.InitGame("123456789");
+            if (nativeCall == null)
+            {
+                nativeCall = new NativeCall();
+                nativeCall.InitNativeCall();
+            }
         }
 
         protected override void OnElementChanged(ElementChangedEventArgs<CocosView> e)

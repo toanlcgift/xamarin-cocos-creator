@@ -6,19 +6,6 @@ using UIKit;
 
 namespace NativeLibrary
 {
-    [BaseType(typeof(UIViewController))]
-    public partial interface RootViewController
-    {
-        [Export("prefersStatusBarHidden")]
-        bool PrefersStatusBarHidden { get; }
-
-        [Export("callNativeWithReturnBool:andContent:")]
-        bool CallNativeWithReturnBool(string title, string content);
-
-        [Export("callNativeWithReturnString:andContent:")]
-        string CallNativeWithReturnString(string title, string content);
-    }
-
     [BaseType(typeof(NSObject))]
     interface AppController
     {
@@ -58,13 +45,12 @@ namespace NativeLibrary
     [BaseType(typeof(NSObject))]
     interface NativeOcClass
     {
-        // +(BOOL)callNativeWithReturnBool:(NSString * _Nonnull)title andContent:(NSString * _Nonnull)content;
-        [Static]
+        [Export("initNativeCall")]
+        void InitNativeCall();
+
         [Export("callNativeWithReturnBool:andContent:")]
         bool CallNativeWithReturnBool(string title, string content);
 
-        // +(NSString *)callNativeWithReturnString:(NSString * _Nonnull)title andContent:(NSString * _Nonnull)content;
-        [Static]
         [Export("callNativeWithReturnString:andContent:")]
         string CallNativeWithReturnString(string title, string content);
     }

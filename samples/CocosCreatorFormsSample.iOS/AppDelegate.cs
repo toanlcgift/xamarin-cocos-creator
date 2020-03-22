@@ -28,13 +28,7 @@ namespace CocosCreatorFormsSample.iOS
             new CocosViewRenderer();
             LoadApplication(new App());
 
-            var result = base.FinishedLaunching(app, options);
-            //var win = UIApplication.SharedApplication.KeyWindow;
-            //UIViewController viewController = new GameViewController();
-            //viewController.ModalPresentationStyle = UIModalPresentationStyle.FullScreen;
-            //win.RootViewController.PresentViewController(viewController, false, () => { AppController.StartGame(); });
-
-            return result;
+            return base.FinishedLaunching(app, options);
         }
 
         public override void DidChangeStatusBarOrientation(UIApplication application, UIInterfaceOrientation oldStatusBarOrientation)

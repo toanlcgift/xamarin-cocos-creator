@@ -14,7 +14,7 @@ using Org.Cocos2dx.Lib;
 
 namespace CocosCreator.Forms.Android
 {
-    public class CocosCreatorForms : Org.Cocos2dx.Lib.Cocos2dxForms
+    internal class CocosCreatorForms : Org.Cocos2dx.Lib.Cocos2dxForms
     {
         public override void ParamFromJSVoid(string title, string message)
         {
@@ -28,10 +28,10 @@ namespace CocosCreator.Forms.Android
 
         public override string ParamFromJSString(string title, string message)
         {
-            this.RunOnGLThread(new Runnable(() =>
-             {
-                 Cocos2dxJavascriptJavaBridge.EvalString("cc.TestNativeCallJS()");
-             }));
+            //this.RunOnGLThread(new Runnable(() =>
+            // {
+            //     Cocos2dxJavascriptJavaBridge.EvalString("cc.TestNativeCallJS()");
+            // }));
             return base.ParamFromJSString(title, message);
         }
     }
