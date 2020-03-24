@@ -21,6 +21,7 @@ CocosCreator             | `CocosCreator` | ![NuGet](https://img.shields.io/stat
 
 - CocosCreator v2.x
 - Visual Studio 2017+
+- nuget version >= 2.2.7 supports Xamarin.Forms
 
 ### Build your Cocos Creator Project ###
 
@@ -145,6 +146,71 @@ public override bool DidFinishLaunchingWithOptions(UIApplication app, NSDictiona
   
   *NOTE: This package does not support iOS emulator*
   
+  ### Xamarin.Forms ###
+  
+  #### Android ####
+  
+  ##### 1. init CocosViewRenderer in MainActivity.cs ##### 
+  ```C#
+  CocosViewRenderer.Init(this, savedInstanceState, [js_encrypted_key]);
+  ```
+  ##### 2. Copy Resources
+  
+  Copy resources in Cocos Creator's build folder to Xamarin.iOS Resources folder (except frameworks & js backups folder)
+  
+  - jsb-adapter
+  - res
+  - src
+  - subpackages
+  - main.js
+  - project.json
+  - ...
+  
+  ##### 3. Add to your android project *.csproj file #####
+  
+  ```xml
+  <ItemGroup>
+    <AndroidAsset Include="Assets\**" />
+  </ItemGroup>
+  ```
+  
+  #### iOS ####
+  
+   ##### 1. init CocosViewRenderer in AppDelegate.cs ##### 
+   
+   ```C#
+   CocosViewRenderer.Init("123456789");
+   ```
+   
+   ##### 2. Copy Resources
+  
+  Copy resources in Cocos Creator's build folder to Xamarin.iOS Resources folder (except frameworks & js backups folder)
+  
+  - jsb-adapter
+  - res
+  - src
+  - subpackages
+  - main.js
+  - project.json
+  - ...
+  
+   ##### 3. Add to your iOS project *.csproj file #####
+  
+  ```xml
+    <BundleResource Include="Resources\**">
+      <Optimize>False</Optimize>
+    </BundleResource>
+  ```
+  
+  #### Net Standard ####
+  In your xaml page:
+  
+  ```xml
+  xmlns:cocosforms="clr-namespace:CocosCreator.Forms;assembly=CocosCreator.Forms"
+
+  <cocosforms:CocosView NativeCallCommand="{Binding NativeCallCommand}" />
+  ```
+  
   ### Advanced topics ###
   
   ##### 1. How to Call Xamarin.Android & Xamarin.iOS C# methods using JavaScript #####
@@ -217,10 +283,16 @@ public override bool DidFinishLaunchingWithOptions(UIApplication app, NSDictiona
             }));
    ```
    
-   - Xamarin.iOS :
+   - Xamarin.iOS:
    
    ```C#
     AppController.EvalScript("cc.TestNativeCallJS()");
+   ```
+   
+   - Xamarin.Forms:
+   
+   ```C#
+   CocosCreator.Forms.JSBrigde.EvaluateScript("cc.TestNativeCallJS()");
    ```
    
   ##### 3. Cocos Creator HotUpdate #####
