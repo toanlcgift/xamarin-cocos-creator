@@ -273,6 +273,20 @@ public override bool DidFinishLaunchingWithOptions(UIApplication app, NSDictiona
             return base.CallNativeWithReturnString(title, content);
         }
    ```
+   
+   - Xamarin.Forms:
+   
+   Please implement MVVM and binding to NativeCallCommand in ViewModel
+   ```C#
+   
+   public ICommand NativeCallCommand { get; set; } = new Command(OnExecuteNativeCallCommand);
+   
+   private void OnExecuteNativeCallCommand(object obj)
+        {
+            CocosCreator.Forms.JSBrigde.EvaluateScript("cc.TestNativeCallJS()");
+        }
+   
+   ```
   ##### 2. C# Call Javascript #####
   - Xamarin.Android:
   
