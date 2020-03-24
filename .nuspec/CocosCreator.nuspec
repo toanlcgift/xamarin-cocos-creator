@@ -15,22 +15,36 @@
 	<description>CocosCreator Xamarin Binding</description>
 
     <dependencies>
+	  <group>
+        <dependency id="Xamarin.Forms" version="2.2.0.31"/>
+      </group>
+	  <group targetFramework="MonoAndroid10.0">
+        <dependency id="Xamarin.AndroidX.Lifecycle.LiveData" version="2.1.0" />
+        <dependency id="Xamarin.Google.Android.Material" version="1.0.0" />
+        <dependency id="Xamarin.AndroidX.Legacy.Support.V4" version="1.0.0" />
+        <dependency id="Xamarin.AndroidX.Browser" version="1.0.0" />
+      </group>
       <group targetFramework="MonoAndroid90">
         <dependency id="Xamarin.Android.Support.v4" version="28.0.0.3"/>
         <dependency id="Xamarin.Android.Support.Design" version="28.0.0.3"/>
         <dependency id="Xamarin.Android.Support.v7.AppCompat" version="28.0.0.3"/>
         <dependency id="Xamarin.Android.Support.v7.CardView" version="28.0.0.3"/>
         <dependency id="Xamarin.Android.Support.CustomTabs" version="28.0.0.3"/>
+		<dependency id="Xamarin.Forms" version="2.2.0.31"/>
       </group>
     </dependencies>
   </metadata>
   <files>
     <!-- Android -->
-    <file src="..\binding\CocosCreatorBinding.Android\bin\Release\*.dll" target="lib\MonoAndroid90" />
-    <file src="..\binding\CocosCreatorBinding.Android\bin\Release\*.pdb" target="lib\MonoAndroid90" />
+	<file src="..\binding\CocosCreator.Forms.Android\bin\Release\*.dll" target="lib\MonoAndroid90" />
+    <file src="..\binding\CocosCreator.Forms.Android\bin\Release\*.pdb" target="lib\MonoAndroid90" />
 	
 	<!-- iOS -->
-	<file src="..\binding\CocosCreatorBinding.iOS\bin\Release\*.dll" target="lib\Xamarin.iOS10" />
-    <file src="..\binding\CocosCreatorBinding.iOS\bin\Release\*.pdb" target="lib\Xamarin.iOS10" />
+	<file src="..\binding\CocosCreator.Forms.iOS\bin\Release\*.dll" target="lib\Xamarin.iOS10" />
+    <file src="..\binding\CocosCreator.Forms.iOS\bin\Release\*.pdb" target="lib\Xamarin.iOS10" />
+	
+    <!--netstandard2-->
+    <file src="..\binding\CocosCreator.Forms\bin\Release\netstandard2.0\*.dll" target="lib\netstandard2.0" />
+	<file src="..\binding\CocosCreator.Forms\bin\Release\netstandard2.0\*.pdb" target="lib\netstandard2.0" />
   </files>
 </package>
