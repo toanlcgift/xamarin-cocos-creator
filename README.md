@@ -179,7 +179,7 @@ public override bool DidFinishLaunchingWithOptions(UIApplication app, NSDictiona
    ##### 1. init CocosViewRenderer in AppDelegate.cs ##### 
    
    ```C#
-   CocosViewRenderer.Init("123456789");
+   CocosViewRenderer.Init([js_encrypted_key]);
    ```
    
    ##### 2. Copy Resources
