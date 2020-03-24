@@ -13,16 +13,17 @@ namespace CocosCreator.Forms.Android
 {
     public class CocosViewRenderer : ViewRenderer<CocosView, FrameLayout>
     {
-        public static CocosCreatorForms Cocos2dxForms;
+        static CocosCreatorForms Cocos2dxForms;
         public CocosViewRenderer(Context context) : base(context)
         {
 
         }
-        public CocosViewRenderer(Activity activity, Bundle savedInstanceState) : base(activity)
+
+        public static void Init(Activity activity, Bundle savedInstanceState, string xxteakey = "")
         {
             Java.Lang.JavaSystem.LoadLibrary("cocos2djs");
             Cocos2dxForms = new CocosCreatorForms();
-            Cocos2dxForms.Setxxteakey("123456789");
+            Cocos2dxForms.Setxxteakey(xxteakey);
             Cocos2dxForms.OnCreate(savedInstanceState, activity);
         }
 

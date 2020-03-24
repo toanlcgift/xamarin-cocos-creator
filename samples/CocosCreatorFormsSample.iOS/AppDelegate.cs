@@ -25,7 +25,7 @@ namespace CocosCreatorFormsSample.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
-            new CocosViewRenderer();
+            CocosViewRenderer.Init("123456789");
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

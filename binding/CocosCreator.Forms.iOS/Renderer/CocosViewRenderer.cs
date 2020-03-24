@@ -11,7 +11,8 @@ namespace CocosCreator.Forms.iOS.Renderer
     public class CocosViewRenderer : ViewRenderer<CocosView, UIView>
     {
         static NativeCall nativeCall;
-        public CocosViewRenderer()
+
+        public static void Init(string xxteakey)
         {
             AppController.InitGame("123456789");
             if (nativeCall == null)
