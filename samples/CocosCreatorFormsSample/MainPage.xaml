@@ -1,12 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-             xmlns:cocosforms="clr-namespace:CocosCreator.Forms;assembly=CocosCreator.Forms"
-             x:Class="CocosCreatorFormsSample.MainPage">
+<ContentPage
+    x:Class="CocosCreatorFormsSample.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:cocosforms="clr-namespace:CocosCreator.Forms;assembly=CocosCreator.Forms"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:CocosCreatorFormsSample"
+    mc:Ignorable="d">
+    <ContentPage.BindingContext>
+        <vm:MainPageViewModel />
+    </ContentPage.BindingContext>
 
-    <cocosforms:CocosView></cocosforms:CocosView>
+    <cocosforms:CocosView NativeCallCommand="{Binding NativeCallCommand}" />
 
 </ContentPage>

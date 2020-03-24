@@ -43,6 +43,7 @@
     <Compile Include="NativeCall.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Renderer\CocosViewRenderer.cs" />
+    <Compile Include="Service\EvaluateJSService.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms">

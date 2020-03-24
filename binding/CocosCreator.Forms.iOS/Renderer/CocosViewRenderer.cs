@@ -28,7 +28,15 @@ namespace CocosCreator.Forms.iOS.Renderer
 
             var view = AppController.GetGameView();
             SetNativeControl(view);
+            NativeCall.ReceiveData += NativeCall_ReceiveData;
             AppController.StartGame();
+        }
+
+        private void NativeCall_ReceiveData(string title, string message, System.Type type)
+        {
+            var element = this.Element;
+            if (element != null)
+                CocosView.Execute(element.NativeCallCommand, new JSMessage() { Title = title, Content = message, Type = type });
         }
     }
 }

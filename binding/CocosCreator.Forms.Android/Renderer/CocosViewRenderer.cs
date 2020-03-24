@@ -13,7 +13,7 @@ namespace CocosCreator.Forms.Android
 {
     public class CocosViewRenderer : ViewRenderer<CocosView, FrameLayout>
     {
-        static CocosCreatorForms Cocos2dxForms;
+        public static CocosCreatorForms Cocos2dxForms;
         public CocosViewRenderer(Context context) : base(context)
         {
 
@@ -30,7 +30,15 @@ namespace CocosCreator.Forms.Android
         protected override void OnElementChanged(ElementChangedEventArgs<CocosView> e)
         {
             base.OnElementChanged(e);
+            CocosCreatorForms.ReceiveData += CocosCreatorForms_ReceiveData;
             SetNativeControl(Cocos2dxForms.MFrameLayout);
+        }
+
+        private void CocosCreatorForms_ReceiveData(string title, string message, System.Type type)
+        {
+            var element = this.Element;
+            if (element != null)
+                CocosView.Execute(element.NativeCallCommand, new JSMessage() { Title = title, Content = message, Type = type });
         }
     }
 }
