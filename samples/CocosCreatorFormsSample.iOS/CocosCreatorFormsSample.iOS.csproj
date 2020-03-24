@@ -125,24 +125,17 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="CocosCreator">
+      <Version>2.2.7</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="4.5.0.396" />
     <PackageReference Include="Xamarin.Essentials" Version="1.3.1" />
   </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\..\binding\CocosCreator.Forms.iOS\CocosCreator.Forms.iOS.csproj">
-      <Project>{fe5e6efc-f616-4477-8f26-1c2f33321a7c}</Project>
-      <Name>CocosCreator.Forms.iOS</Name>
-      <IsAppExtension>false</IsAppExtension>
-      <IsWatchApp>false</IsWatchApp>
-    </ProjectReference>
-    <ProjectReference Include="..\..\binding\CocosCreatorBinding.iOS\CocosCreatorBinding.iOS.csproj">
-      <Project>{4ca804eb-e27f-4055-90c8-e2b4380cdd04}</Project>
-      <Name>CocosCreatorBinding.iOS</Name>
-    </ProjectReference>
     <ProjectReference Include="..\CocosCreatorFormsSample\CocosCreatorFormsSample.csproj">
-      <Project>{821C58BF-37B6-4893-8859-39D55D21E898}</Project>
+      <Project>{1878f993-ca82-4eec-b076-71f9d05e804c}</Project>
       <Name>CocosCreatorFormsSample</Name>
     </ProjectReference>
   </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
