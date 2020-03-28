@@ -33,7 +33,7 @@ CocosCreator             | `CocosCreator` | ![NuGet](https://img.shields.io/stat
 <img src="docs/buildsetting.png" alt="Xamarin.CocosCreator banner" height="800" >
 </p>
 
-### Xamarin Android ###
+### Xamarin Android (nuget <= 2.2.6) ###
 ##### Install nuget CocosCreator #####
 
 ##### 1. Create Android Activity #####
@@ -97,7 +97,7 @@ protected override void OnCreate(Bundle savedInstanceState)
   </ItemGroup>
   ```
   
-### Xamarin iOS ###
+### Xamarin iOS (nuget <= 2.2.6) ###
 ##### Install nuget CocosCreator #####
 
 ##### 1. Create iOS AppDelegate #####
@@ -146,7 +146,7 @@ public override bool DidFinishLaunchingWithOptions(UIApplication app, NSDictiona
   
   *NOTE: This package does not support iOS emulator*
   
-  ### Xamarin.Forms ###
+  ### Xamarin.Forms (nuget >= 2.2.7) ###
   
   #### Android ####
   
