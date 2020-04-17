@@ -3,7 +3,7 @@ using CocosCreator.Forms.iOS.Renderer;
 using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
-using NativeLibrary;
+using CocosCreatorBinding.iOS;
 
 [assembly: ExportRenderer(typeof(CocosView), typeof(CocosViewRenderer))]
 namespace CocosCreator.Forms.iOS.Renderer
@@ -12,9 +12,9 @@ namespace CocosCreator.Forms.iOS.Renderer
     {
         static NativeCall nativeCall;
 
-        public static void Init(string xxteakey)
+        public static void Init(string xxteakey = "")
         {
-            AppController.InitGame("123456789");
+            AppController.InitGame(xxteakey);
             if (nativeCall == null)
             {
                 nativeCall = new NativeCall();

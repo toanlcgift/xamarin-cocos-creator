@@ -5,7 +5,7 @@ using System.Text;
 using CocosCreator.Forms.iOS.Service;
 using Foundation;
 using UIKit;
-using NativeLibrary;
+using CocosCreatorBinding.iOS;
 
 [assembly: Xamarin.Forms.Dependency(typeof(EvaluateJSService))]
 namespace CocosCreator.Forms.iOS.Service

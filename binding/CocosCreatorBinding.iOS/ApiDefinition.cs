@@ -4,7 +4,7 @@ using ObjCRuntime;
 using Foundation;
 using UIKit;
 
-namespace NativeLibrary
+namespace CocosCreatorBinding.iOS
 {
     [BaseType(typeof(NSObject))]
     interface AppController

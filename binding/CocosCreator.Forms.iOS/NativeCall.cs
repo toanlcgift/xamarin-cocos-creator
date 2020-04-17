@@ -5,7 +5,7 @@ using System.Text;
 
 using Foundation;
 using UIKit;
-using NativeLibrary;
+using CocosCreatorBinding.iOS;
 
 namespace CocosCreator.Forms.iOS
 {

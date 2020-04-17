@@ -38,6 +38,9 @@
 	<file src="..\binding\CocosCreator.Forms.Android\bin\Release\*.dll" target="lib\MonoAndroid90" />
     <file src="..\binding\CocosCreator.Forms.Android\bin\Release\*.pdb" target="lib\MonoAndroid90" />
 	
+	<file src="..\binding\CocosCreator.Forms.Android\bin\Release\*.dll" target="lib\MonoAndroid10.0" />
+    <file src="..\binding\CocosCreator.Forms.Android\bin\Release\*.pdb" target="lib\MonoAndroid10.0" />
+	
 	<!-- iOS -->
 	<file src="..\binding\CocosCreator.Forms.iOS\bin\Release\*.dll" target="lib\Xamarin.iOS10" />
     <file src="..\binding\CocosCreator.Forms.iOS\bin\Release\*.pdb" target="lib\Xamarin.iOS10" />
