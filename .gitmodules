@@ -1,3 +1,6 @@
 [submodule "cocoscreator-build-template"]
 	path = cocoscreator-build-template
 	url = https://github.com/toanlcgift/cocoscreator-build-template
+[submodule "xamarin-cocoscreator-samples"]
+	path = xamarin-cocoscreator-samples
+	url = https://github.com/toanlcgift/xamarin-cocoscreator-samples
