@@ -14,6 +14,9 @@ CocosCreator             | `CocosCreator` | ![NuGet](https://img.shields.io/stat
 <img src="docs/demo.gif" alt="demominigame" height="500">
 <img src="docs/physic.gif" alt="demominigame" height="300">
 
+## Samples ##
+
+https://github.com/toanlcgift/xamarin-cocoscreator-samples
 
 ## Getting Started ##
 
