@@ -1,1 +1,0 @@
-{"__type__":"cc.Material","_name":"dynamic-load-material","_effectAsset":{"__uuid__":"6dkeWRTOBGXICfYQ7JUBnG"},"_techniqueData":{"0":{"props":{"alphaThreshold":0.5,"diffuseTexture":{"__uuid__":"6bT67Vq8NKd6+dNe1npaSL"}},"defines":{"USE_DIFFUSE_TEXTURE":true,"USE_ALPHA_TEST":true}}}}
