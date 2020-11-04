@@ -10,11 +10,11 @@
 
 [![NuGet](https://badge.fury.io/nu/CocosCreator.svg)](https://www.nuget.org/packages/CocosCreator/)
 
-Platform/Feature               | Package name                              | Stable      | Lastest | Cocos Creator Version
------------------------|-------------------------------------------|-----------------------------|------------------------- |-------------------------|
-CocosCreator             | `CocosCreator` | ![NuGet](https://img.shields.io/static/v1?label=nuget&message=2.2.1&color=green) - ![NuGet](https://img.shields.io/static/v1?label=nuget&message=2.2.5&color=green) |  | 2.2.0 - 2.2.2 |
-CocosCreator             | `CocosCreator` | ![NuGet](https://img.shields.io/static/v1?label=nuget&message=2.2.6&color=green) - ![NuGet](https://img.shields.io/static/v1?label=nuget&message=2.2.8&color=green) |  | 2.3.0 |
-CocosCreator             | `CocosCreator` | ![NuGet](https://img.shields.io/static/v1?label=nuget&message=2.3.4&color=green) |  | 2.3.3 |
+Platform/Feature               | Package name                              | Stable      | Cocos Creator Version
+-----------------------|-------------------------------------------|-----------------------------|-------------------------|
+CocosCreator             | `CocosCreator` | ![NuGet](https://img.shields.io/static/v1?label=nuget&message=2.2.1&color=green) - ![NuGet](https://img.shields.io/static/v1?label=nuget&message=2.2.5&color=green) | 2.2.0 - 2.2.2 |
+CocosCreator             | `CocosCreator` | ![NuGet](https://img.shields.io/static/v1?label=nuget&message=2.2.6&color=green) - ![NuGet](https://img.shields.io/static/v1?label=nuget&message=2.2.8&color=green) | 2.3.0 |
+CocosCreator             | `CocosCreator` | ![NuGet](https://img.shields.io/static/v1?label=nuget&message=2.3.4&color=green) | 2.3.3 |
 
 <img src="docs/demo.gif" alt="demominigame" height="500">
 <img src="docs/physic.gif" alt="demominigame" height="300">
