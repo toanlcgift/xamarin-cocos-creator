@@ -58,11 +58,5 @@
   <ItemGroup>
     <ObjcBindingNativeLibrary Include="libcocos2diOS.a" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CocosCreator.Forms\CocosCreator.Forms.csproj">
-      <Project>{c1ba847f-7ea2-4f7d-afda-d4e31fca444a}</Project>
-      <Name>CocosCreator.Forms</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.ObjCBinding.CSharp.targets" />
 </Project>
