@@ -14,7 +14,8 @@ Platform/Feature               | Package name                              | Sta
 -----------------------|-------------------------------------------|-----------------------------|-------------------------|
 CocosCreator             | `CocosCreator` | ![NuGet](https://img.shields.io/static/v1?label=nuget&message=2.2.1&color=green) - ![NuGet](https://img.shields.io/static/v1?label=nuget&message=2.2.5&color=green) | 2.2.0 - 2.2.2 |
 CocosCreator             | `CocosCreator` | ![NuGet](https://img.shields.io/static/v1?label=nuget&message=2.2.6&color=green) - ![NuGet](https://img.shields.io/static/v1?label=nuget&message=2.2.8&color=green) | 2.3.0 |
-CocosCreator             | `CocosCreator` | ![NuGet](https://img.shields.io/static/v1?label=nuget&message=2.3.4&color=green) | 2.3.3 |
+CocosCreator             | `CocosCreator` | ![NuGet](https://img.shields.io/static/v1?label=nuget&message=2.3.4&color=green) - ![NuGet](https://img.shields.io/static/v1?label=nuget&message=2.3.5&color=green) | 2.3.3 |
+CocosCreator             | `CocosCreator` | ![NuGet](https://img.shields.io/static/v1?label=nuget&message=2.4.3&color=green) | 2.4.3 |
 
 <img src="docs/demo.gif" alt="demominigame" height="500">
 <img src="docs/physic.gif" alt="demominigame" height="300">
