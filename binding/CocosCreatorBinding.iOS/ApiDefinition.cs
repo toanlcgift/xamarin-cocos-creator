@@ -7,7 +7,7 @@ using UIKit;
 namespace CocosCreatorBinding.iOS
 {
     [BaseType(typeof(NSObject))]
-    interface AppController
+    public interface AppController
     {
         [Static]
         [Export("statusBarOrientationChanged")]
@@ -43,7 +43,7 @@ namespace CocosCreatorBinding.iOS
     }
 
     [BaseType(typeof(NSObject))]
-    interface NativeOcClass
+    public interface NativeOcClass
     {
         [Export("initNativeCall")]
         void InitNativeCall();
