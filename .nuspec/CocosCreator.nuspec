@@ -18,19 +18,6 @@
 	  <group>
         <dependency id="Xamarin.Forms" version="2.2.0.31"/>
       </group>
-	  <group targetFramework="MonoAndroid10.0">
-        <dependency id="Xamarin.AndroidX.Lifecycle.LiveData" version="2.1.0" />
-        <dependency id="Xamarin.Google.Android.Material" version="1.0.0" />
-        <dependency id="Xamarin.AndroidX.Legacy.Support.V4" version="1.0.0" />
-        <dependency id="Xamarin.AndroidX.Browser" version="1.0.0" />
-      </group>
-      <group targetFramework="MonoAndroid90">
-        <dependency id="Xamarin.Android.Support.v4" version="28.0.0.3"/>
-        <dependency id="Xamarin.Android.Support.Design" version="28.0.0.3"/>
-        <dependency id="Xamarin.Android.Support.v7.AppCompat" version="28.0.0.3"/>
-        <dependency id="Xamarin.Android.Support.v7.CardView" version="28.0.0.3"/>
-        <dependency id="Xamarin.Android.Support.CustomTabs" version="28.0.0.3"/>
-      </group>
     </dependencies>
   </metadata>
   <files>
@@ -40,6 +27,9 @@
 	
 	<file src="..\binding\CocosCreator.Forms.Android\bin\Release\*.dll" target="lib\MonoAndroid10.0" />
     <file src="..\binding\CocosCreator.Forms.Android\bin\Release\*.pdb" target="lib\MonoAndroid10.0" />
+	
+	<file src="..\binding\CocosCreator.Forms.Android\bin\Release\*.dll" target="lib\MonoAndroid11.0" />
+    <file src="..\binding\CocosCreator.Forms.Android\bin\Release\*.pdb" target="lib\MonoAndroid11.0" />
 	
 	<!-- iOS -->
 	<file src="..\binding\CocosCreator.Forms.iOS\bin\Release\*.dll" target="lib\Xamarin.iOS10" />
