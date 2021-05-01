@@ -44,6 +44,9 @@
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="libcocos2diOSSimulator.linkwith.cs">
+      <DependentUpon>libcocos2diOSSimulator.a</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="libcocos2diOS.linkwith.cs">
       <DependentUpon>libcocos2diOS.a</DependentUpon>
@@ -57,6 +60,9 @@
   </ItemGroup>
   <ItemGroup>
     <ObjcBindingNativeLibrary Include="libcocos2diOS.a" />
+  </ItemGroup>
+  <ItemGroup>
+    <ObjcBindingNativeLibrary Include="libcocos2diOSSimulator.a" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.ObjCBinding.CSharp.targets" />
 </Project>
