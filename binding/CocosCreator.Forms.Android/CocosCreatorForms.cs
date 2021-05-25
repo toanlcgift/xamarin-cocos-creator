@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Android.Content;
+using Org.Cocos2dx.Lib;
+using System;
 
 namespace CocosCreator.Forms.Android
 {
@@ -34,6 +36,13 @@ namespace CocosCreator.Forms.Android
                 ReceiveData(title, message, typeof(string));
             }
             return base.ParamFromJSString(title, message);
+        }
+
+        public override Cocos2dxGLSurfaceView OnCreateView(Context context)
+        {
+            Cocos2dxGLSurfaceView glSurfaceView = new Cocos2dxGLSurfaceView(context);
+            glSurfaceView.SetEGLConfigChooser(5, 6, 5, 0, 16, 8);
+            return glSurfaceView;
         }
     }
 }
